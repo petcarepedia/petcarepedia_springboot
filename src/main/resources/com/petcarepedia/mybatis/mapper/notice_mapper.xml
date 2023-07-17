@@ -4,27 +4,27 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.notice">
+<mapper namespace="com.project.petcarepedia.repository.NoticeMapper">
 
-	<select id="list" resultType="com.project.vo.NoticeVo">
+	<select id="list" resultType="com.project.petcarepedia.dto.NoticeDto">
 		select rownum rno, nid, title, ndate, nhits, ncontent
 		from(select nid, title, ndate, nhits, ncontent from pcp_notice order by ndate desc)
 	</select>
 	
-	<select id="content" parameterType="String" resultType="com.project.vo.NoticeVo">
+	<select id="content" parameterType="String" resultType="com.project.petcarepedia.dto.NoticeDto">
 		select nid, title, ndate, nhits, ncontent from pcp_notice where nid = #{nid}
 	</select>
 	
-	<select id="enter_content" parameterType="String" resultType="com.project.vo.NoticeVo">
+	<select id="enterContent" parameterType="String" resultType="com.project.petcarepedia.dto.NoticeDto">
 		select nid, title, to_char(ndate, 'yyyy-mm-dd hh24:mi') ndate, nhits, ncontent from pcp_notice where nid = #{nid}
 	</select>
 	
-	<insert id="insert" parameterType="com.project.vo.NoticeVo">
+	<insert id="insert" parameterType="com.project.petcarepedia.dto.NoticeDto">
 		insert into pcp_notice(nid, title, ndate, nhits, ncontent)
 		values('N_'||ltrim(to_char(sequ_pcp_notice_nid.nextval,'0000')),#{title},sysdate,0,#{ncontent})
 	</insert>
 	
-	<update id="update" parameterType="com.project.vo.NoticeVo">
+	<update id="update" parameterType="com.project.petcarepedia.dto.NoticeDto">
 		update pcp_notice set title=#{title}, ncontent=#{ncontent} where nid=#{nid}
 	</update>
 	
@@ -40,7 +40,7 @@
 		select count(*) from pcp_notice
 	</select>
 	
-	<select id="listPage" parameterType="map" resultType="com.project.vo.NoticeVo">
+	<select id="listPage" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.NoticeDto">
 		select rno, nid, title, ndate, nhits, ncontent
 		from(select rownum rno, nid, title, to_char(ndate, 'yyyy-mm-dd hh24:mi') ndate, nhits, ncontent 
 		from(select nid, title, ndate, nhits, ncontent from pcp_notice order by ndate desc))

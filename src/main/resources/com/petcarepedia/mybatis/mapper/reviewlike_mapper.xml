@@ -4,24 +4,24 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.reviewlike">
-	<delete id="likesDownID" parameterType="com.project.vo.ReviewLikeVo">
+<mapper namespace="com.project.petcarepedia.repository.ReviewLikeMapper">
+	<delete id="likesDownID" parameterType="com.project.petcarepedia.dto.ReviewLikeDto">
 		delete pcp_review_like where rid = #{rid} and mid = #{mid}
 	</delete>
 	
-	<update id="likesDown" parameterType="com.project.vo.ReviewLikeVo">
+	<update id="likesDown" parameterType="com.project.petcarepedia.dto.ReviewLikeDto">
 		update pcp_review set rlike = rlike-1 where rid = #{rid}
 	</update>
 	
-	<insert id="likesUpID" parameterType="com.project.vo.ReviewLikeVo">
+	<insert id="likesUpID" parameterType="com.project.petcarepedia.dto.ReviewLikeDto">
 		insert into pcp_review_like(rlid, rid, mid) values('RL_'||LTRIM(TO_CHAR(SEQU_PCP_REVIEW_LIKE_RLID.NEXTVAL,'0000')),#{rid},#{mid})
 	</insert>
 	
-	<update id="likesUp" parameterType="com.project.vo.ReviewLikeVo">
+	<update id="likesUp" parameterType="com.project.petcarepedia.dto.ReviewLikeDto">
 		update pcp_review set rlike = rlike+1 where rid = #{rid}
 	</update>
 	
-	<select id="idCheck" parameterType="com.project.vo.ReviewLikeVo" resultType="int">
+	<select id="idCheck" parameterType="com.project.petcarepedia.dto.ReviewLikeDto" resultType="int">
 		select count(*) from pcp_review_like where mid=#{mid} and rid=#{rid}
 	</select>
 </mapper>
