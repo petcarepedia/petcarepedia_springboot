@@ -4,7 +4,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.spword">
+<mapper namespace="com.project.petcarepedia.repository.SPWordMapper">
 
 	<insert id="insert" parameterType="String">
 		INSERT 
@@ -12,7 +12,7 @@
 			VALUES(#{word},SYSDATE)
 	</insert>
 	
-	<select id="select" resultType="com.project.vo.SPWordVo">
+	<select id="select" resultType="com.project.petcarepedia.dto.SPWordDto">
 		select rno, word, wcnt
 		from (select rownum rno, word, wcnt
 		      from (select word, count(*) wcnt
