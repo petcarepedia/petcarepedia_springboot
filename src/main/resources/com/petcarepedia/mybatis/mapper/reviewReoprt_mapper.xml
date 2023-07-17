@@ -4,7 +4,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.reviewReport">
+<mapper namespace="com.project.petcarepedia.repository.ReviewReportMapper">
+
 	<insert id="report" parameterType="com.project.vo.ReviewReportVo">
 		INSERT INTO PCP_REVIEW_REPORT(RRID, MID, RID, HID, RRDATE, RRESON)
 		VALUES('RR_'||LTRIM(TO_CHAR(SEQU_PCP_REVIEW_REPORT_RRID.NEXTVAL,'0000')), #{mid}, #{rid}, #{hid}, SYSDATE, #{rreson})
