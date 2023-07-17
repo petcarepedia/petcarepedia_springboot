@@ -24,6 +24,5 @@ public class MemberService {
     public int update(MemberDto memberDto) { return memberMapper.update(memberDto); }
     public String find(MemberDto memberDto) { return memberMapper.find(memberDto); }
     public int updatePass(MemberDto memberDto) { return memberMapper.updatePass(memberDto); }
-    public List<MemberDto> search(String mid) { return memberMapper.search(mid); }
     public int checkPass(MemberDto memberDto) { return memberMapper.checkPass(memberDto); }
 }

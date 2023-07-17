@@ -84,13 +84,7 @@
 		set pass=#{pass}
 		where mid=#{mid}
 	</update>
-	
-	<select id="search" parameterType="string" resultType="com.project.petcarepedia.dto.MemberDto">
-		SELECT MID, NAME, PHONE, EMAIL, MDATE 
-		FROM PCP_MEMBER 
-		WHERE MID LIKE '%'||#{mid}||'%'
-	</select>
-	
+
 	<select id="checkPass" parameterType="com.project.petcarepedia.dto.MemberDto" resultType="int">
 		select count(*) from pcp_member where mid = #{mid} and pass = #{pass}
 	</select>

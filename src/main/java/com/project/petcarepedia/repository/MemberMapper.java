@@ -19,6 +19,5 @@ public interface MemberMapper {
     int update(MemberDto memberDto);
     String find(MemberDto memberDto);
     int updatePass(MemberDto memberDto);
-    List<MemberDto> search(String mid);
     int checkPass(MemberDto memberDto);
 }
