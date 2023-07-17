@@ -16,7 +16,8 @@ public class MemberService {
     public SessionDto login(MemberDto memberDto) { return memberMapper.login(memberDto); }
     public int join(MemberDto memberDto) { return memberMapper.join(memberDto); }
     public int delete(MemberDto memberDto) { return memberMapper.delete(memberDto); }
-    public List<MemberDto> list(PageDto pageDto) { return memberMapper.list(pageDto); }
+    public List<MemberDto> mlist(PageDto pageDto) { return memberMapper.mlist(pageDto); }
+    public List<MemberDto> mslist(PageDto pageDto) { return memberMapper.mslist(pageDto); }
     public MemberDto content(String mid) { return memberMapper.content(mid); }
     public int checkId(String mid) { return memberMapper.checkId(mid); }
     public int checkMail(String email) { return memberMapper.checkMail(email); }

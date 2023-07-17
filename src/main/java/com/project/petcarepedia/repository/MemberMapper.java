@@ -11,7 +11,8 @@ public interface MemberMapper {
     SessionDto login(MemberDto memberDto);
     int join(MemberDto memberDto);
     int delete(MemberDto memberDto);
-    List<MemberDto> list(PageDto pageDto);
+    List<MemberDto> mlist(PageDto pageDto);
+    List<MemberDto> mslist(PageDto pageDto);
     MemberDto content(String mid);
     int checkId(String mid);
     int checkMail(String email);

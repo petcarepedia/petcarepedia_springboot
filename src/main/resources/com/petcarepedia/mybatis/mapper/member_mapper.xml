@@ -24,15 +24,26 @@
 		delete from pcp_member where mid=#{mid} and pass=#{pass}
 	</delete>
 
-	<select id="list" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.MemberDto">
-		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate 
+	<select id = "mslist" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.MemberDto">
+		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate
 		from (select rownum rno,mid,pass,name,nickname,phone,
-				to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
-				to_char(mdate,'yyyy-mm-dd') mdate,grade
-				from (select mid,pass,name,nickname,phone,birth,email,addr,mdate,grade
-						from pcp_member 
-						order by mdate))
-		where rno between #{startCount} and #{endCount}
+					 to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
+					 to_char(mdate,'yyyy-mm-dd') mdate
+			  from (select mid,pass,name,nickname,phone,birth,email,addr,mdate
+					from pcp_member where mid like '%'||#{mid}||'%'
+					order by mdate))
+		where rno between #{start} and #{end}
+	</select>
+
+	<select id = "mlist" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.MemberDto">
+		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate
+		from (select rownum rno,mid,pass,name,nickname,phone,
+					 to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
+					 to_char(mdate,'yyyy-mm-dd') mdate
+			  from (select mid,pass,name,nickname,phone,birth,email,addr,mdate
+					from pcp_member
+					order by mdate))
+		where rno between #{start} and #{end}
 	</select>
 	
 	<select id="content" parameterType="string" resultType="com.project.petcarepedia.dto.MemberDto">
