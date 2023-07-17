@@ -14,7 +14,7 @@ public class SearchController {
 
    /*
 
-    @Autowired
+    @Autowired1
     private HospitalService hospitalService;
     @Autowired
     private ReviewService reviewService;
