@@ -4,36 +4,27 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.member">
+<mapper namespace="com.project.petcarepedia.repository.MemberMapper">
 
-	<insert id="join" parameterType="com.project.vo.MemberVo">
+	<insert id="join" parameterType="com.project.petcarepedia.dto.MemberDto">
 		INSERT 
 			INTO PCP_MEMBER(mid,pass,name,nickname,phone,birth,email,addr,mdate,grade,msfile) 
 			VALUES(#{mid},#{pass},#{name},#{nickname},#{phone},#{birth, jdbcType=VARCHAR},
 			#{email},#{addr, jdbcType=VARCHAR},SYSDATE,#{grade},#{msfile, jdbcType=VARCHAR})
 	</insert>
 	
-	<select id="login" parameterType="com.project.vo.MemberVo" resultType="com.project.vo.SessionVo">
+	<select id="login" parameterType="com.project.petcarepedia.dto.MemberDto" resultType="com.project.petcarepedia.dto.SessionDto">
 		select count(*) loginResult, mid, name, grade
 		from pcp_member 
 		where mid=#{mid} and pass=#{pass}
 		group by mid, name, grade
 	</select>
 	
-	<delete id="delete" parameterType="map">
+	<delete id="delete" parameterType="com.project.petcarepedia.dto.MemberDto">
 		delete from pcp_member where mid=#{mid} and pass=#{pass}
 	</delete>
-	
-	<select id="list" resultType="com.project.vo.MemberVo">
-		select rownum rno,mid,pass,name,nickname,phone,
-				to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
-				to_char(mdate,'yyyy-mm-dd') mdate,grade 
-		from (select mid,pass,name,nickname,phone,birth,email,addr,mdate,grade 
-				from pcp_member 
-				order by mdate)
-	</select>
-	
-	<select id="list2" parameterType="map" resultType="com.project.vo.MemberVo">
+
+	<select id="list" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.MemberDto">
 		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate 
 		from (select rownum rno,mid,pass,name,nickname,phone,
 				to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
@@ -41,10 +32,10 @@
 				from (select mid,pass,name,nickname,phone,birth,email,addr,mdate,grade
 						from pcp_member 
 						order by mdate))
-		where rno between #{start} and #{end}
+		where rno between #{startCount} and #{endCount}
 	</select>
 	
-	<select id="content" parameterType="string" resultType="com.project.vo.MemberVo">
+	<select id="content" parameterType="string" resultType="com.project.petcarepedia.dto.MemberDto">
 		select mid,pass,name,nickname,phone,to_char(to_date(birth),'yyyy-mm-dd') birth,
 				email,addr,to_char(mdate,'yyyy-mm-dd') mdate,grade,mfile,msfile
 		from pcp_member
@@ -59,7 +50,7 @@
 		select count(*) from pcp_member where email=#{email}
 	</select>
 	
-	<update id="update" parameterType="com.project.vo.MemberVo">
+	<update id="update" parameterType="com.project.petcarepedia.dto.MemberDto">
 		update pcp_member
 		set nickname=#{nickname},phone=#{phone},birth=#{birth, jdbcType=VARCHAR},
 			email=#{email, jdbcType=VARCHAR},addr=#{addr, jdbcType=VARCHAR},
@@ -67,7 +58,7 @@
 		where mid=#{mid}
 	</update>
 	
-	<select id="find" parameterType="com.project.vo.MemberVo" resultType="string">
+	<select id="find" parameterType="com.project.petcarepedia.dto.MemberDto" resultType="string">
 		select mid 
 		from pcp_member 
 		where name=#{name} 
@@ -77,19 +68,19 @@
 		</if>
 	</select>
 	
-	<update id="updatePass" parameterType="com.project.vo.MemberVo">
+	<update id="updatePass" parameterType="com.project.petcarepedia.dto.MemberDto">
 		update pcp_member
 		set pass=#{pass}
 		where mid=#{mid}
 	</update>
 	
-	<select id="search" parameterType="string" resultType="com.project.vo.MemberVo">
+	<select id="search" parameterType="string" resultType="com.project.petcarepedia.dto.MemberDto">
 		SELECT MID, NAME, PHONE, EMAIL, MDATE 
 		FROM PCP_MEMBER 
 		WHERE MID LIKE '%'||#{mid}||'%'
 	</select>
 	
-	<select id="checkPass" parameterType="map" resultType="int">
+	<select id="checkPass" parameterType="com.project.petcarepedia.dto.MemberDto" resultType="int">
 		select count(*) from pcp_member where mid = #{mid} and pass = #{pass}
 	</select>
 </mapper>
