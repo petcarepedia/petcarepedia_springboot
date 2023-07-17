@@ -1,6 +1,7 @@
 package com.project.petcarepedia.repository;
 
 import com.project.petcarepedia.dto.MemberDto;
+import com.project.petcarepedia.dto.PageDto;
 import com.project.petcarepedia.dto.SessionDto;
 import org.apache.ibatis.annotations.Mapper;
 
