@@ -4,8 +4,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="mapper.bookmark">
-	<delete id = "deleteBookmark" parameterType = "com.project.vo.BookmarkVo">
+<mapper namespace="com.project.petcarepedia.repository.BookmarkMapper">
+	<delete id = "deleteBookmark" parameterType = "com.project.petcarepedia.dto.BookmarkDto">
 		DELETE FROM PCP_BOOKMARK WHERE HID=#{hid} AND MID=#{mid}
 	</delete>
 	
@@ -13,16 +13,16 @@
 		delete from pcp_bookmark where bmid = #{bmid}
 	</delete>
 	
-	<select id = "select" parameterType = "String" resultType = "com.project.vo.BookmarkVo">
+	<select id = "select" parameterType = "String" resultType = "com.project.petcarepedia.dto.BookmarkDto">
 		select bmid, b.mid, b.hid, h.hname, h.gloc, h.hrink
 			from pcp_bookmark b, pcp_hospital h where b.hid = h.hid and b.mid = #{mid}
 	</select> 
 	
-	<select id = "checkBookmark" parameterType = "com.project.vo.BookmarkVo" resultType = "int">
+	<select id = "checkBookmark" parameterType = "com.project.petcarepedia.dto.BookmarkDto" resultType = "int">
 		SELECT COUNT(*) FROM PCP_BOOKMARK WHERE HID=#{hid} AND MID=#{mid}
 	</select> 
 	
-	<insert id = "insert" parameterType = "com.project.vo.BookmarkVo">
+	<insert id = "insert" parameterType = "com.project.petcarepedia.dto.BookmarkDto">
 		insert into pcp_bookmark values('BM_'||ltrim(to_char(SEQU_PCP_BOOKMARK_BMID.nextval,'0000')),#{hid},#{mid})
 	</insert>
 	
