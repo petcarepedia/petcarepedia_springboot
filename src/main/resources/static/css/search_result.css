@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/***************************************
+	공통
+***************************************/
+* {
+	margin: 0px;
+	padding: 0px;
+	color: #3d3d3d;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+div.header-wrapper {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+div.footer-wrapper {
+  /* position: fixed; */
+  width: 100%;
+  z-index: 0;
+}
+
+div.result_main {
+	/* border: 1px solid gray; */
+	width: 1000px;
+	/* height: auto; */
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 100px; 
+	/* text-align: center; */
+}
+
+div.result_main hr {
+	border: 1px solid #828282;
+}
+
+.swal2-icon.swal2-warning .swal2-icon-content {
+  color: #F9C89D;
+}
+
+.swal2-icon.swal2-info .swal2-icon-content {
+   color: #45C5EE;
+}
+
+
+/***************************************
+	section_info
+***************************************/
+/* 병원 사진 */
+div.result_main div.images_d {
+	/* border: 1px solid gray; */
+	height: 220px;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.result_main div.images_d img {
+	/* border: 1px solid red; */
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	/* margin: 0px -3px; */
+	object-fit: contain;
+}
+
+/* 병원 정보 */
+div.result_main div.name_d {
+	/* border: 1px solid red; */
+	/* background: red; */
+	margin-left: 5px;
+	padding-bottom: 20px;
+	height: auto;
+}
+
+div.result_main div.area_d {
+	/* border: 1px solid red; */
+	padding-top: 20px;
+	font-size: 14px;
+}
+
+div.result_main span.name {
+	/* border: 1px solid red; */
+	font-size: 28px;
+	font-weight: bold;
+	margin-top: 10px;
+	display: inline-block;
+	float:left;
+}
+
+/* 버튼 공통 */
+div.result_main div.buttons {
+	/*  */
+	display: flex;
+	align-items: center;
+	clean: both;
+	padding-left: 10px;	
+}
+
+div.result_main div.name_d button:hover {
+	cursor: pointer;
+}
+
+div.name_d div.buttons img {
+	/* border: 1px solid red; */
+	width: 35px;
+	/* margin: 0px 10px; */
+}
+
+/* 북마크버튼 */
+div.name_d button#bookmark  {
+	background: #FFFFFF;
+	/* border: 1px solid #8A8A8A; */
+	border: none;
+	border-radius: 5px;
+	/* font-size: 15px; */
+	margin-top: 10px;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	/* margin-right: 30px; */
+}
+
+/* 별점 */
+div.result_main span.grade {
+	/* border: 1px solid red; */
+	font-size: 14px;
+	margin-top: 10px;
+	display: block;
+}
+
+/* 예약 버튼 */
+div.result_main div.name_d button#reservation {
+	background: #98DFFF;
+	color: white;
+	border-style: none;
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	/* padding: 15px 20px 15px 50px; */
+	margin-top: 10px;
+	margin-bottom: -5px;
+	width: 350px;
+	height: 45px;
+	text-align: left;
+	display: flex;
+	align-items: center;
+	float: left;
+}
+
+div.result_main div.name_d button#reservation: hover {
+	cursor: pointer;
+}
+
+div.result_main div.name_d button#reservation img {
+	/* border: 1px solid red; */
+	width: 30px;
+	margin: 0px 10px;
+}
+
+/* 공유하기 */
+div.result_main button#share {
+	background: #ffffff;
+	color: white;
+	border-style: none;
+	clean: both;
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+div#shareLink {
+	display:none; 
+	
+}
+
+div#shareLink button {
+	background: #ffffff;
+	opacity: 1;
+	color: white;
+	border-style: none;
+}
+
+div.result_main button#share img, div#shareLink img {
+	width: 30px;
+	margin: 0px 10px;
+}
+
+div#shareLink img {
+	/* display: none; */
+}
+
+
+
+/***************************************
+	modal
+***************************************/
+div.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+div.modal-content {
+	/* border: 1px solid red; */
+	background-color: #fefefe;
+	margin: 10% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 500px;
+	weight: 500px;
+}
+
+div.modal-content span.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+div.modal-content span.close:hover {
+	cursor: pointer;
+}
+
+
+/***************************************
+	section_info_link
+***************************************/
+div.link {
+	/* border: 1px solid red; */
+	margin-left: 5px;
+	padding-bottom: 20px;
+}
+
+div.link span {
+	display: block;
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+}
+
+div.link span:first-child {
+	/* border: 1px solid red; */
+	margin-top: 20px;
+}
+
+div.link span:nth-child(2), div.link span:nth-child(3) {
+	/* border: 1px solid red; */
+	margin-top: 15px;
+}
+
+div.link img {
+	width: 25px;
+	padding-right: 10px;
+}
+
+/***************************************
+	section_info_nav
+***************************************/
+div.nav {
+	/* border: 1px solid red; */
+	padding: 20px 0px 20px 5px;
+}
+
+div.nav:hover {
+	cursor: pointer;
+}
+
+div.nav span {
+	margin-right: 50px;
+	font-size: 18px;
+}
+
+
+/***************************************
+	section_info_api_info
+***************************************/
+div.api_info {
+	/* border: 1px solid red; */
+	margin-left: 5px;
+	padding-bottom: 20px;
+	display: flex;
+}
+
+div.api {
+	/* border: 1px solid red; */
+	width: 400px;
+}
+
+div.api span:first-child {
+	font-size: 20px;
+	font-weight: bold;
+	display: block;
+	padding-top: 20px;
+}
+
+div.api span:nth-child(2) {
+	font-size: 16px;
+	display: block;
+	padding-top: 15px;
+	margin-bottom: 5px;
+}
+
+div.api span.api_home {
+	/* border: 2px solid red; */
+	font-size: 14px;
+	/* display: block; */
+	background: #828282;
+	width: 350px;
+	height: 65px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* margin-top:-4px; */
+	padding: 0px 10px;
+}
+
+div.map {
+	/* border: 1px solid red; */
+	width: 370px;
+	height: 285px;
+	margin: 0px;
+	z-index: 0;
+}
+
+
+/***************************************
+	section_info_api_time
+***************************************/
+div.time {
+	/* border: 2px solid green; */
+	display: flex;
+}
+
+div.time ul {
+	list-style-type: none;
+	font-size: 14px;
+	margin-top: 90px;
+}
+
+div.time ul:first-child {
+	margin-left: 100px;
+}
+
+div.time ul li {
+	margin-bottom: 10px;
+	margin-right: 50px;
+}
+
+
+/***************************************
+	section_review
+***************************************/
+div.list {
+	/* border: 2px solid red; */
+	margin-left: 20px;
+	padding-bottom: 15px;
+}
+
+/* 리뷰 정보 */
+div.grade {
+	/* border: 2px solid green; */
+	width: 150px;
+	float:left;
+	margin-bottom: 15px;
+}
+
+div.grade > span {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 20px 0px;
+	display: inline-block;
+}
+
+/* 점수 */
+div.total {
+	border: 1px solid #8A8A8A;
+	border-radius:5px;
+	text-align: center;
+	padding: 20px 0px;
+}
+
+div.total span:first-child {
+	font-size: 18px;
+	display:block;
+}
+
+div.total span:last-child {
+	font-size: 14px;
+}
+
+select.filter {
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+	width: 150px;
+	height: 28px;
+	float: right;
+	margin:125px 78px 0 0;
+	padding-left: 5px;
+}
+
+select.filter option:first-child {
+	/* color: red; */
+	padding-left: 5px;
+	font-weight: bold;
+}
+
+select.filter option {
+	/* color: red; */
+	padding-left: 5px;
+}
+
+/* 리뷰 리스트 */
+div.review_card_no {
+	/* border: 1px solid #98DFFF; */
+	background: #F7FCFE;
+	border-radius: 5px;
+	clear: both;
+	width: 900px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+div.review_card_no img#review_img {
+	width: 15%;
+	display: block;
+	margin: auto;
+	padding: 40px 0px 10px 0px;
+}
+
+div.review_card_no p {
+	/* border: 1px solid #98DFFF; */
+	font-size: 18px;
+	padding: 20px 0px;
+}
+
+div.review_card {
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+	clear: both;
+	width: 900px;
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+div.review_card div.member {
+	/* border: 1px solid #888888; */
+	width: 222px;
+	font-size: 14px;
+	text-align: center;
+	padding-top:30px;
+}
+
+div.review_card div.member img {
+	width: 35px;
+	padding-right: 5px;
+}
+
+div.member div.name {
+	/* border: 1px solid #888888; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding-bottom: 5px; */
+}
+
+hr.member_hr {
+	border: 1px solid #828282;
+	width: 150px;
+	margin: 10px auto 10px auto;
+}
+
+div.member span.stext {
+	/* border: 1px solid red; */
+	font-size: 14px;
+	
+}
+
+div.member span.stot {
+	/* border: 1px solid red; */
+	font-size: 12px;
+	display:inline-block;
+	margin-bottom: 20px;
+	
+}
+
+div.review_card div.write {
+	/* border: 1px solid red; */
+	width: 290px;
+	margin-left: 20px;
+	margin-top: 40px;
+	flex: 1;
+}
+
+div.review_card div.write > p {
+	/* border: 1px solid red; */
+	font-size: 14px;
+	word-break: break-all;
+}
+
+div.review_card div.date {
+	/* border: 1px solid red; */
+	width: 185px;
+	margin:30px 45px 0px 0px;
+	text-align: right;
+	
+}
+
+div.review_card div.date span {
+	/* border: 1px solid #98DFFF; */
+	font-size: 12px;
+	display:inline-block;
+}
+
+/* 좋아요 */
+/* 공통 */
+a.icon {
+  text-decoration:none; color:inherit; cursor: pointer;
+}
+
+.icon img{
+	padding-bottom: 1px;
+    width: 15px;
+    height: 15px;
+}
+
+.icon.heart img{
+	padding-bottom: 1px;
+    width: 15px;
+    height: 15px;
+}
+
+.icon {
+    transform-origin: center;
+}
+
+button#like {
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+	background: white;
+	font-size: 14px;
+	width: 165px;
+	height: 35px;
+	margin-top: 15px; 
+	margin-left: 20px;
+	/* padding-bottom: 7px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+div.review_card div.date button#like span.like-count {
+	font-size: 14px;
+	margin-bottom: 7px; 
+	padding-left: 5px;
+}
+
+div.review_card div.date button#like span.heart {
+	font-size: 15px;
+	color: red;
+}
+
+.icon.fas{
+  color:red
+}
+
+.heart.active img{
+    animation: animateHeart .3s linear forwards;
+}
+
+@keyframes animateHeart{
+    0%{transform:scale(.2);}
+    40%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+  }
+  
+/* 조작O */
+button.check, button.active {
+	cursor:pointer;
+}
+  
+/* 조작X */
+button.disabled, button.non {
+	cursor:not-allowed; // 커서금지
+}
+
+div.review_card div.date span:last-child {
+	margin-top: 7px;
+	/* border: 1px solid #98DFFF; */	
+}
+
+div.review_card div.date a {
+	/* border: 1px solid #98DFFF; */
+	color: red;
+}
+
+/* 신고버튼 */
+div.review_card div.date a#rstateBtn {
+	/* border: 1px solid #98DFFF; */
+}
+
+div.review_card div.date button.rstate {
+	border: none;
+	background-color: transparent;
+	color: red;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+div.review_card div.date button.rstate:hover {
+	cursor: pointer;
+}
+
+span.reson {
+  letter-spacing: 2px;
+  margin-top: 5px;
+  /* 다른 원하는 스타일을 추가하세요 */
+}

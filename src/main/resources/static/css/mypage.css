@@ -1,0 +1,1667 @@
+/*****************************
+	commons style sheet
+******************************/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+* {font-family: 'Nanum Gothic', sans-serif;}
+*{
+	padding : 0px;
+	margin : 0px;
+/* 	font-family: 'Inter'; */
+	font-style: normal;
+}
+div#ampaginationsm ul li.active a {
+	background-color:#98DFFF;
+	border-color:#98DFFF;
+	margin-bottom : 100px;
+}
+#content {
+	width : 1000px;
+	height : 700px;
+	margin:auto; 
+	margin-top : 100px;
+	padding-top : 20px;
+}
+
+#section1 div nav ul li a:hover {
+	font-size : 16px;
+	font-weight:bold;
+	color :#7ab2cc;
+	text-decoration : none;
+}
+
+button {
+	cursor : pointer;
+}
+hr {
+/* 	position : absolute;
+	left: 580px;
+	top: 237px;  */
+	margin-left : 200px;
+	width: 777px;
+	height: 0px;
+	border: 1px solid #8A8A8A;
+	transform: rotate(-0.09deg);
+
+}
+#title{
+/* 	position: absolute; */
+	margin-left : 200px;
+	width: 300px;
+	height: 45px;
+
+/* 	left: 581px;
+	top: 189px; */
+}
+
+#section1 {
+	width: 148px;
+	height: 300px;
+	float : left;
+	margin-top : 20px;
+}
+#aside {
+	float : left;
+	margin-left : 50px;
+}
+#information #aside, #revise #aside {
+	margin-left : 130px;
+}
+#section1 div nav ul{
+	list-style-type:none;
+
+}
+#section1 div nav ul li{
+	margin-bottom : 15px;
+}
+#section1 div nav ul li:first-child {
+	font-weight: 700;
+	font-size: 20px;
+	color: #98DFFF;
+	border-left : 10px solid #98DFFF;
+	margin-bottom : 25px;
+	padding-left : 7px;
+}
+
+#section1 div nav ul li a {
+	font-size : 16px;
+/* 	font-weight : 500; */
+	color : #3D3D3D;
+	text-decoration : none;
+}
+#section1 div nav ul li:nth-child(2) a{
+	font-weight:bold;
+}
+
+
+
+/**************************************
+	mypage - information
+**************************************/
+#profileBox {
+	width: 100px;
+    height: 100px; 
+    border-radius: 70%;
+    border : 2px solid gray;
+    overflow: hidden;
+    margin-left : 40px;
+    float : left;
+    margin-top : 15px;
+}
+#profileBoxOut {
+	position : relative;
+	width : 600px;
+	height : 150px;
+	float : left;
+	margin-right : 30px;
+	border-radius : 5px;
+	border : 1px solid #F2F2F2;
+	margin-bottom : 5px;
+	background : #EFF5FB;
+}
+#file1 {
+	 display : none;
+}
+#update_profile {
+	position : absolute;
+	width : 30px;
+	height : 30px;
+	top : 100px;
+	left : 110px;
+}
+#profileBoxOut label {
+	margin-left : 60px;
+}
+#profileBoxOut #lb_id {
+	display : inline-block;
+	font-size : 18px;
+	margin-top : 20px;
+	margin-bottom : 10px;
+}
+#profileBoxOut #lb_name {
+	font-size : 25px;
+}
+
+#profile {
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#update_info{
+	width : 600px;
+	height : 50px;
+	float : left;
+	border : 1px solid #F2F2F2;
+	border-bottom : none;
+	border-radius : 5px;
+	background : #98DFFF;
+	margin-bottom : 3px;
+}
+#update_info label {
+	display : inline-block;
+	margin: 15px 0px 0px 15px;
+	color : white;
+	font-size : 20px;
+	font-weight : 700;
+}
+#update1 {
+	width:10px;
+	height:30px;
+}
+#information #aside #updateForm #section2 ul li label:first-child{
+	display : inline-block;
+	text-align : center;
+	width: 77px;
+	height: 35px;
+	background: #98DFFF;
+	color : white;
+	font-size: 14px;
+	font-weight: 700;
+	padding:20px 0 0 0;
+	border-radius: 5px;
+}
+#information #aside #updateForm #section2 ul li label:first-child span {
+	color : #FFD8D8;
+}
+#information #aside #updateForm #section2 ul li input{
+	position : relative;
+	display : inline-block;
+	width : 513px;
+	height: 50px;
+	border : 1px solid #D8D8D8;
+	border-radius : 5px;
+	padding: 2px 0 0 5px;
+	font-weight : 700;
+	font-size: 14px;
+  	vertical-align: bottom;
+  	background : white;
+
+}
+#information #aside #updateForm #section2 ul li input:hover {
+	background : #EFF5FB;
+}
+#information #aside #updateForm #section2 ul li button {
+	position : absolute;
+	float : right;
+	backgroung : white;
+	border : none;
+}
+#information #aside #updateForm #section2 ul li button img{
+	position : absolute;
+	top : 10px;
+	left : -40px;
+	width : 35px;
+	height : 35px;
+}
+#information #aside #updateForm #section2 ul li:nth-child(3){
+	position : relative;
+}
+
+#information #aside #updateForm #section2 p {
+	margin-bottom : 10px;
+	margin-top : -20px;
+	margin-left : 440px;
+	font-size : 12px;
+}
+#information #aside #updateForm #section2 p span.ess {
+	font : black;
+	font-weight : 500px;
+}
+#information #aside #updateForm #section2 ul li {
+	margin-bottom : 7px;
+}
+
+#information #aside #updateForm #section2 ul{
+	list-style-type:none;
+}
+
+#section2 {
+/* 	position: absolute; 
+	left: 580px;
+	top: 284px; */
+	width: 614px;
+/* 	height: 375.36px;	 */
+	padding-top : 47px;
+}
+#information #aside #updateForm #section2 {
+	width : 630px;
+	padding-top: 47px;
+}
+
+#information #section3 #btn_style1 {
+/* 	position : absolute; */
+	border : none;
+	background: #7AB2CC;
+	text-align : center;
+	color : white;
+	width: 240px;
+	height: 48px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 18px;
+	margin-top : 35px;
+	margin-left : 202px;
+	margin-bottom : 100px;
+/* 	left: 782px;
+	top: 693px; */
+}
+
+input[type='date'] {
+	position : relative;
+}
+input[type='date']::-webkit-calendar-picker-indicator {
+	position : absolute;
+	left:100px;
+	width: 30%;
+  	height: 30%;
+	cursor: pointer;
+}
+
+/**************************************
+	mypage - revise
+**************************************/
+#revise form #aisde #section2 ul li label:first-child{
+	display : inline-block;
+	text-align : center;
+	width: 77px;
+	height: 35px;
+	background: #98DFFF;
+	color : white;
+	font-size: 14px;
+	font-weight: 700;
+	padding:20px 0 0 0;
+	border-radius: 5px;
+}
+#revise form #aside #section2 ul li label:nth-child(2){
+	display : inline-block;
+	width : 520px;
+	height: 35px;
+	border-bottom: 1px solid #8A8A8A;
+	padding: 2px 0 0 0;
+	font-weight : 700;
+	font-size: 14px;
+}
+#year, #month, #date{
+	width: 120px;
+	height: 45px;
+	border-radius : 5px;
+	border: 1px solid #8A8A8A;
+	margin-right : 10px;
+	padding-left : 5px;
+}
+#email {
+	width: 520px;
+	height: 53px;
+	border: 1px solid #8A8A8A;
+	border-radius : 5px;
+	padding-left : 5px;
+}
+#address {
+	height: 53px;
+	border: 1px solid #8A8A8A;
+	width : 435px;
+	border-radius : 5px;
+	padding-left : 5px;
+}
+#phone_box {
+	margin-left : -5px;
+}
+#phone1, #phone2, #phone3 {
+	width: 120px;
+	height: 45px;
+	margin : 0 5px 0 5px;
+	border-radius : 5px;
+	border : 1px solid #8A8A8A;
+	padding-left : 5px;
+	
+}
+
+/* #nickname {
+	padding-left : 5px;
+} */
+/* #section2 ul li:nth-child(3) input {
+	display : inline-block;
+	width : 520px;
+	height : 50px;
+	border-radius : 5px;
+	border : 1px solid #8A8A8A;
+} */
+#section2 ul li:nth-child(6) div{
+	display : inline-block;
+	/* border-bottom : 1px solid #8A8A8A; */
+	width : 520px;
+	height: 50px;
+}
+#section2 ul li:nth-child(4) div {
+	display : inline-block;
+	/* border-bottom : 1px solid #8A8A8A; */
+	width : 520px;
+	height: 50px;
+}
+#revise form[name=updateForm] #aside #section2 ul li:nth-child(1) label:nth-child(2),
+#revise form[name=updateForm] #aside #section2 ul li:nth-child(2) label:nth-child(2) {
+	padding-left : 5px;
+}
+#pass_revise li {
+/* 	position : absolute;
+	left: 1090px;
+	top: 670px; */
+	width: 600px;
+	height: 27px;
+	font-size: 12px;
+	list-style-type:none;
+	margin-right : 20px;
+	padding-right : 10px;
+	text-align : right;
+	
+}
+#pass_revise li a {
+	color: #7AB2CC;
+	text-decoration : none;
+	font-weight: 700;
+
+}
+
+#revise #section3 #btn_style1{
+	border : none;
+	background: #7AB2CC;
+	text-align : center;
+	color : white;
+	width: 240px;
+	height: 48px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 18px;
+	margin-top : 5px;
+	margin-left : 202px;
+}
+
+#btnSearchAddr {
+	width : 80px;
+	height : 56px;
+	color : white;
+	/* background: #98DFFF; */
+	border : 1px solid white;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 12px;
+	background : #FFB3BD;
+}
+
+
+/**************************************
+	mypage - reservation
+**************************************/
+#content2 {
+	width : 1000px;
+/* 	height : 750px; */
+	margin:auto; 
+	margin-top : 100px;
+	padding-top : 20px;
+}
+#reservation #aside {
+	margin-bottom : 100px;
+}
+#reservation hr {
+	width : 777px;
+}
+#reservation #title {
+	float : left;
+}
+
+#btn_reservation {
+	margin-left : 578px;
+	width : 410px;
+	height : 45px;
+	padding : 0px;
+}
+#btn_reservation a button {
+	width: 200px; 
+	height : 45px;
+}
+#btn_reservation #btn1 {
+	font-weight: 600;
+	font-size: 18px;
+	color: #7AB2CC;
+	background : white;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color : #98DFFF;
+	border-radius: 5px 20px 0px 0px;
+	margin-right : -5px;
+}
+#btn_reservation #btn2 {
+	font-weight: 600;
+	font-size: 18px;
+	background: #F2F2F2;
+	color : #8A8A8A;
+	border : 1px solid #F2F2F2;
+	border-radius: 20px 5px 0px 0px;
+}
+#btn_reservation a {
+	text-decoration : none;
+}
+#btn_box {
+	float : left;
+}
+#reservation #section2 #aside1, #reservation #section2 #aside2{
+	width : 777px;
+	height : 246px;
+	float : left;
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+}
+
+#reservation #section2 #aside1 img{
+	margin-top : 12.5px;
+	margin-left : 12.5px;
+	width : 336px;
+	height : 221px;
+	float : left;
+}
+#reservation #aside #section2 {
+	float : left;
+}
+#reservation #aside #section2 #aside1 div{
+	width : 400px;
+	height : 220px;
+	margin-top : 12.5px;
+	margin-left : 12.5px;
+	float : left;
+	display : flex;
+	flex-wrap: wrap;
+}
+
+#reservation #aside #section2 #aside1 div span {
+	display : inline-block;
+	width : 400px;
+	margin-left : 10px;
+}
+#reservation #aside #section2 #aside1 div img {
+	width : 25px;
+	height : 25px;
+}
+ #reservation #aside #section2 #aside1 div span:nth-child(5) {
+	width : 330px;
+	height : 25px;
+	margin-top : 15px;
+	font-weight: 400;
+	font-size: 14px;
+} 
+#reservation #aside #section2 #aside1 div span:nth-child(1) {
+	font-weight: 400;
+	font-size: 14px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside1 div a:nth-child(2) span {
+	font-weight: 700;
+	font-size: 28px;
+	color: #3D3D3D;
+	margin-left : -3px;
+}
+#reservation #aside #section2 #aside1 div span:nth-child(3) {
+	font-weight: 500;
+	font-size: 14px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside1 div a {
+	display : inline-block;
+	font-weight: 400;
+	font-size: 14px;
+	width : 330px;
+	margin-left : 10px;
+	margin-top : 17px;
+	color : #3D3D3D;
+	text-decoration : none;
+}
+#reservation #aside #section2 #aside1 div a span:hover{
+	font-weight:bold;
+	color :#7ab2cc;
+}
+#reservation #aside #section2 #aside1 div span:nth-child(9) {
+	font-weight: 400;
+	font-size: 14px;
+	width:150px;
+	margin-top : 17px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside1 div div.box {
+	width : 400px;
+	height : 100px;
+	padding-left : -5px;
+}
+#reservation #aside #section2 #aside1 div div.box img {
+	margin-left : 0px;
+}
+#reservation #aside #section2 #aside1 div div.box span {
+	display : inline-block;
+	font-size : 14px;
+	width : 150px;
+	height : 30px;
+	vertical-align: middle;
+}
+#reservation #aside #section2 #aside1 div div.box span:nth-child(2),
+#reservation #aside #section2 #aside1 div div.box span:nth-child(3){
+	padding-top : 15px;
+}
+
+
+#reservation #aside #section2 #aside1 div div.box span:nth-child(4){
+	margin-top : -38px;
+	margin-left : 197px;
+}
+/*#reservation #aside #section2 #aside1 div div.box span:nth-child(10), #reservation #aside #section2 #aside1 div div.box span:nth-child(11) {
+	font-weight: 500;
+	font-size: 14px;
+	width : 170px;
+	height : 20px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside1 div div.box span:nth-child(10){
+	margin-top : 20px;
+}
+#reservation #aside #section2 #aside1 div div.box span:nth-child(11) {
+	margin-left : 208px;
+}
+*/
+#section2 #btn_cancle1, #section2 #btn_cancle2 {
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	margin : 10px 0px 10px 670px;
+	width: 110.77px;
+	height: 44px;
+	background: #FFB3BD;
+	border-radius: 5px;
+	border : none;
+}
+#reservation #section2 #aside2 img{
+	margin-top : 12.5px;
+	margin-left : 12.5px;
+	width : 336px;
+	height : 221px;
+	float : left;
+}
+#reservation #aside #section2 #aside2 div img {
+	width : 25px;
+	height : 25px;
+}
+#reservation #aside #section2 #aside2 div{
+	width : 400px;
+	height : 220px;
+	margin-top : 12.5px;
+	margin-left : 12.5px;
+	float : left;
+	display : flex;
+	flex-wrap: wrap;
+}
+#reservation #aside #section2 #aside2 div span {
+	display : inline-block;
+	width : 400px;
+	margin-left : 10px;
+}
+#reservation #aside #section2 #aside2 div img {
+	width : 25px;
+	height : 25px;
+}
+ #reservation #aside #section2 #aside2 div span:nth-child(5) {
+	width : 330px;
+	height : 25px;
+	margin-top : 12px;
+	font-weight: 400;
+	font-size: 14px;
+	color: #3D3D3D;
+} 
+#reservation #aside #section2 #aside2 div span:nth-child(1) {
+	font-weight: 400;
+	font-size: 14px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(2) {
+	font-weight: 700;
+	font-size: 28px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(3) {
+	font-weight: 500;
+	font-size: 14px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside2 div a {
+	display : inline-block;
+	font-weight: 400;
+	font-size: 14px;
+	width : 330px;
+	margin-left : 10px;
+	margin-top : 17px;
+	color : #3D3D3D;
+	text-decoration : none;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(9) {
+	font-weight: 400;
+	font-size: 14px;
+	width:150px;
+	margin-top : 17px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(10), #reservation #aside #section2 #aside2 div span:nth-child(11) {
+	font-weight: 500;
+	font-size: 14px;
+	width : 170px;
+	height : 20px;
+	color: #3D3D3D;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(10){
+	margin-top : 20px;
+}
+#reservation #aside #section2 #aside2 div span:nth-child(11) {
+	margin-left : 208px;
+}
+#reservation #section1 div nav ul li:nth-child(2) a {
+	 font-weight : 500; 
+}
+#reservation #section1 div nav ul li:nth-child(3) a {
+	font-weight: bold;
+}
+
+#reservation form[name='deleteForm'] img {
+	width : 300px;
+	height : 250px;
+	margin-bottom : 20px;
+}
+
+#reservation form[name='deleteForm'] table td.re_cancle {
+	display : inline-block;
+	margin-top : 30px;
+	margin-left : 150px;
+	border : none;
+}
+#reservation form[name='deleteForm'] table td.btnCancle {
+	display : inline-block;
+	margin-left : 3px;
+	border : none;
+}
+
+
+
+
+
+
+/**************************************
+	mypage - reservation2
+**************************************/
+
+#reservation #btn_write_review {
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 110.77px;
+	height: 44px;
+	background: #FFB3BD;
+	border: none;
+	border-radius: 5px;
+}
+#reservation #btn_watch_review {
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 110.77px;
+	height: 44px;
+	background: #7AB2CC;
+	border: none;
+	border-radius: 5px;
+}
+
+#btn_review a {
+	text-decoration : none;
+}
+/* #btn_watch_review {
+	margin-top : 10px;
+	margin-left : 5px;
+} */
+#btn_review {
+	width : 250px;
+	margin : 270px 0px 3.5px 670px;
+}
+#btn_review span {
+	margin-left : -12px;
+	font-weight : bold;
+	color : #8A8A8A;
+	
+}
+#review_span {
+	position : relative;
+	font-size : 12px;
+	height : 11px;
+	top : -30px;
+	left : -25px;
+}
+#btn_write_review {
+	margin-left : -130px;
+}
+#section2:first-child #btn_review{
+	display : flex;
+	height : 50px;
+	padding-top : 10px;
+	margin-top : 3px;
+}
+#btn_reservation #btn3, #btn_reservation #btn4 {
+	width: 200px; 
+	height : 45px;
+}
+
+
+#btn_reservation #btn3 {
+	font-weight: 600;
+	font-size: 18px;
+	color : #8A8A8A;
+	background : #F2F2F2;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color : #F2F2F2;
+	border-radius: 5px 20px 0px 0px;
+	margin-right : -5px;
+}
+#btn_reservation #btn4 {
+	font-weight: 600;
+	font-size: 18px;
+	background: white;
+	color: #7AB2CC;
+	border : 1px solid #98DFFF;
+	border-radius: 20px 5px 0px 0px;
+}
+
+
+/**************************************
+	mypage - review_write
+**************************************/
+#review_write #aside {
+	float : left;
+	width : 600px;
+}
+#star>fieldset>input {
+	cursor : pointer;
+}
+#review_write #aside section{
+	display : inline-block;
+	width: 500px;
+	height: 250px;
+}
+#review_write #aside img {
+	margin-top : 20px;
+	width : 35px;
+	height : 35px;
+	float : left;
+}
+#review_write #aside span:nth-child(2) {
+	float : left;
+	margin-top : 25px;
+	font-weight: 400;
+	font-size: 14px;
+}
+#review_write #aside span:nth-child(3) {
+	float : left;
+	font-weight: 700;
+	font-size: 20px;
+	margin-top : 20px;
+	margin-left : 12px;
+	width : 500px;
+	
+}
+#review_write #aside span:nth-child(4) {
+	float : left;
+	width : 500px;
+	font-weight: 700;
+	font-size: 18px;
+	margin-bottom : 10px;
+	margin-left : 13px;
+	margin-top : 25px;
+	color: #FFB3BD;
+	
+}
+
+#review_write #aside span:nth-child(10) {
+	width : 100px;
+	float : left;
+	margin-left : 36px;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top : 10px;
+	color: #FFB3BD;
+	margin-right : 48px;
+}
+#review_write #aside section img{
+	width : 30px;
+	height : 30px;
+	float : left;
+	margin-right : 10px;
+	margin-left : 10px;
+}
+textarea[name='rcontent'] {
+	float : left;
+	background: #FFFFFF;
+	border: 1px solid #8A8A8A;
+	border-radius: 5px;
+	width: 596px;
+	height: 197px;
+	padding : 8px;
+}
+
+#review_write #aside button{
+	float:right;
+	background: #FFB3BD;
+	border: none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 120px;
+	height: 44px;
+	margin-top : 10px;
+}
+#review_write #aside #cancle {
+	margin-left : 10px;
+}
+#review_write #aside section #star {
+	float : left;
+	height : 50px;
+	margin-left : 0px;
+}
+
+#review_write #aside fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+    margin-left : 10px;
+}
+
+#review_write #aside input[type=radio]{
+    display: none;
+}
+#review_write #aside label.slabel{
+font-size: 3em;
+color: transparent;
+text-shadow: 0 0 0 #f0f0f0;
+}
+
+#review_write #aside label.slabel:hover{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#review_write #aside label.slabel:hover ~ label.slabel{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+/* #review_write #aside label:hover{
+	cursor : pointer;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+} */
+#review_write #aside label:hover ~ label{
+	cursor : pointer;
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#review_write #aside input[type=radio]:checked ~ label.slabel{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#review_write #section1 div nav ul li:nth-child(2) a {
+	font-weight : 500;
+}
+#review_write #section1 div nav ul li:nth-child(3) a {
+	font-weight: bold;
+}
+
+
+/**************************************
+	mypage - my_review
+**************************************/
+#my_review hr {
+	width : 777px;
+}
+#my_review #aside {
+	padding-bottom : 30px;
+	margin-bottom : 100px;
+
+	}
+#my_review #aside #aside4 a {
+	text-decoration : none;
+}
+#my_review #section1 div nav ul li:nth-child(2) a {
+	font-weight : 500;
+}
+#my_review #section1 div nav ul li:nth-child(4) a {
+	font-weight: bold;
+}
+#my_review #aside #section2 #aside1 {
+	float : left;
+	width: 220px;
+	height: 215px;
+	border: 1px solid #98DFFF;
+	border-radius: 5px 0px 0px 5px;
+	border-right : none;
+}
+#my_review #aside #section2 #aside1 a {
+	text-decoration : none;
+	font : 300px;
+	color : black;
+}
+#my_review #aside #section2 #aside1 a span:hover{
+	font-weight:bold;
+	color :#7ab2cc;
+}
+#my_review #aside #section2 {
+	width : 750px;
+	height : 250px;
+}
+#my_review #aside #section2 #aside1 span {
+	float : left;
+	width : 170px;
+	margin-bottom : 5px;
+	margin-top : 5px;
+	margin-left : 20px;
+}
+#my_review #aside #section2 #aside1 img{
+	float : left;
+	width : 30px;
+	height : 30px;
+	margin-left : 20px;
+}
+#my_review #aside #section2 #aside1 span:nth-child(1) {
+	width : 200px;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top : 35px;
+	
+	}
+/*	#my_review #aside #section2 #aside1 span:nth-child(2) {
+		font-weight: 500;
+		font-size: 14px;
+		width : 50px;
+		margin-top : 25px;
+		margin-left : 0px;
+		margin-top : 37px;
+		
+	} */
+#my_review #aside #section2 #aside1 span:nth-child(3) {
+	width : 200px;
+	padding-top : 2px;
+}
+#my_review #aside #section2 #aside1 span:nth-child(3) span {
+	display : inline-block;
+	width: 110px;
+	height: 25px;
+	margin-top : 10px;
+	background: #7AB2CC;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
+	color: #FFFFFF;
+	margin-left : -4px;
+	padding-top : 7px;
+	padding-left : 4px;
+	text-align : center;
+}
+#my_review #aside #section2 #aside1 span:nth-child(5) {
+	width : 150px;
+	margin-top : 7px;
+	font-size: 14px;
+}
+#my_review #aside #section2 #aside2 {
+	float : left;
+	width: 200px;
+	height: 215px;
+	border: 1px solid #98DFFF;
+	border-radius: 0px 5px 5px 0px;
+	border-left : none;
+}
+#my_review #aside #section2 #aside2 img {
+	width: 177px;
+	height: 150px;
+	margin-top : 35px;
+	margin-left : 10px;
+}
+#my_review #aside #section2 #aside3 {
+	float:left;
+	width : 300px;
+	 height : 215px; 
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+}
+#my_review #aside #section2 #aside3 span {
+	float : left;
+	font-size: 14px;
+}
+#my_review #aside #section2 #aside3 span:first-child{
+	font-weight: 700;
+	margin : 10px 10px 10px 10px;
+	width : 250px;
+	font-size : 16px;
+}
+#my_review #aside #section2 #aside3 span:nth-child(2) {
+	font-weight : 500;
+	font-size : 14px;
+	text-align: justify;
+	margin : 0px 10px 10px 10px;
+	word-break:break-all;
+	height : 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+ 	letter-spacing: 1px;
+	line-height : 1.6;
+	padding-bottom : 10px;
+}
+#my_review #aside #section2 #aside3 span:last-child {
+	font-weight: 400;
+	font-size: 12px;
+	margin-left : 140px;
+}
+#my_review #aside #section2 #aside4 {
+	margin-left : 615px;
+	margin-bottom : 10px;
+}
+#my_review #aside #section2 #aside4 button {
+	margin-top : 10px;
+	width: 110.77px;
+	height: 44px;	
+	background: #7AB2CC;
+	border : none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+#my_review #aside #section2 #aside4 #btnReview_revise {
+	margin-right : 10px;
+}
+
+/**************************************
+	mypage - review_revise
+**************************************/
+#review_revise #aside {
+	float : left;
+	width : 600px;
+}
+#review_revise #aside section{
+	display : inline-block;
+	width: 500px;
+	height: 250px;
+}
+#review_revise #aside img {
+	margin-top : 20px;
+	width : 35px;
+	height : 35px;
+	float : left;
+}
+#review_revise #aside span:nth-child(2) {
+	float : left;
+	margin-top : 25px;
+	font-weight: 400;
+	font-size: 14px;
+}
+#review_revise #aside span:nth-child(3) {
+	float : left;
+	font-weight: 700;
+	font-size: 20px;
+	margin-top : 20px;
+	margin-left : 12px;
+	width : 500px;
+	
+}
+#review_revise #aside span:nth-child(4) {
+	float : left;
+	width : 500px;
+	font-weight: 700;
+	font-size: 18px;
+	margin-bottom : 10px;
+	margin-left : 13px;
+	margin-top : 25px;
+	color: #FFB3BD;
+	
+}
+
+#review_revise #aside span:nth-child(10) {
+	width : 100px;
+	float : left;
+	margin-left : 36px;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top : 10px;
+	color: #FFB3BD;
+	margin-right : 48px;
+}
+#review_revise #aside section img{
+	width : 30px;
+	height : 30px;
+	float : left;
+	margin-right : 10px;
+	margin-left : 10px;
+}
+textarea[name='review'] {
+	float : left;
+	background: #FFFFFF;
+	border: 1px solid #8A8A8A;
+	border-radius: 5px;
+	width: 596px;
+	height: 197px;
+}
+
+#review_revise #aside button{
+	float:right;
+	background: #FFB3BD;
+	border: none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 120px;
+	height: 44px;
+	margin-top : 10px;
+}
+#review_revise #aside #cancle {
+	margin-left : 10px;
+}
+#review_revise #aside section #star {
+	float : left;
+	height : 50px;
+	margin-left : 0px;
+}
+
+#review_revise #aside fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+    margin-left : 10px;
+}
+
+#review_revise #aside input[type=radio]{
+    display: none;
+}
+#review_revise #aside label.slabel{
+	font-size: 3em;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+}
+#review_revise #aside label.slabel:hover{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#review_revise #aside label.slabel:hover ~ label.slabel{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#review_revise #aside input[type=radio]:checked ~ label.slabel{
+	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+#review_revise #section1 div nav ul li:nth-child(2) a {
+	font-weight : 500;
+}
+#review_revise #section1 div nav ul li:nth-child(4) a {
+	font-weight: bold;
+}
+
+
+/**************************************
+	mypage - bookmark
+**************************************/
+#bookmark hr {
+	width : 777px;
+}
+#bookmark #section2 {
+	float : left;
+	width : 650px;
+/* 	height : 200px; */
+	margin-left : 120px;
+	margin-bottom : 100px;
+}
+#bookmark #section2 #aside1, #bookmark #section2 #aside2 {
+	float : left;
+	margin-bottom : 10px;
+}
+#bookmark #section2 #aside1 {
+	width : 250px;
+	height : 200px;
+	padding-top : 10px;
+	padding-left : 10px;
+	margin-left : 30px;
+	border: 1px solid #98DFFF;
+	border-radius: 5px;
+	margin-bottom : 20px;
+}
+#bookmark #section2 #aside1 span {
+	display : inline-block;
+}
+#bookmark #section2 #aside1 span:first-child {
+	font-weight: 700;
+	font-size: 25px;
+	margin : 25px 0px 20px 25px;
+	width : 200px;
+	height : 50px;
+	text-align : center;
+}
+#bookmark #section2 #aside1 span:nth-child(2) {
+	width: 123.73px;
+	height: 25px;
+	text-align : center;
+	margin-left : 55px;
+	padding-top : 7px;
+	font-weight: 500;
+	font-size: 15px;
+	color: #FFFFFF;
+	background: #7AB2CC;
+	border-radius: 5px;
+}
+#bookmark #section2 #aside1 a:nth-child(3){
+	float : left;
+	font-weight: 700;
+	font-size: 15px;
+	width: 123.73px;
+	height: 28px;
+	margin-left : 55px;
+	margin-top : 10px;
+	text-align : center;
+	padding-top : 6px;
+	text-decoration : none;
+	color : white;
+	background: #FFB3BD;
+	border-radius: 5px;
+}
+#bookmark #section2 #aside1{
+	position : relative;
+}
+#bookmark #section2 #aside1 button {
+	border : none;
+	background : white;
+}
+#bookmark #section2 #aside1 button img{
+	position : absolute;
+	left : 230px;
+	top : 0px;
+	width : 30px;
+	height : 30px;
+}
+
+
+#bookmark hr {
+	width : 777px;
+}
+#bookmark #section1 div nav ul li:nth-child(2) a {
+	font-weight : 500;
+}
+#bookmark #section1 div nav ul li:nth-child(5) a {
+	font-weight: bold;
+}
+
+
+/**************************************
+	mypage - signout
+**************************************/
+
+#signout #section1 div nav ul li:nth-child(2) a {
+	font-weight : 500;
+}
+#signout #section1 div nav ul li:nth-child(6) a {
+	font-weight: bold;
+}
+#signout hr {
+	width : 777px;
+}
+#signout #section2 {
+	float : left;
+	width : 700px;
+/* 	height : 250px; */
+}
+#signout #section2 div {
+	margin-left : 200px;
+	float : left;
+	width: 428px;
+	height: 223px;
+	border: 1px solid #8A8A8A;
+	border-radius: 5px;
+	
+	text-align : center;
+}
+#signout #section2 div span:first-child {
+	display : inline-block;
+	width: 220px;
+	height: 40px;
+	margin-top : 20px;
+	padding-top : 15px;
+	border: 1px solid #FF0000;
+	border-radius: 5px;
+	font-weight: 600;
+	font-size: 18px;
+}
+#signout #section2 div span:last-child {
+	width: 379px;
+	height: 131px;
+	display : inline-block;
+	align-items: center;
+	text-align: center;
+	padding-top : 20px;
+	font-weight: 500;
+	font-size: 18px;
+}
+#signout #section3 {
+	float : left;
+	width : 400px;
+/* 	height : 100px; */
+	margin-left : 200px;
+	float : left;
+	margin-top : 30px;
+	margin-bottom : 100px;
+}
+#signout #section3 span {
+	float : left;
+	width : 350px;
+	margin-left : 10px;
+	font-weight: 500;
+	font-size: 18px;
+	margin-bottom : 20px;
+}
+#signout #section3 input {
+	border: 1px solid #8A8A8A;
+	border-radius: 5px;
+	width: 425px;
+	height: 57px;
+}
+
+#signout #section3 button {
+	background: #7AB2CC;
+	border: none;
+	border-radius: 5px;
+	margin-left : 85px;
+	margin-top : 40px;
+	width: 263px;
+	height: 65px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+
+#reservation form[name=deleteForm] img {
+	float : left;
+	margin-left : 100px;
+}
+
+#reservation form[name=deleteForm] table tr th, #reservation form[name=deleteForm] table tr td {
+	height : 50px;
+}
+#reservation form[name=deleteForm] table tr th {
+	width: 147px;
+  	padding: 10px;
+  	font-weight: bold;
+  	vertical-align: top;
+  	color: #153d73;
+  	border-right: 1px solid #ccc;
+  	border-bottom: 1px solid #ccc;
+}
+#reservation form[name=deleteForm] table tr td {
+	width : 70%;
+	padding: 10px;
+	word-break:break-all;
+ 	vertical-align: top;
+  	border-right: 1px solid #ccc;
+  	border-bottom: 1px solid #ccc;
+}
+#reservation form[name=deleteForm] table {
+	width : 500px;
+ 	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 3px solid #369;
+	margin : 50px 280px;
+}
+
+
+#reservation form[name=deleteForm] button {
+	background: #FFB3BD;
+	border : none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 120px;
+	height: 44px;
+	margin-right : 10px;
+	margin-bottom : 100px;
+}
+
+#reservation form[name=deleteForm] div.box {
+	margin-left : 410px;
+	margin-top : 20px;
+}
+#reservation form[name=deleteForm] div.box p{
+	margin-bottom : 20px;
+	margin-left : 30px;
+	font-weight : bold;
+	
+}
+
+/**************************************
+	mypage - mypage_review_content
+**************************************/
+#rc_button_r {
+	width : 500px;
+	margin-top : 70px;
+	margin-left : -210px;
+}
+#rc_button_r > a {
+	text-decoration : none;
+}
+#rc_button_r > a > button {
+	background: #FFB3BD;
+	border : none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+	width: 120px;
+	height: 44px;
+}
+div.content > section.review_content > div.review_detail > div.rc_button_r > a {
+	text-decoration : none;
+}
+#rdate {
+	padding-right : 15px;
+}
+section.review_content table.rv_detail_menu tr td {
+	text-align:left;
+	font-size:14px;
+	font-weight: 10;
+	color:#3d3d3d;
+	word-break:break-all;
+	/* border:1px solid blue; */
+}
+
+section.review_content table.rv_detail_menu tr td img {
+	margin-top : 10px;
+	width : 25px;
+	height : 25px;
+}
+section.review_content table.rv_detail_menu tr td span {
+	vertical-align: bottom;
+	height : 25px;
+	margin-top : 12px;
+}
+div.review_card_no {
+	/* border: 1px solid #98DFFF; */
+	/* background: #F7FCFE; */
+	border-radius: 5px;
+	width: 777px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+div.review_card_no span {
+	/* border: 1px solid #98DFFF; */
+	display : inline-block;
+	font-size: 18px;
+	padding: 20px 0px;
+}
+#review_img {
+	width: 15%;
+	margin: auto;
+	display: block;
+	padding: 40px 0px 10px 0px;
+}
+
+#bookmark #section2 div.review_card_no {
+	margin-left : -70px;
+}
+
+/******************************************
+			이메일 인증 모달
+******************************************/
+#pageOverlay {
+  display: none;
+}
+
+#emailModal {
+  display: none;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: none;
+  width : 600px;
+  height: 400px;
+}
+
+.page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: none;
+}
+.modal-content > p {
+	font-size : 12px;
+	font-weight : 500px;
+	margin-top : 20px;
+	margin-left : 250px;
+	margin-bottom : -5px;
+	color : gray;
+}
+.modal-content > p > span {
+	color : #FFB3BD;
+	font-size : 15px;
+	font-weight : 700px;
+}
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 2px solid #888;
+  border-radius:5px;
+  width: 80%;
+  height : 80%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+#confirm_email{
+	float : left;
+	width: 350px;
+	height: 53px;
+	margin-top : 20px;
+	margin-left : 10px;
+	border: 1px solid #8A8A8A;
+	border-radius : 5px;
+	padding-left : 5px;
+}
+#btnAuthEmail {
+	float : left;
+	width : 90px;
+	height : 53px;
+	margin-top : 20px;
+	margin-left : 5px;
+}
+
+#cemail {
+	float : left;
+	margin-top : 7px;
+	margin-left : 10px;
+	width: 350px;
+	height: 53px;
+	margin-top : 20px;
+	border: 1px solid #8A8A8A;
+	border-radius : 5px;
+	padding-left : 5px;
+}
+#btnCheckEmail {
+	float : left;
+	width : 90px;
+	height : 53px;
+	margin-top : 20px;
+	margin-left : 5px;
+}
+#btnConfirm {
+	float:left;
+	margin-top : 30px;
+	margin-left : 290px;
+	margin-right : 12px;
+	width : 80px;
+	height : 45px;
+	background: #98DFFF;
+	border : none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.modal>.modal-content>.title{
+	clear:both; width:100%; padding:20px 0 20px 0;
+	color:#7AB2CC;
+	font-size:20px; font-weight:bold;
+	border-bottom:1px solid #7AB2CC;
+}
+#btnModalClose {
+	margin-top : 30px;
+	float:left;
+	width : 80px;
+	height : 45px;
+	background: #98DFFF;
+	border : none;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #FFFFFF;
+}
+.modal-content>h2 {
+  margin-top: 0;
+}
+
+#verifyButton {
+  margin-top: 10px;
+}

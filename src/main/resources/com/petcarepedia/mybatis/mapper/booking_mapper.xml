@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.booking">
+	
+	<insert id="insert" parameterType="com.project.vo.BookingVo">
+		INSERT INTO PCP_BOOKING(bid, bdate, vdate, vtime, bstate, mid, hid)
+		values ('B_'||LTRIM(to_char(SEQU_PCP_BOOKING_BID.nextVal, '0000')), sysdate, #{vdate}, #{vtime}, '예약중', #{mid}, #{hid})
+	</insert>
+	
+	<select id="checkBooking" parameterType="com.project.vo.BookingVo" resultType="int">
+		SELECT COUNT(*) 
+		FROM PCP_BOOKING 
+		WHERE MID=#{mid} AND HID=#{hid} AND VDATE=#{vdate} AND VTIME=#{vtime}
+	</select>
+	
+	<select id="select" resultType="com.project.vo.BookingVo">
+		SELECT ROWNUM RNO, BID, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE, VDATE, VTIME, BSTATE, MID, HNAME
+		FROM (SELECT B.BID, B.BDATE, B.VDATE, B.VTIME, B.BSTATE, B.MID, H.HNAME
+		      FROM PCP_BOOKING B, PCP_HOSPITAL H 
+		      WHERE B.HID = H.HID 
+		      ORDER BY B.BID DESC);
+	</select>
+	
+	<select id="search" parameterType="String" resultType="com.project.vo.BookingVo">
+		SELECT B.BID, B.BDATE, B.VDATE, B.VTIME, B.BSTATE, B.MID, B.HID, H.HNAME, H.LOC, H.GLOC, H.TEL
+		FROM PCP_BOOKING B, PCP_HOSPITAL H
+		WHERE B.HID = H.HID
+		AND B.MID =#{mid}
+	</select>
+	
+	<select id="search1" parameterType="String" resultType="com.project.vo.BookingVo">
+		select bid, bdate, vdate, vtime, bstate, mid, hid, hname, loc, gloc, tel, hrink, img, HSFILE
+		from(select b.bid bid, b.bdate bdate, b.vdate vdate, b.vtime vtime, b.bstate bstate, b.mid mid, b.hid hid, h.hname hname,H.HSFILE HSFILE,
+				h.loc loc, h.gloc gloc, h.tel tel, h.hrink hrink, h.img img 
+				from pcp_review r, pcp_booking b, pcp_hospital h, pcp_member m 
+				where r.bid(+) = b.bid 
+				and b.hid = h.hid and b.mid = m.mid and b.mid = #{mid} and  r.bid is null)
+		where to_char(sysdate,'yyyy-mm-dd') > vdate or (vdate = to_char(sysdate,'yyyy-mm-dd') 
+		and to_char(sysdate,'hh24:mi') > vtime) order by bid desc
+
+	</select>
+	
+	<select id="search2" parameterType="String" resultType="com.project.vo.BookingVo">
+	    SELECT BID, BDATE, VDATE, VTIME, BSTATE, MID, HID, HNAME, LOC, GLOC, TEL,HRINK, IMG, HSFILE
+		FROM (SELECT BID, BDATE, VDATE, VTIME, BSTATE, B.MID MID, B.HID HID, H.HNAME HNAME, H.LOC LOC, H.GLOC GLOC, H.TEL TEL, H.HRINK HRINK, H.IMG IMG, H.HSFILE HSFILE
+				FROM PCP_BOOKING B, PCP_HOSPITAL H
+				WHERE B.HID = H.HID AND B.MID = #{mid} AND VDATE = TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+		WHERE VTIME >= TO_CHAR(SYSDATE,'HH24:MI') order by bid desc
+	</select>
+	
+	<select id="search3" parameterType="String" resultType="com.project.vo.BookingReviewVo">
+		select bid, bdate, vdate, vtime, bstate, mid, hid, hname, loc, gloc, tel, hrink, img, rid, HSFILE
+		from(select b.bid bid, b.bdate bdate, b.vdate vdate, b.vtime vtime, b.bstate bstate, b.mid mid, b.hid hid, h.hname hname,H.HSFILE HSFILE,
+				h.loc loc, h.gloc gloc, h.tel tel, h.hrink hrink, h.img img, r.rid rid
+				from pcp_review r, pcp_booking b, pcp_hospital h, pcp_member m 
+				where b.hid = h.hid and b.mid = m.mid and b.mid = #{mid} and b.bid = r.bid) 
+		order by bid desc
+
+	</select>
+
+	<select id="search4" parameterType="String" resultType="com.project.vo.BookingVo">
+		SELECT BID, BDATE, VDATE, VTIME, BSTATE, MID, HID, HNAME, LOC, GLOC, TEL,HRINK, IMG, HSFILE
+		FROM (SELECT BID, BDATE, VDATE, VTIME, BSTATE, B.MID MID, B.HID HID, H.HNAME HNAME, H.LOC LOC, H.GLOC GLOC, H.TEL TEL, H.HRINK HRINK, H.IMG IMG, H.HSFILE HSFILE
+				FROM PCP_BOOKING B, PCP_HOSPITAL H
+				WHERE B.HID = H.HID AND B.MID = #{mid} AND VDATE > TO_CHAR(SYSDATE,'YYYY-MM-DD')) order by bid desc
+	</select>
+	
+	<select id="search5" parameterType="String" resultType="com.project.vo.BookingVo">
+		select bid, hname, b.mid mid, to_char(BDATE, 'yyyy-mm-dd') VDATE, bstate
+		from  pcp_booking b, pcp_hospital h 
+		where b.hid = h.hid and b.mid like '%'|| #{mid} ||'%'
+	</select>
+	
+	<select id="select2" parameterType="String" resultType="com.project.vo.BookingVo">
+		select BID, VDATE, VTIME, B.MID, B.HID, H.HNAME, H.TEL, H.IMG 
+		FROM PCP_BOOKING B, PCP_HOSPITAL H 
+		WHERE B.HID = H.HID AND B.bid = #{bid}
+	</select>
+	
+	<select id="select3" parameterType="String" resultType="com.project.vo.BookingVo">
+		select BID, VDATE, VTIME, B.MID, B.HID, H.HNAME, H.TEL, H.IMG 
+		FROM PCP_BOOKING B, PCP_HOSPITAL H 
+		WHERE B.HID = H.HID AND B.bid = #{bid}
+	</select>
+	
+	<select id="reviewCheck" parameterType="map" resultType="com.project.vo.BookingVo">
+		SELECT COUNT(*) COUNT, MID, BID, HID 
+		FROM PCP_BOOKING WHERE HID=#{hid} AND MID=#{mid} 
+		GROUP BY MID, BID, HID
+	</select>
+	
+	<select id="selectTime" resultType="com.project.vo.BookingVo">
+		SELECT HID, HNAME, SUBSTR(HTIME, 0, 5) AS "START", SUBSTR(HTIME, 7, 6) AS "END"
+    	FROM PCP_HOSPITAL ORDER BY HID
+	</select>
+	
+	<select id="selectTime2" parameterType="String" resultType="com.project.vo.BookingVo">
+		SELECT HID, HNAME, SUBSTR(HTIME, 1, 5) AS "START", SUBSTR(HTIME, 7, 6) AS "END"
+		FROM PCP_HOSPITAL
+		WHERE HID=#{hid}
+	</select>
+
+	<update id="update" parameterType="com.project.vo.BookingVo">
+		UPDATE PCP_BOOKING SET VDATE=#{vdate}, VTIME=#{vtime}, BSTATE=#{bstate} WHERE BID=#{bid}
+	</update>
+	
+	<update id="Bselect" parameterType="String">
+		update pcp_booking set bstate = '예약 완료' where bid=#{bid}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM PCP_BOOKING WHERE BID=#{bid}
+	</delete>
+</mapper>

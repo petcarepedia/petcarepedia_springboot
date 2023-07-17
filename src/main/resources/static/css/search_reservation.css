@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/***************************************
+	공통
+***************************************/
+* {
+	margin: 0px;
+	padding: 0px;
+	color: #3d3d3d;
+	/* text-align: center; */
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+div.reservation {
+	/* border: 1px solid red; */
+	margin: 40px 20px 30px 20px;
+}
+
+div.reservation hr {
+	width: 100%;
+	color: #828282;
+	margin: auto;
+}
+
+div.reservation a:hover {
+	cursor: pointer;
+}
+
+div.reservation a:active {
+	font-size: bold;
+}
+
+.swal2-icon.swal2-warning .swal2-icon-content {
+  color: #F9C89D;
+}
+
+
+/***************************************
+	title
+***************************************/
+div.reservation div.title span {
+	display: block;
+}
+
+div.reservation div.title span:first-child {
+	/* border: 1px solid red; */
+	font-size: 14px;
+}
+
+div.reservation div.title span:nth-child(2) {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0px 25px 0px; 
+}
+
+
+/***************************************
+	date - 날짜 선택
+***************************************/
+div.reservation div.date {
+	/* border: 1px solid red; */
+  	width: 100%;
+  	margin: auto;
+	font-size: 14px;
+	padding: 20px 0px;
+	display: flex;
+ 	align-items: center;
+  	justify-content: center;
+  	justify-content: space-between;
+  	
+}
+
+div.reservation span.sdate {
+	/* border: 2px solid red; */
+	
+}
+
+div.reservation input[name="date"] {
+	width: 60px;
+	border: none;
+	text-align: center;
+}
+
+div.reservation input[name="date"]:hover {
+	cursor: pointer;
+}
+
+div.reservation .selected-date {
+  font-weight: bold;
+  border: none;
+  /* color: red; */
+}
+
+div.reservation input[name="date"]:focus {
+  outline: none;
+}
+
+
+/***************************************
+	time
+***************************************/
+div.reservation div.rtime {
+	 /* border: 3px solid #408080; */
+	/* padding-left: 10px; */
+	display: flex;
+ 	flex-wrap: wrap;
+	/* justify-content: space-between; */
+ 	align-items: center;
+ 	padding-bottom: 30px;
+ 	padding-left: 30px;
+ 	
+}
+
+
+div.reservation div.rtime span {
+	border: 1px solid #D9D9D9;
+	border-left: 10px solid #D9D9D9;
+	border-radius: 5px;
+	width: 80px;
+	height: 47px;
+	font-size: 15px;
+	margin: 15px 12px 0px 0px;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	/* color: red; */
+}
+
+div.reservation div.rtime span:hover {
+	cursor: pointer;
+	/* color: red; */
+}
+
+div.reservation div.rtime .selected {
+	border: 1px solid #98DFFF;
+	border-left: 10px solid #98DFFF;
+}
+
+div.reservation div.rtime span.stime#lastTime {
+	/* background: #D9D9D9; */
+}
+
+
+
+/***************************************
+	button
+***************************************/
+div.reservation button {
+	width:100%;
+	border: none;
+	border-radius: 5px;
+	background: #98DFFF;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 15px 0px;
+	
+}
+
+div.reservation button:hover {
+	cursor: pointer;
+}
+

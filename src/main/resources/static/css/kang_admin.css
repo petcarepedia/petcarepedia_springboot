@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+* {font-family: 'Nanum Gothic', sans-serif;}
+
+/***********************
+	commons style sheet
+************************/
+*{
+	padding:0px; margin:0px;
+}
+
+.d1{
+	width:1000px;
+	margin:auto;
+	margin-top:100px;
+	margin-bottom:41px;
+}
+.table{
+	width:750px;
+	/* top:100px; */
+	margin:auto; 
+	border-collapse:collapse;
+	border-radius:5px;
+	margin-top:20px;
+}
+div.d2> .search_bar{
+	width: 400px;
+	height: 40px;
+	margin-top:0px;
+	border:1px solid #3D3D3D;	
+	border-radius:5px;
+	text-indent:10px;
+	font-size:12pt;
+	margin:auto;
+}
+.d2 {
+    display: flex;
+    align-items:center;
+    float:left;
+    margin-left:185px;
+    margin-top:30px;;
+}
+.d2>.button1{
+	margin-left:-41px;
+	margin-bottom:30px;
+	width:38px;
+	height:38px;
+	border:none;
+	background:white;
+}
+.d2>.button1>img{
+	width:35px;
+	height:35px;
+	margin-top:1px;
+	margin-left:-3px;
+} 
+button{
+	background:#D9D9D9;
+	color:#3D3D3D;
+	border:1px solid #3D3D3D;	
+	font-size: 11pt;
+	padding:1px 7px;
+	font-weight:700;
+	cursor:pointer;
+	margin-top:30px; 
+	text-decoration:none;
+	border-radius:5px;
+}
+button >a {
+	color:#3D3D3D;	
+	text-decoration:none;
+}
+.table, th, td{
+	border: 1px solid #3D3D3D;
+	text-align:center;
+	padding : 2px 10px;
+	border-collapse:collapse;
+}
+
+th{
+	background:#D9D9D9;
+	text-align:center;
+}
+/* section.hostpital tr:nth-child(2) td{
+	border-top:1px solid #3D3D3D;
+} */
+tr td:nth-child(1) {
+	width:50px;
+}
+.button4{
+	padding:5px 15px;
+}
+section.reserve tr:last-child td,section.review tr:last-child td,
+section.member tr:last-child td
+{/* 이전으로 */
+	border-color:white;
+	padding:0 0 0 650px;
+}
+
+.table tr td.number, section.notice tr:last-child td.number{
+	border-color:white;
+	background:#D9D9D9;
+	font_size:13pt; 
+	font-weight:600;
+	word-spacing:20px;
+	border-radius:5px;
+	
+}
+section.notice tr td:nth-child(4), section.notice tr td:nth-child(5),
+section.reserve tr td:nth-child(5),section.review tr td:nth-child(5),
+section.notice_datail tr td:nth-child(4),section.notice_detail tr td:nth-child(5){
+	width:100px;
+}
+section.reserve tr:nth-child(12) td,section.review tr:nth-child(12) td,
+section.member tr:nth-child(13) td{
+	border:1px solid white;
+}
+section.hospital #section1 div nav ul li:nth-child(2) a,
+section.member #section1 div nav ul li:nth-child(3) a,
+section.reserve #section1 div nav ul li:nth-child(4) a,
+section.review #section1 div nav ul li:nth-child(5) a,
+section.notice #section1 div nav ul li:nth-child(6) a
+{
+	font-weight:bold;
+	color : #3D3D3D;
+	text-decoration : none;
+}
+
+#section2{
+	margin-right:80px;
+}
+
+/****************************
+section1 style sheet - 카테고리
+*****************************/
+#section1 {
+	width: 148px;
+	height: 300px;
+	float : left;
+	margin-top : 80px;
+}
+
+#section1 div nav ul{
+	list-style-type:none;
+
+}
+#section1 div nav ul li{
+	margin-bottom : 15px;
+}
+#section1 div nav ul li:first-child {
+	font-weight: 700;
+	font-size: 20px;
+	color: #7ab2cc;
+	border-left : 10px solid #7ab2cc;
+	margin-bottom : 25px;
+	padding-left:7px;
+}
+#section1 div nav ul li a {
+	font-size : 15px;
+	font-weight : 500;
+	color : #3D3D3D;
+	text-decoration : none;
+}
+
+#section1 div nav ul li a:hover {
+	font-size : 16px;
+	font-weight:bold;
+	color :#7ab2cc;
+	text-decoration : none;
+}
+
+/****************************
+notice_list style sheet
+*****************************/
+section.notice tr td:nth-child(2) {
+	width:250px;
+	text-align:left;
+	text-indent:10px;
+
+}
+
+ section.notice tr:last-child td{
+	border-color:white;
+	background:white;
+	font_size:11pt;
+	font-weight:700;
+}
+
+section.notice tr:first-child td, section.notice_detail tr:first-child td{
+	border:1px solid white;
+	border-bottom: 1px solid #3D3D3D;
+ 	padding:0 0 20px 600px; 
+} 
+
+section.notice tr td:nth-child(2) {
+	width:280px;
+	text-align:left;
+	text-indent:10px;
+
+}
+section.notice tr td:nth-child(2) a {
+	text-decoration:none;
+	color:#3D3D3D;
+}
+secton.notice tr:ntf-child(12) td{/* .number */
+	border-color:white;
+	padding:0 0 0 650px;
+	
+}
+/****************************
+member_list style sheet
+*****************************/
+section.member tr:first-child td{
+	border:1px solid white;
+	border-bottom: 1px solid #3D3D3D;
+ 	padding:0 0 20px 600px; 
+} 
+
+/* section.member .table tr td.number{
+	border-color:white;
+	background:white;
+	font_size:11pt;
+	font-weight:700;
+	padding-top:30px;
+} */
+section.member .button5{
+	margin-left:5px;
+}
+section.member tr td:nth-child(4), tr td:nth-child(5){
+	width:190px;
+}
+
+/****************************
+reserve_list style sheet
+*****************************/
+
+section.reserve tr td:last-child{
+	cursor:pointer;
+}
+section.reserve tr td:nth-child(2) {
+	width:200px;
+}
+
+.d1 section.reserve div.d2, .d1 section.review div.d2{
+	margin-bottom:80px; 
+}
+
+/****************************
+review_list style sheet
+*****************************/
+section.review tr td:nth-child(4) {
+	width:320px;
+}
+
+/*************************************
+	notice_list_detail style sheet
+**************************************/
+section.notice_detail .button5{
+	padding:5px 15px;
+
+}
+.d1 {
+	width : 1000px;
+	height : 700px;
+}
+section.notice_detail table.table tr:last-child td{
+	border:1px solid white;
+	margin-right:700px;
+}
+
+section.notice_detail > section.section2 {
+	float : left;
+	border:1px solid blue;
+	margin:auto;
+}
+
+section.notice_detail table.table tr:nth-last-child(-n+2) {
+	border:2px solid #333;
+}
+
+/*************************************
+	공지사항 추가 사항
+***************************************/
+section.notice tr:first-child td {
+	padding-left:700px;
+} 
+div#ampaginationsm ul li.active a {
+	background-color:#D9D9D9;
+	border-color:#D9D9D9;
+}
+
+
+
+
+
+

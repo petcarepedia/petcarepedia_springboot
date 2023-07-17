@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.notice">
+
+	<select id="list" resultType="com.project.vo.NoticeVo">
+		select rownum rno, nid, title, ndate, nhits, ncontent
+		from(select nid, title, ndate, nhits, ncontent from pcp_notice order by ndate desc)
+	</select>
+	
+	<select id="content" parameterType="String" resultType="com.project.vo.NoticeVo">
+		select nid, title, ndate, nhits, ncontent from pcp_notice where nid = #{nid}
+	</select>
+	
+	<select id="enter_content" parameterType="String" resultType="com.project.vo.NoticeVo">
+		select nid, title, to_char(ndate, 'yyyy-mm-dd hh24:mi') ndate, nhits, ncontent from pcp_notice where nid = #{nid}
+	</select>
+	
+	<insert id="insert" parameterType="com.project.vo.NoticeVo">
+		insert into pcp_notice(nid, title, ndate, nhits, ncontent)
+		values('N_'||ltrim(to_char(sequ_pcp_notice_nid.nextval,'0000')),#{title},sysdate,0,#{ncontent})
+	</insert>
+	
+	<update id="update" parameterType="com.project.vo.NoticeVo">
+		update pcp_notice set title=#{title}, ncontent=#{ncontent} where nid=#{nid}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete pcp_notice where nid=#{nid}
+	</delete>
+	
+	<update id="updateHits" parameterType="String">
+		update pcp_notice set nhits = nhits+1 where nid = #{nid}
+	</update>
+	
+	<select id="count" resultType="int">
+		select count(*) from pcp_notice
+	</select>
+	
+	<select id="listPage" parameterType="map" resultType="com.project.vo.NoticeVo">
+		select rno, nid, title, ndate, nhits, ncontent
+		from(select rownum rno, nid, title, to_char(ndate, 'yyyy-mm-dd hh24:mi') ndate, nhits, ncontent 
+		from(select nid, title, ndate, nhits, ncontent from pcp_notice order by ndate desc))
+		where rno between #{start} and #{end}
+	</select>
+</mapper>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.page">
+	
+	<select id = "Mylist" parameterType = "map" resultType = "com.project.vo.ReviewVo">
+			select rno, hid, hname, nickname, tel, gloc, rcontent, rid, bid, img, hsfile, rfile1, rsfile1, rfile2, rsfile2
+				 from (select rownum rno, hid, hname, nickname, tel, gloc, rcontent, rid, bid, img, hsfile, rfile1, rsfile1, rfile2, rsfile2
+				 	from (select h.hid, h.hname, m.nickname, h.tel, h.gloc, r.rcontent, rid, r.bid, h.img, h.hsfile, r.rfile1, r.rsfile1, r.rfile2, r.rsfile2  from pcp_review r, pcp_member m, pcp_hospital h, pcp_booking b
+				 where r.mid = m.mid and h.hid = r.hid and b.bid = r.bid and r.mid = #{mid} order by r.rid desc))
+				 where rno between #{start} AND #{end}
+	
+	</select>
+	
+	<select id = "Rlist" parameterType="map" resultType="com.project.vo.ReviewVo">	
+		select rno, rid, rcontent, rdate, rlike, rstar, rstate, mid, hid, hname, animal, gloc, nickname
+				 from (select rownum rno, rid, rcontent, to_char(rdate,'yyyy-mm-dd') rdate, rlike, rstar, rstate, mid, hid, hname, animal, gloc, nickname 
+				 	from (select r.rid, r.rcontent, r.rdate, r.rlike, r.rstar, r.rstate, r.mid, r.hid, h.hname, h.animal, h.gloc, m.nickname from pcp_review r, pcp_hospital h, pcp_member m 
+				 where r.hid=h.hid and r.mid = m.mid and rstate='O' order by r.rdate desc))
+				 where rno between #{start} AND #{end}
+	</select>
+	
+	<select id = "Bslist" parameterType="map" resultType="com.project.vo.BookingVo">	
+		SELECT RNO, HNAME, MID, VDATE, BSTATE, VTIME, BID, BDATE
+			FROM (
+			    SELECT ROWNUM RNO, HNAME, MID, to_char(BDATE, 'yyyy-mm-dd') VDATE, BSTATE, VTIME, BID, BDATE
+				    FROM (
+				        SELECT H.HNAME, M.MID, VDATE, B.BSTATE, VTIME, BID, BDATE
+				        FROM PCP_BOOKING B
+				        JOIN PCP_HOSPITAL H ON B.HID = H.HID
+				        JOIN PCP_MEMBER M ON M.MID = B.MID
+				        WHERE M.MID LIKE '%' || #{mid} || '%'
+				        ORDER BY BDATE DESC
+				    )
+			)
+			WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "Blist" parameterType="map" resultType="com.project.vo.BookingVo">	
+		SELECT RNO, HNAME, MID, VDATE,  BSTATE, VTIME, BID, BDATE
+						FROM (SELECT ROWNUM RNO, HNAME,  MID,   to_char(BDATE, 'yyyy-mm-dd') VDATE ,BSTATE, VTIME,  BID, BDATE
+								FROM (SELECT H.HNAME, M.MID ,  VDATE ,B.BSTATE,VTIME , BID, BDATE
+				                            FROM PCP_BOOKING B, PCP_HOSPITAL H,  PCP_MEMBER M where b.hid = h.hid AND M.MID = B.MID ORDER BY BDATE DESC)) 
+						WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "Mslist" parameterType="map" resultType="com.project.vo.MemberVo">	
+		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate 
+		from (select rownum rno,mid,pass,name,nickname,phone,
+				to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
+				to_char(mdate,'yyyy-mm-dd') mdate 
+				from (select mid,pass,name,nickname,phone,birth,email,addr,mdate 
+						from pcp_member where mid like '%'||#{mid}||'%'
+						order by mdate))
+		where rno between #{start} and #{end}
+	</select>
+	
+	<select id = "Mlist" parameterType="map" resultType="com.project.vo.MemberVo">	
+		select rno,mid,pass,name,nickname,phone,birth,email,addr,mdate 
+		from (select rownum rno,mid,pass,name,nickname,phone,
+				to_char(to_date(birth),'yyyy-mm-dd') birth,email,addr,
+				to_char(mdate,'yyyy-mm-dd') mdate 
+				from (select mid,pass,name,nickname,phone,birth,email,addr,mdate 
+						from pcp_member 
+						order by mdate))
+		where rno between #{start} and #{end}
+	</select>
+	
+	<select id = "Hslist" parameterType="map" resultType="com.project.vo.HospitalVo">	
+		SELECT RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+					  FROM (SELECT ROWNUM RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+						 FROM( SELECT HID, HNAME,  ANIMAL, NTIME, HOLIDAY FROM PCP_HOSPITAL 
+						 		where hname like '%'||#{hname}||'%'
+						 		ORDER BY HID)) 
+					WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "Hslist2" parameterType="map" resultType="com.project.vo.HospitalVo">	
+		SELECT RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+					  FROM (SELECT ROWNUM RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+						 FROM( SELECT HID, HNAME,  ANIMAL, NTIME, HOLIDAY FROM PCP_HOSPITAL 
+						 		where gloc like '%'||#{gloc}||'%'
+						 		ORDER BY HID)) 
+					WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "Hlist" parameterType="map" resultType="com.project.vo.HospitalVo">	
+		SELECT RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+					  FROM (SELECT ROWNUM RNO, HID, HNAME,  ANIMAL, NTIME, HOLIDAY 
+						 FROM( SELECT HID, HNAME,  ANIMAL, NTIME, HOLIDAY FROM PCP_HOSPITAL ORDER BY HID desc)) 
+					WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	
+	<select id="Rcount" resultType="int">
+		select count(*) from pcp_review
+	</select>
+	
+	<select id="Bscount" resultType="int">
+		select count(*) from pcp_booking where mid like '%'||#{mid}||'%'
+	</select>
+	
+	<select id="Bcount" resultType="int">
+		select count(*) from pcp_booking
+	</select>
+	
+	<select id="Mscount" resultType="int">
+		select count(*) from pcp_member where mid like '%'||#{mid}||'%'
+	</select>
+	
+	<select id="Mcount" resultType="int">
+		select count(*) from pcp_member
+	</select>
+	
+	<select id="Hscount" parameterType="String" resultType="int">
+		select count(*) from pcp_hospital where hname like '%'||#{hname}||'%'
+	</select>
+	
+	<select id="Hscount2" parameterType="String" resultType="int">
+		select count(*) from pcp_hospital where gloc like '%'||#{gloc}||'%'
+	</select>
+	
+	<select id="Hcount" resultType="int">
+		select count(*) from pcp_hospital
+	</select>
+	
+	<select id = "Myscount" parameterType = "String" resultType = "int">
+		select count(*) from pcp_review where mid = #{mid}
+	</select>
+	
+	<select id = "Mycount" resultType = "int">
+		select count(*) from pcp_review
+	</select>
+</mapper>
