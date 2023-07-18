@@ -11,10 +11,10 @@ var count5 = 1;
 //닉네임
 $("#update_nickname").click(function(){
 	if(count1 % 2 == 1) {
-		$("#img1").attr("src", "http://localhost:9000/petcarepedia/images/finish.png");
+		$("#img1").attr("src", "http://localhost:9000/images/finish.png");
 		$("#nickname").attr("disabled", false);
 	} else {
-		$("#img1").attr("src", "http://localhost:9000/petcarepedia/images/편집2.png");
+		$("#img1").attr("src", "http://localhost:9000/images/편집2.png");
 		$("#nickname").attr("disabled", true);
 	}
 	count1++;
@@ -22,10 +22,10 @@ $("#update_nickname").click(function(){
 //생년월일
 $("#update_birth").click(function(){
 	if(count2 % 2 == 1) {
-		$("#img2").attr("src", "http://localhost:9000/petcarepedia/images/finish.png");
+		$("#img2").attr("src", "http://localhost:9000/images/finish.png");
 		$("#birth").attr("disabled", false);
 	} else {
-		$("#img2").attr("src", "http://localhost:9000/petcarepedia/images/편집2.png");
+		$("#img2").attr("src", "http://localhost:9000/images/편집2.png");
 		$("#birth").attr("disabled", true);
 	}
 	count2++;
@@ -34,13 +34,13 @@ $("#update_birth").click(function(){
 //이메일
 /* $("#update_email").click(function(){
 	if(count3 % 2 == 1) {
-		$("#img3").attr("src", "http://localhost:9000/petcarepedia/images/finish.png");
+		$("#img3").attr("src", "http://localhost:9000/images/finish.png");
 		$("#email").attr("disabled", false);
 		$("#btnAuthEmail").css("display", "block");
 		$("#btnAuthEmail").attr("disabled",true).css("background", "#D9D9D9").css("cursor", "not-allowed");
 		//$("#btnAuthEmail").attr("disabled", true);
 	} else {
-		$("#img3").attr("src", "http://localhost:9000/petcarepedia/images/편집2.png");
+		$("#img3").attr("src", "http://localhost:9000/images/편집2.png");
 		$("#email").attr("disabled", true);
 	}
 	count3++;
@@ -68,10 +68,10 @@ $("#btnModalClose").click(function(){
 //휴대폰
 $("#update_phone").click(function(){
 	if(count4 % 2 == 1) {
-		$("#img4").attr("src", "http://localhost:9000/petcarepedia/images/finish.png");
+		$("#img4").attr("src", "http://localhost:9000/images/finish.png");
 		$("#phone").attr("disabled", false);
 	} else {
-		$("#img4").attr("src", "http://localhost:9000/petcarepedia/images/편집2.png");
+		$("#img4").attr("src", "http://localhost:9000/images/편집2.png");
 		$("#phone").attr("disabled", true);
 	}
 	count4++;
@@ -81,7 +81,7 @@ $("#update_addr").click(function(){
 	var img5 = $("#img5");
 	const address = $("#address");
     if (count5 % 2 === 1) {
-        img5.attr("src", "http://localhost:9000/petcarepedia/images/finish.png");
+        img5.attr("src", "http://localhost:9000/images/finish.png");
         address.prop("disabled", false);
         new daum.Postcode({
         oncomplete: function(data) {
@@ -93,7 +93,7 @@ $("#update_addr").click(function(){
         }
 	}).open();	
     } else {
-        img5.attr("src", "http://localhost:9000/petcarepedia/images/편집2.png");
+        img5.attr("src", "http://localhost:9000/images/편집2.png");
         address.prop("disabled", true);
     }
 	count5++;
@@ -136,7 +136,7 @@ $("#nickname").keyup(function(){
 			$("#nickcheck_msg").text("특수문자와 초성 및 모음 제외 2~16자로 입력하세요.").css("color","red")
 			.css("font-size","12px").css("display","block").css("clear","both").css("margin-left", "75px")
 			.css("padding-top","5px")
-			.prepend("<img src='http://localhost:9000/petcarepedia/images/info_red.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
+			.prepend("<img src='http://localhost:9000/images/info_red.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
 			$("#update_nickname").attr("disabled",true).css("background","#D9D9D9").css("cursor","not-allowed");
 		} else {
 			$("#nickcheck_msg").text("").css("display","none");
@@ -150,7 +150,7 @@ $("#confirm_email").keyup(function(){
 		$("#emailcheck_msg").text("올바른 이메일 형식이 아닙니다.").css("color","red")
 		.css("font-size","12px").css("display","block").css("clear","both")
 		.css("padding-top","5px").css("float", "left")
-		.prepend("<img src='http://localhost:9000/petcarepedia/images/info_red.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
+		.prepend("<img src='http://localhost:9000/images/info_red.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
 		$("#update_email").attr("disabled",true).css("background","#D9D9D9").css("cursor","not-allowed");
 		$("#btnAuthEmail").attr("disabled",true).css("background", "#D9D9D9").css("cursor", "not-allowed");
 	} else {
@@ -220,7 +220,7 @@ $("form[name='updateForm'] input").on({
 				$("#emailauthcheck_msg").text("이메일 인증 완료").css("color","#7AB2CC")
 				.css("font-size","12px").css("display","block").css("clear","both")
 				.css("padding-top","5px")
-				.prepend("<img src='http://localhost:9000/petcarepedia/images/check.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
+				.prepend("<img src='http://localhost:9000/images/check.png' width='13px' style='padding-right:5px; vertical-align:middle'>");
 				$("#btnAuthEmail").attr("disabled",true).css("background","#D9D9D9").css("cursor","not-allowed");
 				$("#btnModalClose").attr("disabled", true).css("background","#D9D9D9").css("cursor","not-allowed");
 				$("#btnConfirm").attr("disabled",false).css("background", "#98dfff").css("cursor", "pointer");
@@ -411,7 +411,7 @@ $("#btnReservationDelete").click(function(){
 			    }).then((result) => {
 			    	 if (result.isConfirmed) {
 				    	$.ajax({
-				            url: "pass_check.do?mid=" + $("#mid").val() + "&pass=" + $("#pass").val(),
+				            url: "pass_check/" + $("#mid").val() + "/" + $("#pass").val() + "/",
 				            success: function(result) {
 				            	if(result == 0) {
 				            		Swal.fire({

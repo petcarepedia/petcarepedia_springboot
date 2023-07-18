@@ -25,30 +25,30 @@
 		<section id = "reservation">
 			<h1 id = "title">예약 내역</h1>
 			<hr>
-			<form name="deleteForm" action="reservation_delete_proc.do" method="post">
-				<input type = "hidden" name = "bid" value = "${bid}">
+			<form name="deleteForm" action="reservation_delete" method="post">
+				<input type = "hidden" name = "bid" value = "${booking.bid}">
 				<table id = "table">
 					<tr>
 						<th>병원명</th>
-						<td>${bookingVo.hname}</td>
+						<td>${booking.hname}</td>
 					</tr>
 					<tr>
 						<th>예약날짜</th>
-						<td>${bookingVo.vdate}</td>
+						<td>${booking.vdate}</td>
 					</tr>
 					<tr>
 						<th>예약시간</th>
-						<td>${bookingVo.vtime}</td>
+						<td>${booking.vtime}</td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
-						<td>${bookingVo.tel}</td>
+						<td>${booking.tel}</td>
 					</tr>
 				</table>
 				<div class = "box">
 					<p>예약을 취소하시겠습니까?</p>
 					<button type="button" class="btn_style" id = "btnReservationDelete">취소완료</button>
-					<a href="mypage_reservation.do">
+					<a href="/mypage_reservation">
 						<button type="button" class="btn_style">이전페이지</button>
 					</a>
 				</div>
