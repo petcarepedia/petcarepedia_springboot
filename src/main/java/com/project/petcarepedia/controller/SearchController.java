@@ -201,6 +201,13 @@ public class SearchController {
     }
 
 
+    /** search_main_map **/
+    @GetMapping("search_main_map")
+    public String search_main_map() {
+        return  "/search/search_main_map";
+    }
+
+
    /*
     @GetMapping("board_list/{page}")
     public String board_list(@PathVariable String page, Model model) {
@@ -212,20 +219,6 @@ public class SearchController {
         return "/board/board_list";
     }
     ---------------------------------------------------------------------------------------
-
-    *//** search_map.do **//*
-    @RequestMapping(value="/search_map.do", method=RequestMethod.GET)
-    public String search_map() {
-        return "/search/search_map";
-    }
-
-
-    *//** search_main_map.do **//*
-    @RequestMapping(value="/search_main_map.do", method=RequestMethod.GET)
-    public String search_main_map() {
-        return "/search/search_main_map";
-    }
-
 
     *//** map_data.do **//*
     @RequestMapping(value="/map_data.do",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
