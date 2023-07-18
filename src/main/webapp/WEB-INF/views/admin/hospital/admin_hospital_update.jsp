@@ -33,72 +33,72 @@
 						<nav>
 							<ul>
 								<li>병원관리</li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_hospital_list.do">병원 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_member_list.do">회원 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_reserve_list.do">예약 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_review_list.do">신고 리뷰 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_notice.do">공지 사항 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_hospital_list/1/">병원 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_member_list/1/">회원 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_reserve_list/1/">예약 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_review_list/1/">신고 리뷰 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_notice/1/">공지 사항 관리</a></li>
 							</ul>
 						</nav>
 					</div>
 				</section>
 				<section id="section2">
 					<div id="d3">
-						<form name="updateForm" action="hospital_update_proc.do" method="post" enctype="multipart/form-data">
-						<input type = "hidden" name = "hid" value = "${hospitalVo.hid}">
+						<form name="updateForm" action="hospital_update_proc" method="post" enctype="multipart/form-data">
+						<input type = "hidden" name = "hid" value = "${hospital.hid}">
 						<%-- <input type = "text" name = "hsfile" value = "${hospitalVo.hsfile}"> --%>
 							<table class="table">
 								<tr>
 									<th>병원명</th>
-									<td><input type="text" name="hname" id = "hname" value="${hospitalVo.hname}"></td>
+									<td><input type="text" name="hname" id = "hname" value="${hospital.hname}"></td>
 								</tr>
 								<tr>
 									<th>주소</th>
-									<td><input type="text" name="loc" id="loc" value="${hospitalVo.loc}"></td>
+									<td><input type="text" name="loc" id="loc" value="${hospital.loc}"></td>
 								</tr>
 								<tr>
 									<th>지역 구</th>
-									<td><input type="text" name="gloc" id="gloc" value="${hospitalVo.gloc}"></td>
+									<td><input type="text" name="gloc" id="gloc" value="${hospital.gloc}"></td>
 								</tr>
 								<tr>
 									<th>전화번호</th>
-									<td><input type="text" name="tel" id="tel" value="${hospitalVo.tel}"></td>
+									<td><input type="text" name="tel" id="tel" value="${hospital.tel}"></td>
 								</tr>
 								<tr>
 									<th>영업시간</th>
 									<td>
-										<input type="text" name="htime" id="htime" placeholder="영업시간 : 00:00 ~ 00:00" value="${hospitalVo.htime}">
+										<input type="text" name="htime" id="htime" placeholder="영업시간 : 00:00 ~ 00:00" value="${hospital.htime}">
 									</td>
 								</tr>
 								<tr>
 									<th>특수동물 진료 여부</th>
-									<td><input type="text" name="animal" id="animal" placeholder="O / X " value="${hospitalVo.animal}"> </td>
+									<td><input type="text" name="animal" id="animal" placeholder="O / X " value="${hospital.animal}"> </td>
 								</tr>
 								<tr>
 									<th>야간 근무 여부</th>
-									<td><input type="text" name="ntime" id="ntime" placeholder="O / X " value="${hospitalVo.ntime}"> </td>
+									<td><input type="text" name="ntime" id="ntime" placeholder="O / X " value="${hospital.ntime}"> </td>
 								</tr>
 								<tr>
 									<th>공휴일 진료 여부</th>
-									<td><input type="text" name="holiday" id="holiday" placeholder="O / X " value="${hospitalVo.holiday}"> </td>
+									<td><input type="text" name="holiday" id="holiday" placeholder="O / X " value="${hospital.holiday}"> </td>
 								</tr>
 								<tr>
 									<th>홈페이지 링크</th>
-									<td><input type="text" name="hrink" id="hrink" placeholder="O / X " value="${hospitalVo.hrink}"> </td>
+									<td><input type="text" name="hrink" id="hrink" placeholder="O / X " value="${hospital.hrink}"> </td>
 								</tr>
 								<tr>
 									<th>강조사항(선택)</th>
-									<td><textarea name="intro" id="intro" >${hospitalVo.intro}</textarea></td>
+									<td><textarea name="intro" id="intro" >${hospital.intro}</textarea></td>
 								</tr>
 								<tr>
 									<th>파일 업로드</th>
 									<td>
-										<input type="hidden" name="hfile" value="${hospitalVo.hfile}">
-										<input type="hidden" name="hsfile" value="${hospitalVo.hsfile}">
+										<input type="hidden" name="hfile" value="${hospital.hfile}">
+										<input type="hidden" name="hsfile" value="${hospital.hsfile}">
 										<input type="file" name="file1" id ="file1">
 										<c:choose>
-											<c:when test="${hospitalVo.hfile != null}">
-												<span id="update_file">${hospitalVo.hfile}</span>
+											<c:when test="${hospital.hfile != null}">
+												<span id="update_file">${hospital.hfile}</span>
 											</c:when>
 											<c:otherwise>
 												<span id="update_file">선택된 파일 없음</span>
@@ -109,7 +109,7 @@
 								<tr>
 									<td colspan="5"> 
 										<button type="button" class="button5" id="btn_update">수정완료</button>
-										<a href="admin_hospital_content.do?hid=${hospitalVo.hid}&hsfile=${hospitalVo.hsfile}">
+										<a href="admin_hospital_content/=${hospitalVo.hid}/${hospitalVo.hsfile}">
 											<button type="button" class="button5" id="btn_before">이전으로</button>
 										</a>
 									</td>

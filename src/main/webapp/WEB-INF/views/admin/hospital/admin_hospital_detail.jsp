@@ -25,18 +25,18 @@
 						<nav>
 							<ul>
 								<li>병원관리</li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_hospital_list.do">병원 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_member_list.do">회원 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_reserve_list.do">예약 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_review_list.do">신고 리뷰 관리</a></li>
-								<li><a href = "http://localhost:9000/petcarepedia/admin_notice.do">공지 사항 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_hospital_list/1/">병원 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_member_list/1/">회원 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_reserve_list/1/">예약 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_review_list/1/">신고 리뷰 관리</a></li>
+								<li><a href = "http://localhost:9000/admin_notice/1/">공지 사항 관리</a></li>
 							</ul>
 						</nav>
 					</div>
 				</section>
 				<section id="section2">
 					<div id="d3">
-						<form name="writeForm" action="hospital_detail_proc.do" method="post" enctype="multipart/form-data">
+						<form name="writeForm" action="hospital_detail_proc" method="post" enctype="multipart/form-data">
 							<table class="table">
 								<tr>
 									<th>병원명</th>
@@ -95,7 +95,7 @@
 									<td colspan="5"> 
 										<button type="button" class="button5" id="btn_save">저장하기</button>
 										<button type="reset" class="button5">다시쓰기</button>
-										<a href="http://localhost:9000/petcarepedia/admin_hospital_list.do">
+										<a href="http://localhost:9000/admin_hospital_list/${page.reqPage}/">
 											<button type="button" class="button5"> 이전으로</button>
 										</a>
 									</td>
