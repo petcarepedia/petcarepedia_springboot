@@ -5,14 +5,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+	<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 	<title>펫캐어피디아 | 예약</title>
-	<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/search_reservation.css">
+	<link rel="stylesheet" href="http://localhost:9000/css/search_reservation.css">
 
-	<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ko.min.js"></script>
-	<script src="http://localhost:9000/petcarepedia/js/search_reservation.js"></script>
+	<script src="http://localhost:9000/js/search_reservation.js"></script>
 	<script>
 	/* 정보 표시 */
 	$(".hservation").click(function() {
@@ -53,7 +53,7 @@
 	    <input type="hidden" id="endTime" name="endTime" value="${time.end}">
 	    <input type="hidden" id="rholiday" value="${hospital.holiday}">
 
-	    <form name="reservationForm" action="reservationProc.do" method="post">
+	    <form name="reservationForm" action="/reservation" method="post">
 			<input type="hidden" name="hid" value="${hospital.hid}">
 			<input type="hidden" name="mid" value="${sessionScope.svo.mid}"> 
 		    <input type="hidden" id="vdate" name="vdate" value="">
