@@ -1,6 +1,7 @@
 package com.project.petcarepedia.service;
 
 import com.project.petcarepedia.dto.HospitalDto;
+import com.project.petcarepedia.dto.PageDto;
 import com.project.petcarepedia.repository.HospitalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,11 @@ public class HospitalService {
     @Autowired
     HospitalMapper hospitalMapper;
 
-    public List<HospitalDto>(PageDto pageDto){return hospitalMapper.Hslist2(pageDto);}
+    public List<HospitalDto> Hslist2(PageDto pageDto){return hospitalMapper.Hslist2(pageDto);}
 
-    public List<HospitalDto>(PageDto pageDto){return hospitalMapper.Hslist()(pageDto);}
+    public List<HospitalDto> Hslist(PageDto pageDto){return hospitalMapper.Hslist(pageDto);}
 
-    public List<HospitalDto>(PageDto pageDto){return hospitalMapper.Hlist(pageDto);}
+    public List<HospitalDto> Hlist(PageDto pageDto){return hospitalMapper.Hlist(pageDto);}
 
     public int totalRowCount(){return hospitalMapper.totalRowCount();}
     public HospitalDto selectStar(String hid){return hospitalMapper.selectStar(hid);}
