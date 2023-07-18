@@ -6,13 +6,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+	<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 	<title>펫캐어피디아 | 검색 결과</title>
-	<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/search_main.css">
+	<link rel="stylesheet" href="http://localhost:9000/css/search_main.css">
 	
-	<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-	<script src="http://localhost:9000/petcarepedia/js/search_main.js"></script>
-	<script src="http://localhost:9000/petcarepedia/js/search_main_map.js"></script>
+	<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/js/search_main.js"></script>
+	<script src="http://localhost:9000/js/search_main_map.js"></script>
 	<script>
 	/* 검색바 */
 	$(document).ready(function(){
@@ -144,7 +144,7 @@
 									<c:choose>
 									    <c:when test="${list.hsfile != null}">	
 									        <%-- <img src="${list.img}" width="122px" height="122px"> --%>
-									        <img src="http://localhost:9000/petcarepedia/upload/${list.hsfile}" width="122px" height="122px">
+									        <img src="http://localhost:9000/upload/${list.hsfile}" width="122px" height="122px">
 									    </c:when>
 									    <c:otherwise>
 									    </c:otherwise>

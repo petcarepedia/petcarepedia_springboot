@@ -1,14 +1,15 @@
 package com.project.petcarepedia.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.project.petcarepedia.dto.*;
 import com.project.petcarepedia.service.*;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.awt.print.Book;
@@ -99,22 +100,11 @@ public class SearchController {
     }
 
 
-   /*
-    @GetMapping("board_list/{page}")
-    public String board_list(@PathVariable String page, Model model) {
-        PageDto pageDto = pageService.getPageResult(new PageDto(page, "board"));
-
-        model.addAttribute("list", boardService.list(pageDto));
-        model.addAttribute("page", pageDto);
-
-        return "/board/board_list";
-    }
-    ---------------------------------------------------------------------------------------
-    *//** search_result_map.do - 병원 상세 지도 정보 **//*
-    @RequestMapping(value="/search_result_map.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+    /** search_result_map - 병원 상세 지도 정보 **/
+    @GetMapping("search_reseult_map")
     @ResponseBody
-    public String search_result_map(String hid) {
-        HospitalVo list = hospitalService.select(hid);
+    public String search_result_map(@PathVariable String hid) {
+        HospitalDto list = hospitalService.select(hid);
 
         JsonObject jobj = new JsonObject();
         jobj.addProperty("hid", list.getHid());
@@ -126,137 +116,100 @@ public class SearchController {
     }
 
 
-    *//** search_reservation.do?hid=? **//*
-    @RequestMapping(value="/search_reservation.do", method=RequestMethod.GET)
-    public ModelAndView search_reservation(String hid) {
-        ModelAndView model = new ModelAndView();
+    /** search_reservation **/
+    @GetMapping("search_reservation/{hid}")
+    public String search_reservation(@PathVariable String hid, Model model) {
+        model.addAttribute("hospital", hospitalService.select(hid));
+        model.addAttribute("time", bookingService.selectTime2(hid));
 
-        HospitalVo hospitalVo = hospitalService.select(hid);
-        BookingVo bookingVo = bookingService.getSelectTime(hid);
-
-        model.addObject("hospital", hospitalVo);
-        model.addObject("time", bookingVo);
-
-        model.setViewName("/search/search_reservation");
-        return model;
+        return "/search/search_reservation";
     }
 
 
-    *//** reservationProc.do - 예약 처리 **//*
-    @RequestMapping(value="reservationProc.do", method=RequestMethod.POST)
+    /** reservationProc - 예약 처리 **/
+    @PostMapping("reservation")
     @ResponseBody
-    public String reservationProc(BookingVo bookingVo) {
-        int check_result = bookingService.getCheckBooking(bookingVo);
+    public String reservationProc(BookingDto bookingDto) {
+        int check_result = bookingService.checkBooking(bookingDto);
 
         if(check_result == 0) {
-            bookingService.getInsert(bookingVo);
+            bookingService.insert(bookingDto);
             return "success";
-        } else {
-            return "fail"; // 중복있음
+        } else if(check_result == 1) {
+            return "fail"; //중복예약
         }
+
+        return "error"; //오류
     }
 
 
-    *//** reviewCheckProc.do - 리뷰쓰기 처리 **//*
-    @RequestMapping(value="reviewCheckProc.do", method=RequestMethod.POST)
+    /** bookmark - 북마크 처리 **/
+    @PostMapping("bookmark")
     @ResponseBody
-    public String reviewCheckProc(String hid, String mid) {
-        String result = "";
-        if(hid != "" && mid != "") {
-            result = "success";
-        } else {
-            result = "fail";
+    public String bookmarkProc(BookmarkDto bookmarkDto, @RequestParam("hid") String hid) {
+        int result = bookmarkService.checkBookmark(bookmarkDto);
+        
+        if (result == 0) { //북마크 없을 때
+            bookmarkService.insert(bookmarkDto);
+            return "success";
+        } else if (result == 1) { //북마크 있을 때
+            bookmarkService.deleteBookmark(bookmarkDto);
+            return "fail";
         }
-
-        return result;
+        
+        return "error"; //오류
     }
 
 
-    *//** bookmarkProc.do - 북마크 처리 **//*
-    @RequestMapping(value = "bookmarkProc.do", method = RequestMethod.POST)
+    /** like - 좋아요 처리 **/
+    @PostMapping("like")
     @ResponseBody
-    public String bookmarkProc(BookmarkVo bookmarkVo, @RequestParam("hid") String hid) {
-        int result = bookmarkService.getCheckBookmark(bookmarkVo);
-
-        if (result == 0) {
-            bookmarkService.getInsert(bookmarkVo);
+    public String likeProc(ReviewLikeDto reviewLikeDto, @RequestParam("hid") String hid) {
+        int like_result = reviewLikeService.idCheck(reviewLikeDto);
+        
+        if(like_result == 0) { //기록 없음
+            reviewLikeService.likesUpID(reviewLikeDto);
+            reviewLikeService.likesUp(reviewLikeDto);
+            
             return "success";
-        } else if (result == 1) {
-            bookmarkService.getDeleteBookmark(bookmarkVo);
+        } else if(like_result == 1) { //기록 있음
+            reviewLikeService.likesDownID(reviewLikeDto);
+            reviewLikeService.likesDown(reviewLikeDto);
+            
+            return "fail";
+        }
+        
+        return "error"; //오류
+    }
+
+
+    /** rstate - 신고하기 처리 -> 신고테이블 처리 **/
+    @PostMapping("rstate")
+    @ResponseBody
+    public String rstateProc(ReviewReportDto reviewReportDto) {
+        //중복신고 체크
+        int result = reviewReportService.reviewReportCheck(reviewReportDto);
+
+        if(result == 0) { //신고 없음
+            reviewReportService.reviewReport(reviewReportDto);
+
+            return "success";
+        } else if (result == 1) { //신고 있음
             return "fail";
         }
 
-        return "";
+        return "error";
     }
 
 
-    *//** likeProc.do - 좋아요 처리 **//*
-    @RequestMapping(value="likeProc.do", method=RequestMethod.POST)
-    @ResponseBody
-    public String likeProc(ReviewLikeVo reviewLikeVo, @RequestParam("hid") String hid) {
-        int like_result = reviewLikeService.getIdCheck(reviewLikeVo);
-
-        if (like_result == 0) { // 기록 없음
-            reviewLikeService.getLikesUpID(reviewLikeVo);
-            reviewLikeService.getLikesUp(reviewLikeVo);
-            return "success";
-        } else { // 기록 있음
-            reviewLikeService.getLikesDownID(reviewLikeVo);
-            reviewLikeService.getLikesDown(reviewLikeVo);
-            return "fail";
-        }
-    }
-
-
-    *//** rstateForm.do - 신고하기 처리 **//*
-//	@RequestMapping(value="rstateProc.do", method=RequestMethod.POST)
-//	@ResponseBody
-//	public String rstateProc(String rid, @RequestParam("hid") String hid) {
-//	    int rstate_result = reviewService.reviewCheckResult(rid);
-//
-//	    if (rstate_result == 0) {
-//	    	reviewService.getUpdateReport(rid);
-//	    	return "success";
-//		} else if (rstate_result == 1) {
-//			return "fail";
-//		}
-//
-//	    return "";
-//	}
-
-
-    *//** rstateForm.do - 신고하기 처리 -> 신고테이블 처리 **//*
-    @RequestMapping(value="rstateProc.do", method=RequestMethod.POST)
-    @ResponseBody
-    public String rstateProc(ReviewReportVo reviewReportVo) {
-        // 중복 신고 체크 여부
-        int result = reviewReportService.getReiviewReportCheck(reviewReportVo);
-
-        if(result == 0) {
-            reviewReportService.getReviewReport(reviewReportVo);
-            return "success";
-        } else { // 중복신고
-            return "fail";
-        }
-
-    }
-
-
-
-    *//** search_map.do **//*
-    @RequestMapping(value="/search_map.do", method=RequestMethod.GET)
-    public String search_map() {
-        return "/search/search_map";
-    }
-
-
-    *//** search_main_map.do **//*
-    @RequestMapping(value="/search_main_map.do", method=RequestMethod.GET)
+    /** search_main_map **/
+    @GetMapping("search_main_map")
     public String search_main_map() {
-        return "/search/search_main_map";
+        return  "/search/search_main_map";
     }
 
 
+    /*
     *//** map_data.do **//*
     @RequestMapping(value="/map_data.do",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
     @ResponseBody
@@ -287,8 +240,6 @@ public class SearchController {
 
         return new Gson().toJson(jlist);
     }
-    */
-
-
+*/
 
 }

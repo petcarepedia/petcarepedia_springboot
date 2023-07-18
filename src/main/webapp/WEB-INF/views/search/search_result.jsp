@@ -9,15 +9,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+	<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 	<title>펫캐어피디아 | 검색 결과</title>
-	<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/search_result.css">
+	<link rel="stylesheet" href="http://localhost:9000/css/search_result.css">
 
-	<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="http://localhost:9000/petcarepedia/js/search_result.js"></script>
-	<script src="http://localhost:9000/petcarepedia/js/search_result_map.js"></script>
+	<script src="http://localhost:9000/js/search_result.js"></script>
+	<script src="http://localhost:9000/js/search_result_map.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 	
 	<script>
@@ -41,14 +41,14 @@
 				<div class="images_d">
 					<c:if test="${hospital.hsfile != null}">
 						<%-- <img src="${hospital.img}"> --%>
-						<img src="http://localhost:9000/petcarepedia/upload/${hospital.hsfile}">
+						<img src="http://localhost:9000/upload/${hospital.hsfile}">
 					</c:if>
 				</div>
 				
 				<!-- 병원 정보 표시 -->	
 				<div class="name_d">
 					<div class="area_d">
-						<a href="http://localhost:9000/petcarepedia/search_main.do">서울</a>
+						<a href="http://localhost:9000/search_main">서울</a>
 						<span>></span>
 						<a>${hospital.gloc}</a>
 					</div>
@@ -58,7 +58,7 @@
 
 					<div class="buttons">
 						<!-- 북마크 -->
-						<form name="bookmarkForm" action="bookmarkProc.do" method="post">
+						<form name="bookmarkForm" action="/bookmark" method="post">
 							<input type="hidden" name="hid" value="${hospital.hid}">
 							<input type="hidden" name="mid" value="${sessionScope.svo.mid}"> 
 							<input type="hidden" name="Bookmark Result" value="${bookmarkResult}">
@@ -68,14 +68,14 @@
 								<c:when test="${bookmarkResult == 1}">
 									<button type="submit" id="bookmark">
 										<img
-											src="http://localhost:9000/petcarepedia/images/bookmark_yellow.png">
+											src="http://localhost:9000/images/bookmark_yellow.png">
 									</button>
 								</c:when>
 								
 								<c:otherwise>
 									<button type="submit" id="bookmark">
 										<img
-											src="http://localhost:9000/petcarepedia/images/bookmark.png">
+											src="http://localhost:9000/images/bookmark.png">
 									</button>
 								</c:otherwise>
 							</c:choose>
@@ -95,7 +95,7 @@
 
 					<!-- 예약하기 -->
 					<button type="button" id="reservation" value="${hospital.hid}">
-						<img src="http://localhost:9000/petcarepedia/images/cal.png">
+						<img src="http://localhost:9000/images/cal.png">
 							간편 예약하기 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -104,16 +104,16 @@
 					
 					<!-- 공유하기 -->
 					<button id="share">
-						<img src="http://localhost:9000/petcarepedia/images/share.png" id="shareB">
+						<img src="http://localhost:9000/images/share.png" id="shareB">
 					</button>
 					
 					<div id="shareLink">
 							<button id="kakaoShare"> 
-								<img src="http://localhost:9000/petcarepedia/images/kakao.png" id="kakao">
+								<img src="http://localhost:9000/images/kakao.png" id="kakao">
 							</button>
 							
 							<button id="linkCopy">
-								<img src="http://localhost:9000/petcarepedia/images/copy.png" id="copy">
+								<img src="http://localhost:9000/images/copy.png" id="copy">
 							</button>
 					</div>
 					
@@ -132,15 +132,15 @@
 				<!-- 병원 상세 정보 -->
 				<div class="link">
 					<span><img
-						src="http://localhost:9000/petcarepedia/images/loc.png">${hospital.loc}</span>
+						src="http://localhost:9000/images/loc.png">${hospital.loc}</span>
 
 					<c:if test="${hospital.hrink != null && hospital.hrink != 'X'}">
-						<span><img src="http://localhost:9000/petcarepedia/images/home.png">
+						<span><img src="http://localhost:9000/images/home.png">
 							<a href="${hospital.hrink}">병원 홈페이지 가기</a>
 						</span>
 					</c:if>
 
-					<span><img src="http://localhost:9000/petcarepedia/images/call.png">${hospital.tel}</span>
+					<span><img src="http://localhost:9000/images/call.png">${hospital.tel}</span>
 				</div>
 
 				<hr>
@@ -231,7 +231,7 @@
 						</c:if>
 					</div>
 				</div>
-				<form name="filterForm" action="/petcarepedia/search_result.do" method="GET">
+				<form name="filterForm" action="/search_result" method="GET">
 					<input type="hidden" name="hid" value="${hospital.hid}">
 					<input type="hidden" id="filterCheck" value="${filter}">
 				    <select name="filter" id="filter" class="filter" onchange="this.form.submit()">
@@ -247,7 +247,7 @@
 				<c:choose>
 					<c:when test="${fn:length(RM_select) == 0}">
 						<div class="review_card_no">
-							<img id="review_img" src="http://localhost:9000/petcarepedia/images/review.png">
+							<img id="review_img" src="http://localhost:9000/images/review.png">
 							<p>등록된 리뷰가 아직 없습니다.</p>
 						</div>
 					</c:when>
@@ -258,7 +258,7 @@
 								<div class="member">
 									<div class="name">
 										<!-- if문으로 등록된 이미지 없을 시 해당 이미지로 출력되게 하기 -->
-										<img src="http://localhost:9000/petcarepedia/images/cat.png">
+										<img src="http://localhost:9000/images/cat.png">
 										<span>${RM_select.nickname}</span>
 									</div>
 
@@ -301,7 +301,7 @@
 									<span> </span>
 									
 									<!-- 좋아요 -->
-									<form name="likeForm" action="likeProc.do" method="post">
+									<form name="likeForm" action="/like" method="post">
 										<input type="hidden" name="hid" value="${hospital.hid}">
 										<input type=hidden name="rid" value="${RM_select.rid}">
 										<input type="hidden" name="mid" value="${sessionScope.svo.mid}">
@@ -386,7 +386,7 @@
 								</a> --%>
 								
 								<!-- 신고하기 -->
-								<form name="rstateForm" action="rstateProc.do" method="post">
+								<form name="rstateForm" action="/rstate" method="post">
 									<c:choose>
 									<c:when test="${sessionScope.svo.mid != RM_select.mid}">
 										<input type="hidden" name="mid" value="${sessionScope.svo.mid}">
