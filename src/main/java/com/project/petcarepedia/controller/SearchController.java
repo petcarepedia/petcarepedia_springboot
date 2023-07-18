@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.project.petcarepedia.dto.*;
 import com.project.petcarepedia.service.*;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -159,6 +160,28 @@ public class SearchController {
     }
 
 
+    /** like - 좋아요 처리 **/
+    @PostMapping("like")
+    @ResponseBody
+    public String likeProc(ReviewLikeDto reviewLikeDto, @RequestParam("hid") String hid) {
+        int like_result = reviewLikeService.idCheck(reviewLikeDto);
+        
+        if(like_result == 0) { //기록 없음
+            reviewLikeService.likesUpID(reviewLikeDto);
+            reviewLikeService.likesUp(reviewLikeDto);
+            
+            return "success";
+        } else if(like_result == 1) { //기록 있음
+            reviewLikeService.likesDownID(reviewLikeDto);
+            reviewLikeService.likesDown(reviewLikeDto);
+            
+            return "fail";
+        }
+        
+        return "error"; //오류
+    }
+
+
    /*
     @GetMapping("board_list/{page}")
     public String board_list(@PathVariable String page, Model model) {
@@ -170,25 +193,6 @@ public class SearchController {
         return "/board/board_list";
     }
     ---------------------------------------------------------------------------------------
-
-    *//** likeProc.do - 좋아요 처리 **//*
-    @RequestMapping(value="likeProc.do", method=RequestMethod.POST)
-    @ResponseBody
-    public String likeProc(ReviewLikeVo reviewLikeVo, @RequestParam("hid") String hid) {
-        int like_result = reviewLikeService.getIdCheck(reviewLikeVo);
-
-        if (like_result == 0) { // 기록 없음
-            reviewLikeService.getLikesUpID(reviewLikeVo);
-            reviewLikeService.getLikesUp(reviewLikeVo);
-            return "success";
-        } else { // 기록 있음
-            reviewLikeService.getLikesDownID(reviewLikeVo);
-            reviewLikeService.getLikesDown(reviewLikeVo);
-            return "fail";
-        }
-    }
-
-
     *//** rstateForm.do - 신고하기 처리 **//*
 //	@RequestMapping(value="rstateProc.do", method=RequestMethod.POST)
 //	@ResponseBody
