@@ -182,6 +182,25 @@ public class SearchController {
     }
 
 
+    /** rstate - 신고하기 처리 -> 신고테이블 처리 **/
+    @PostMapping("rstate")
+    @ResponseBody
+    public String rstateProc(ReviewReportDto reviewReportDto) {
+        //중복신고 체크
+        int result = reviewReportService.reviewReportCheck(reviewReportDto);
+
+        if(result == 0) { //신고 없음
+            reviewReportService.reviewReport(reviewReportDto);
+
+            return "success";
+        } else if (result == 1) { //신고 있음
+            return "fail";
+        }
+
+        return "error";
+    }
+
+
    /*
     @GetMapping("board_list/{page}")
     public String board_list(@PathVariable String page, Model model) {
@@ -193,40 +212,6 @@ public class SearchController {
         return "/board/board_list";
     }
     ---------------------------------------------------------------------------------------
-    *//** rstateForm.do - 신고하기 처리 **//*
-//	@RequestMapping(value="rstateProc.do", method=RequestMethod.POST)
-//	@ResponseBody
-//	public String rstateProc(String rid, @RequestParam("hid") String hid) {
-//	    int rstate_result = reviewService.reviewCheckResult(rid);
-//
-//	    if (rstate_result == 0) {
-//	    	reviewService.getUpdateReport(rid);
-//	    	return "success";
-//		} else if (rstate_result == 1) {
-//			return "fail";
-//		}
-//
-//	    return "";
-//	}
-
-
-    *//** rstateForm.do - 신고하기 처리 -> 신고테이블 처리 **//*
-    @RequestMapping(value="rstateProc.do", method=RequestMethod.POST)
-    @ResponseBody
-    public String rstateProc(ReviewReportVo reviewReportVo) {
-        // 중복 신고 체크 여부
-        int result = reviewReportService.getReiviewReportCheck(reviewReportVo);
-
-        if(result == 0) {
-            reviewReportService.getReviewReport(reviewReportVo);
-            return "success";
-        } else { // 중복신고
-            return "fail";
-        }
-
-    }
-
-
 
     *//** search_map.do **//*
     @RequestMapping(value="/search_map.do", method=RequestMethod.GET)
