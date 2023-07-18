@@ -1,11 +1,13 @@
 package com.project.petcarepedia.service;
 
 import com.project.petcarepedia.dto.BookingDto;
+import com.project.petcarepedia.dto.PageDto;
 import com.project.petcarepedia.repository.BookingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BookingService {
@@ -74,6 +76,15 @@ public class BookingService {
 
     public int Bselect(String bid) {
         return bookingMapper.Bselect(bid);
+    }
+
+    /*page_mapper*/
+    public List<BookingDto> Bslist(PageDto pageDto, String mid) {
+        return bookingMapper.Bslist(pageDto, mid);
+    }
+
+    public List<BookingDto> Blist(PageDto pageDto, String mid) {
+        return bookingMapper.Blist(pageDto, mid);
     }
 
 }
