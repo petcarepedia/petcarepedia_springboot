@@ -97,7 +97,7 @@
 	</select>
 
 	<!--page_mapper-->
-	<select id = "Bslist" parameterType="map" resultType="com.project.petcarepedia.dto.BookingDto">
+	<select id = "Bslist" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT RNO, HNAME, MID, VDATE, BSTATE, VTIME, BID, BDATE
 		FROM (
 				 SELECT ROWNUM RNO, HNAME, MID, to_char(BDATE, 'yyyy-mm-dd') VDATE, BSTATE, VTIME, BID, BDATE
