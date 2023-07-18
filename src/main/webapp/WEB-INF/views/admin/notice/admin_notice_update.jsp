@@ -20,23 +20,24 @@
 			<div id="title_l">
 				<h1 class="title">공지사항 수정</h1>
 			</div>
-			<form name="updateForm" action="admin_notice_update_proc.do" method="post">
-				<input type="hidden" name="nid" value="${noticeVo.nid }">
+			<form name="updateForm" action="admin_notice_update" method="post">
+				<input type="hidden" name="nid" value="${nvo.nid }">
+				<input type="hidden" name="page" value="${page }">
 				<table class="notice_content">
 					<tr>
 						<td>
-							<input type="text" name="title" id="title" value="${noticeVo.title }">
+							<input type="text" name="title" id="title" value="${nvo.title }">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<textarea name="ncontent" class="ncontent" id="ncontent">${noticeVo.ncontent }</textarea>
+							<textarea name="ncontent" class="ncontent" id="ncontent">${nvo.ncontent }</textarea>
 						</td>
 					</tr>						
 				</table>
 				<div class="nw_button_r">
 					<button type="button" class="ad_button" id="BTN_update">수정</button>
-					<a href="admin_notice_content.do?nid=${noticeVo.nid }"><button type="button" class="ad_button">취소</button></a>									
+					<a href="/admin_notice_content/${nvo.nid }/"><button type="button" class="ad_button">취소</button></a>
 				</div>
 			</form>
 		</section>

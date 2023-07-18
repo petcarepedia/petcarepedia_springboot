@@ -19,17 +19,17 @@
 			</div>
 			<table class="notice_content" id="nct">
 				<tr>
-					<td>${noticeVo.title }</td>
+					<td>${nvo.title }</td>
 				</tr>
 				<tr>
 					<td>
-						${noticeVo.ncontent }
+						${nvo.ncontent }
 					</td>
 				</tr>
 			</table>
-			<div id="date">${noticeVo.ndate }</div>
+			<div id="date">${nvo.ndate }</div>
 			<div class="nc_button_r">
-				<a href="notice.do"><button type="button" class="button">목록</button></a>
+				<a href="/notice/${page}/"><button type="button" class="button">목록</button></a>
 			</div>
 		</section>
 	</div>

@@ -16,10 +16,10 @@
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
 		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+		    maxSize: '${page.pageCount}',	    		// max page size
+		    totals: '${page.dbCount}',	// total pages
+		    page: '${page.reqPage}',		// initial page
+		    pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -32,7 +32,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/petcarepedia/admin_notice.do?page="+e.page);         
+	           $(location).attr('href', "http://localhost:9000/admin_notice/"+e.page+"/");
 	    });
 		
  	});
@@ -49,11 +49,11 @@
 						<nav>
 							<ul>
 								<li>공지사항 관리</li>
-								<li><a href = "admin_hospital_list.do">병원 관리</a></li>
-								<li><a href = "admin_member_list.do">회원 관리</a></li>
-								<li><a href = "admin_reserve_list.do">예약 관리</a></li>
-								<li><a href = "admin_review_list.do">신고 리뷰 관리</a></li>
-								<li><a href = "admin_notice.do">공지사항 관리</a></li>
+								<li><a href = "/admin_hospital_list">병원 관리</a></li>
+								<li><a href = "/admin_member_list">회원 관리</a></li>
+								<li><a href = "/admin_reserve_list">예약 관리</a></li>
+								<li><a href = "/admin_review_list">신고 리뷰 관리</a></li>
+								<li><a href = "/admin_notice">공지사항 관리</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -66,7 +66,7 @@
 				<table class="table" id=ad_nt_list>
 					<tr>
 						<td colspan="5" >
-							<button type="button" class="button"><a href="admin_notice_write.do">등록</a></button>
+							<button type="button" class="button"><a href="/admin_notice_write">등록</a></button>
 						</td>
 					</tr>
 					<tr>
@@ -78,7 +78,7 @@
 					<c:forEach var="list" items="${list }">
 						<tr>
 							<td>${list.rno }</td>
-							<td><a href="admin_notice_content.do?nid=${list.nid }">${list.title }</a></td>
+							<td><a href="/admin_notice_content/${list.nid }/${page.reqPage}/">${list.title }</a></td>
 							<td>${list.ndate }</td>
 							<td>${list.nhits }</td>
 						</tr>

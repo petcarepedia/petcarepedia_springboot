@@ -20,7 +20,7 @@
 			<div id="title_l">
 				<h1 class="title">공지사항 등록</h1>
 			</div>
-			<form name="writeForm" action="admin_notice_write_proc.do"  method="post">
+			<form name="writeForm" action="admin_notice_write"  method="post">
 				<table class="notice_content">
 					<tr>
 						<td>
@@ -35,7 +35,7 @@
 				</table>
 					<div class="nw_button_r">
 						<button type="button" class="ad_button" id="btnNTW">등록</button>
-						<a href="admin_notice.do"><button type="button" class="ad_button">취소</button></a>
+						<a href="/admin_notice/1/"><button type="button" class="ad_button">취소</button></a>
 					</div>
 			</form>
 		</section>

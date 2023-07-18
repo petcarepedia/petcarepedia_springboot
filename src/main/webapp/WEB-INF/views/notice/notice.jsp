@@ -14,11 +14,11 @@
 <script>
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+
+			maxSize: '${page.pageCount}',	    		// max page size
+			totals: '${page.dbCount}',	// total pages
+			page: '${page.reqPage}',		// initial page
+			pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -31,7 +31,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/petcarepedia/notice.do?page="+e.page);         
+	           $(location).attr('href', "http://localhost:9000/petcarepedia/notice/"+e.page+"/");
 	    });
 		
  	});
@@ -56,7 +56,7 @@
 				<c:forEach var="list" items="${list }">
 					<tr>
 						<td>${list.rno }</td>
-						<td><a href="notice_content.do?nid=${list.nid }">${list.title }</a></td>
+						<td><a href="notice_content/${list.nid }/${page}/">${list.title }</a></td>
 						<td>${list.ndate }</td>
 						<td>${list.nhits }</td>
 					</tr>
