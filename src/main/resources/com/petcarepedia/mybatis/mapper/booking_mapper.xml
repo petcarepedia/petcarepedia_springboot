@@ -6,18 +6,18 @@
     
 <mapper namespace="com.project.petcarepedia.repository.BookingMapper">
 
-	<insert id="insert" parameterType="com.project.vo.BookingVo">
+	<insert id="insert" parameterType="com.project.petcarepedia.dto.BookingDto">
 		INSERT INTO PCP_BOOKING(bid, bdate, vdate, vtime, bstate, mid, hid)
 		values ('B_'||LTRIM(to_char(SEQU_PCP_BOOKING_BID.nextVal, '0000')), sysdate, #{vdate}, #{vtime}, '예약중', #{mid}, #{hid})
 	</insert>
 
-	<select id="checkBooking" parameterType="com.project.vo.BookingVo" resultType="int">
+	<select id="checkBooking" parameterType="com.project.petcarepedia.dto.BookingDto" resultType="int">
 		SELECT COUNT(*)
 		FROM PCP_BOOKING
 		WHERE MID=#{mid} AND HID=#{hid} AND VDATE=#{vdate} AND VTIME=#{vtime}
 	</select>
 
-	<select id="select" resultType="com.project.vo.BookingVo">
+	<select id="select" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT ROWNUM RNO, BID, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE, VDATE, VTIME, BSTATE, MID, HNAME
 		FROM (SELECT B.BID, B.BDATE, B.VDATE, B.VTIME, B.BSTATE, B.MID, H.HNAME
 			  FROM PCP_BOOKING B, PCP_HOSPITAL H
@@ -25,20 +25,20 @@
 			  ORDER BY B.BID DESC);
 	</select>
 
-	<select id="select2" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="select2" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		select BID, VDATE, VTIME, B.MID, B.HID, H.HNAME, H.TEL, H.IMG
 		FROM PCP_BOOKING B, PCP_HOSPITAL H
 		WHERE B.HID = H.HID AND B.bid = #{bid}
 	</select>
 
-	<select id="search" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="search" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT B.BID, B.BDATE, B.VDATE, B.VTIME, B.BSTATE, B.MID, B.HID, H.HNAME, H.LOC, H.GLOC, H.TEL
 		FROM PCP_BOOKING B, PCP_HOSPITAL H
 		WHERE B.HID = H.HID
 		  AND B.MID =#{mid}
 	</select>
 
-	<select id="search1" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="search1" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		select bid, bdate, vdate, vtime, bstate, mid, hid, hname, loc, gloc, tel, hrink, img, HSFILE
 		from(select b.bid bid, b.bdate bdate, b.vdate vdate, b.vtime vtime, b.bstate bstate, b.mid mid, b.hid hid, h.hname hname,H.HSFILE HSFILE,
 					h.loc loc, h.gloc gloc, h.tel tel, h.hrink hrink, h.img img
@@ -49,7 +49,7 @@
 			and to_char(sysdate,'hh24:mi') > vtime) order by bid desc
 	</select>
 
-	<select id="search2" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="search2" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT BID, BDATE, VDATE, VTIME, BSTATE, MID, HID, HNAME, LOC, GLOC, TEL,HRINK, IMG, HSFILE
 		FROM (SELECT BID, BDATE, VDATE, VTIME, BSTATE, B.MID MID, B.HID HID, H.HNAME HNAME, H.LOC LOC, H.GLOC GLOC, H.TEL TEL, H.HRINK HRINK, H.IMG IMG, H.HSFILE HSFILE
 			  FROM PCP_BOOKING B, PCP_HOSPITAL H
@@ -57,7 +57,7 @@
 		WHERE VTIME >= TO_CHAR(SYSDATE,'HH24:MI') order by bid desc
 	</select>
 
-	<select id="search3" parameterType="String" resultType="com.project.vo.BookingReviewVo">
+	<select id="search3" parameterType="String" resultType="com.project.petcarepedia.dto.BookingReviewDto">
 		select bid, bdate, vdate, vtime, bstate, mid, hid, hname, loc, gloc, tel, hrink, img, rid, HSFILE
 		from(select b.bid bid, b.bdate bdate, b.vdate vdate, b.vtime vtime, b.bstate bstate, b.mid mid, b.hid hid, h.hname hname,H.HSFILE HSFILE,
 					h.loc loc, h.gloc gloc, h.tel tel, h.hrink hrink, h.img img, r.rid rid
@@ -66,37 +66,63 @@
 		order by bid desc
 	</select>
 
-	<select id="search4" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="search4" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT BID, BDATE, VDATE, VTIME, BSTATE, MID, HID, HNAME, LOC, GLOC, TEL,HRINK, IMG, HSFILE
 		FROM (SELECT BID, BDATE, VDATE, VTIME, BSTATE, B.MID MID, B.HID HID, H.HNAME HNAME, H.LOC LOC, H.GLOC GLOC, H.TEL TEL, H.HRINK HRINK, H.IMG IMG, H.HSFILE HSFILE
 			  FROM PCP_BOOKING B, PCP_HOSPITAL H
 			  WHERE B.HID = H.HID AND B.MID = #{mid} AND VDATE > TO_CHAR(SYSDATE,'YYYY-MM-DD')) order by bid desc
 	</select>
 
-	<select id="search5" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="search5" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		select bid, hname, b.mid mid, to_char(BDATE, 'yyyy-mm-dd') VDATE, bstate
 		from  pcp_booking b, pcp_hospital h
 		where b.hid = h.hid and b.mid like '%'|| #{mid} ||'%'
 	</select>
 
-	<select id="reviewCheck" parameterType="map" resultType="com.project.vo.BookingVo">
+	<select id="reviewCheck" parameterType="map" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT COUNT(*) COUNT, MID, BID, HID
 		FROM PCP_BOOKING WHERE HID=#{hid} AND MID=#{mid}
 		GROUP BY MID, BID, HID
 	</select>
 
-	<select id="selectTime" resultType="com.project.vo.BookingVo">
+	<select id="selectTime" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT HID, HNAME, SUBSTR(HTIME, 0, 5) AS "START", SUBSTR(HTIME, 7, 6) AS "END"
 		FROM PCP_HOSPITAL ORDER BY HID
 	</select>
 
-	<select id="selectTime2" parameterType="String" resultType="com.project.vo.BookingVo">
+	<select id="selectTime2" parameterType="String" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT HID, HNAME, SUBSTR(HTIME, 1, 5) AS "START", SUBSTR(HTIME, 7, 6) AS "END"
 		FROM PCP_HOSPITAL
 		WHERE HID=#{hid}
 	</select>
 
-	<update id="update" parameterType="com.project.vo.BookingVo">
+	<!--page_mapper-->
+	<select id = "Bslist" parameterType="map" resultType="com.project.petcarepedia.dto.BookingDto">
+		SELECT RNO, HNAME, MID, VDATE, BSTATE, VTIME, BID, BDATE
+		FROM (
+				 SELECT ROWNUM RNO, HNAME, MID, to_char(BDATE, 'yyyy-mm-dd') VDATE, BSTATE, VTIME, BID, BDATE
+				 FROM (
+						  SELECT H.HNAME, M.MID, VDATE, B.BSTATE, VTIME, BID, BDATE
+						  FROM PCP_BOOKING B
+								   JOIN PCP_HOSPITAL H ON B.HID = H.HID
+								   JOIN PCP_MEMBER M ON M.MID = B.MID
+						  WHERE M.MID LIKE '%' || #{mid} || '%'
+						  ORDER BY BDATE DESC
+					  )
+			 )
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id = "Blist" parameterType="map" resultType="com.project.petcarepedia.dto.BookingDto">
+		SELECT RNO, HNAME, MID, VDATE,  BSTATE, VTIME, BID, BDATE
+		FROM (SELECT ROWNUM RNO, HNAME,  MID,   to_char(BDATE, 'yyyy-mm-dd') VDATE ,BSTATE, VTIME,  BID, BDATE
+			  FROM (SELECT H.HNAME, M.MID ,  VDATE ,B.BSTATE,VTIME , BID, BDATE
+					FROM PCP_BOOKING B, PCP_HOSPITAL H,  PCP_MEMBER M where b.hid = h.hid AND M.MID = B.MID ORDER BY BDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	<!--page_mapper-->
+
+	<update id="update" parameterType="com.project.petcarepedia.dto.BookingDto">
 		UPDATE PCP_BOOKING SET VDATE=#{vdate}, VTIME=#{vtime}, BSTATE=#{bstate} WHERE BID=#{bid}
 	</update>
 
@@ -107,43 +133,5 @@
 	<update id="Bselect" parameterType="String">
 		update pcp_booking set bstate = '예약 완료' where bid=#{bid}
 	</update>
-
-
-
-
-
-
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-
 
 </mapper>

@@ -1,9 +1,11 @@
 package com.project.petcarepedia.repository;
 
 import com.project.petcarepedia.dto.BookingDto;
+import com.project.petcarepedia.dto.PageDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Mapper
 public interface BookingMapper {
@@ -23,5 +25,9 @@ public interface BookingMapper {
     int update(BookingDto bookingDto);
     int delete(String bid);
     int Bselect(String bid);
+
+    /*page_mapper*/
+    List<BookingDto> Bslist(PageDto pageDto, String mid);
+    List<BookingDto> Blist(PageDto pageDto, String mid);
 
 }

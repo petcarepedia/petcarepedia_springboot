@@ -1,44 +1,53 @@
 package com.project.petcarepedia.controller;
 
-import com.project.petcarepedia.service.BookingService;
+import com.project.petcarepedia.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class SearchController {
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private BookmarkService bookmarkService;
+    @Autowired
+    private HospitalService hospitalService;
+    @Autowired
+    private ReviewLikeService reviewLikeService;
+    @Autowired
+    private ReviewReportService reviewReportService;
+    @Autowired
+    private ReviewService reviewService;
+
+
+    /** search_main.do - 병원 리스트 출력하기 **/
+    @GetMapping("search_main")
+    public String search_main(Model model) {
+        model.addAttribute("list", hospitalService.select());
+
+        return "/search/search_main";
+    }
+
+
 
 
 
 
    /*
 
-    @Autowired
-    private HospitalService hospitalService;
-    @Autowired
-    private ReviewService reviewService;
-    @Autowired
-    private ReviewLikeService reviewLikeService;
-    @Autowired
-    private BookmarkService bookmarkService;
-    @Autowired
-    private ReviewReportService reviewReportService;
 
+    @GetMapping("board_list/{page}")
+    public String board_list(@PathVariable String page, Model model) {
+        PageDto pageDto = pageService.getPageResult(new PageDto(page, "board"));
 
+        model.addAttribute("list", boardService.list(pageDto));
+        model.addAttribute("page", pageDto);
 
-    *//** search_main.do - 병원 리스트 출력하기 **//*
-    @RequestMapping(value="/search_main.do", method= RequestMethod.GET)
-    public ModelAndView search_main() {
-        ModelAndView model = new ModelAndView();
-
-        ArrayList<HospitalVo> list = hospitalService.select();
-
-        model.addObject("list", list);
-        model.setViewName("/search/search_main");
-
-        return model;
+        return "/board/board_list";
     }
+
 
 
     *//** searchAreaProc.do - 지역구 병원 리스트 출력하기 **//*
