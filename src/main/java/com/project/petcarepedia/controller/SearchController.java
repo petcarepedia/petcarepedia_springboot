@@ -47,7 +47,7 @@ public class SearchController {
 
         return "/board/board_list";
     }
-
+    ---------------------------------------------------------------------------------------
 
 
     *//** searchAreaProc.do - 지역구 병원 리스트 출력하기 **//*
