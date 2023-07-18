@@ -21,7 +21,7 @@
 		<section id = "review_write">
 			<h1 id = "title">리뷰쓰기</h1>
 			<hr>
-			<form name="writeForm" action="review_write_proc.do" method="post" enctype="multipart/form-data">
+			<form name="writeForm" action="review_write" method="post" enctype="multipart/form-data">
 			<input type = "hidden" name = "mid" value = "${sessionScope.svo.mid}">
 			<input type = "hidden" name = "hid" value = "${hid}">
 			<input type = "hidden" name = "bid" value = "${bid}">
@@ -30,11 +30,11 @@
 						<nav>
 							<ul>
 								<li>마이페이지</li>
-								<li><a href = "mypage_member_information.do">회원 정보</a></li>
-								<li><a href = "mypage_reservation.do">예약 내역</a></li>
-								<li><a href = "mypage_my_review.do">내가 쓴 리뷰</a></li>
-								<li><a href = "mypage_bookmark.do?mid=${sessionScope.svo.mid}">즐겨찾기</a></li>
-								<li><a href = "mypage_signout.do?mid=${sessionScope.svo.mid}">회원 탈퇴</a></li>
+								<li><a href = "/mypage_member_information">회원 정보</a></li>
+								<li><a href = "/mypage_reservation">예약 내역</a></li>
+								<li><a href = "/mypage_my_review">내가 쓴 리뷰</a></li>
+								<li><a href = "/mypage_bookmark">즐겨찾기</a></li>
+								<li><a href = "/mypage_signout">회원 탈퇴</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -42,7 +42,7 @@
 				<div id = "aside">
 					<section>
 						<img src = "http://localhost:9000/petcarepedia/images/cat.png">
-						<span>${memberVo.nickname}</span>
+						<span>${member.nickname}</span>
 						<span>의사의 진료는 어떠셨나요?</span>
 						<span>별점을 선택해주세요</span>
 						<!-- <img src = "http://localhost:9000/petcarepedia//images/star.png">
@@ -83,7 +83,7 @@
 								<input class="upload-name" value="파일 없음" disabled="disabled">
 								<input type="file" name="files" id="file2" class="upload-hidden" accept = "image/*"> 
 						</div>
-					<a href = "mypage_reservation2.do">
+					<a href = "/mypage_reservation2">
 						<button type = "button" id = "cancle">취소</button>
 					</a>
 					<button type = "button" id = "btnReviewWrite">작성완료</button>

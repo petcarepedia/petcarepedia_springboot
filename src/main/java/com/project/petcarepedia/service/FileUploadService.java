@@ -1,6 +1,9 @@
 package com.project.petcarepedia.service;
 
+import com.project.petcarepedia.dto.MemberDto;
+import com.project.petcarepedia.dto.ReviewDto;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
 import java.util.UUID;
@@ -13,16 +16,15 @@ public class FileUploadService {
     /*
      * multiFileDelete - �뵳�됰윮 占쎄텣占쎌젫占쎈뻻 占쎈솁占쎌뵬 占쎄텣占쎌젫
      */
-    public void multiFileDelete(HttpServletRequest request, String[] oldFileName) throws Exception{
+    public void multiFileDelete(String[] oldFileName) throws Exception{
         //占쎈솁占쎌뵬占쎌벥 占쎄텣占쎌젫占쎌맄燁삼옙
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
 
         int count = 0;
         for(String list : oldFileName) {
             if(!list.equals("")) {
-                File deleteFile = new File(root_path + attach_path+ oldFileName[count]);
-                System.out.println(root_path + attach_path+ oldFileName[count]);
+                File deleteFile = new File(root_path +  oldFileName[count]);
+                System.out.println(root_path +  oldFileName[count]);
                 if(deleteFile.exists()) {
                     deleteFile.delete();
                 }
@@ -34,16 +36,15 @@ public class FileUploadService {
     /*
      * multiFileDelete - �뵳�됰윮 占쎈땾占쎌젟占쎈뻻 占쎄텣占쎌젫
      */
-    public void multiFileDelete(ReviewVo reviewVo, HttpServletRequest request, String[] oldFileName) throws Exception{
+    public void multiFileDelete(ReviewDto reviewDto, String[] oldFileName) throws Exception{
         //占쎈솁占쎌뵬占쎌벥 占쎄텣占쎌젫占쎌맄燁삼옙
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
 
         int count = 0;
-        for(CommonsMultipartFile file : reviewVo.getFiles()) {
+        for(CommonsMultipartFile file : reviewDto.getFiles()) {
             if(!file.getOriginalFilename().equals("")) { //占쎄퉱嚥≪뮇�뒲 占쎈솁占쎌뵬 占쎄퐨占쎄문
-                File deleteFile = new File(root_path + attach_path+ oldFileName[count]);
-                System.out.println(root_path + attach_path+ oldFileName[count]);
+                File deleteFile = new File(root_path +  oldFileName[count]);
+                System.out.println(root_path + oldFileName[count]);
                 if(deleteFile.exists()) {
                     deleteFile.delete();
                 }
@@ -55,17 +56,15 @@ public class FileUploadService {
     /*
      * multiFileSave - �뵳�됰윮 占쏙옙占쎌삢
      */
-    public void multiFileSave(ReviewVo reviewVo, HttpServletRequest request) throws Exception {
+    public void multiFileSave(ReviewDto reviewDto) throws Exception {
 
         //占쎈솁占쎌뵬占쎌벥 占쏙옙占쎌삢占쎌맄燁삼옙
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
         int count = 0;
-        System.out.println(root_path + attach_path);
-        for(CommonsMultipartFile file : reviewVo.getFiles()) {
+        for(CommonsMultipartFile file : reviewDto.getFiles()) {
             //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙 占쎄퐣甕곌쑴肉� 占쏙옙占쎌삢
             if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
-                File saveFile = new File(root_path + attach_path+ reviewVo.getRsfiles().get(count));
+                File saveFile = new File(root_path +  reviewDto.getRsfiles().get(count));
                 file.transferTo(saveFile);
             }
             count++;
@@ -74,31 +73,31 @@ public class FileUploadService {
     /*
      * multiFileCheck - 占쎈솁占쎌뵬 筌ｋ똾寃�
      */
-    public ReviewVo multiFileCheck(ReviewVo reviewVo) {
-        String[] nfile = {reviewVo.getRfile1(), reviewVo.getRfile2()};
-        String[] nsfile = {reviewVo.getRsfile1(), reviewVo.getRsfile2()};
+    public ReviewDto multiFileCheck(ReviewDto reviewDto) {
+        String[] nfile = {reviewDto.getRfile1(), reviewDto.getRfile2()};
+        String[] nsfile = {reviewDto.getRsfile1(), reviewDto.getRsfile2()};
         int count = 0;
-        for(CommonsMultipartFile file : reviewVo.getFiles()) {
+        for(CommonsMultipartFile file : reviewDto.getFiles()) {
             if(!file.getOriginalFilename().equals("")) {
                 //占쎈솁占쎌뵬占쎌뵠 占쎌뿳占쎌벉
                 UUID uuid = UUID.randomUUID();
-                reviewVo.getRfiles().add(file.getOriginalFilename());
-                reviewVo.getRsfiles().add(uuid+"_"+file.getOriginalFilename());
+                reviewDto.getRfiles().add(file.getOriginalFilename());
+                reviewDto.getRsfiles().add(uuid+"_"+file.getOriginalFilename());
             }
             else {
                 //占쎈솁占쎌뵬占쎌뵠 占쎈씨占쎌벉
-                reviewVo.getRfiles().add(nfile[count]);
-                reviewVo.getRsfiles().add(nsfile[count]);
+                reviewDto.getRfiles().add(nfile[count]);
+                reviewDto.getRsfiles().add(nsfile[count]);
             }
             count++;
         }
-        reviewVo.setRfile1(reviewVo.getRfiles().get(0));
-        reviewVo.setRsfile1(reviewVo.getRsfiles().get(0));
-        reviewVo.setRfile2(reviewVo.getRfiles().get(1));
-        reviewVo.setRsfile2(reviewVo.getRsfiles().get(1));
+        reviewDto.setRfile1(reviewDto.getRfiles().get(0));
+        reviewDto.setRsfile1(reviewDto.getRsfiles().get(0));
+        reviewDto.setRfile2(reviewDto.getRfiles().get(1));
+        reviewDto.setRsfile2(reviewDto.getRsfiles().get(1));
 
 
-        return reviewVo;
+        return reviewDto;
     }
 
 

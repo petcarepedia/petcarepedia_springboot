@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>펫캐어피디아 | 내가 쓴 리뷰</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/mypage.css">
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_yeol.js"></script>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/am-pagination.css">
-<script src="http://localhost:9000/petcarepedia/js/am-pagination.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/mypage.css">
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_yeol.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/am-pagination.css">
+<script src="http://localhost:9000/js/am-pagination.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 <script>
@@ -21,11 +21,11 @@
 		var page = "${page}";
 		
 		var pager = jQuery('#ampaginationsm').pagination({
-		
-			 maxSize: '${maxSize}',	    		// max page size
-			    totals: '${totals}',	// total pages	
-			    page: '${page}',		// initial page		
-			    pageSize: '${pageSize}',			// max number items per page
+
+			maxSize: '${page.pageCount}',	    		// max page size
+			totals: '${page.dbCount}',	// total pages
+			page: '${page.reqPage}',		// initial page
+			pageSize: '${page.pageSize}',			// max number items per page
 			
 			    // custom labels		
 			    lastText: '&raquo;&raquo;', 		
@@ -38,13 +38,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			   if(mid!=null && mid!=""){
-				   $(location).attr('href', "http://localhost:9000/petcarepedia/mypage_my_review.do?page="+e.page+"&mid="+mid);
-			   } else {
-				   $(location).attr('href', "http://localhost:9000/petcarepedia/mypage_my_review.do?page="+e.page);
-			   }  
-	           
-	           
+				   $(location).attr('href', "http://localhost:9000/mypage_my_review/"+e.page + "/");
 	    });
 		
  	});
@@ -61,11 +55,11 @@
 					<nav>
 						<ul>
 							<li>마이페이지</li>
-							<li><a href = "mypage_member_information.do">회원 정보</a></li>
-							<li><a href = "mypage_reservation.do">예약 내역</a></li>
-							<li><a href = "mypage_my_review.do">내가 쓴 리뷰</a></li>
-							<li><a href = "mypage_bookmark.do">즐겨찾기</a></li>
-							<li><a href = "mypage_signout.do">회원 탈퇴</a></li>
+							<li><a href = "/mypage_member_information">회원 정보</a></li>
+							<li><a href = "/mypage_reservation">예약 내역</a></li>
+							<li><a href = "/mypage_my_review">내가 쓴 리뷰</a></li>
+							<li><a href = "/mypage_bookmark">즐겨찾기</a></li>
+							<li><a href = "/mypage_signout">회원 탈퇴</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -76,41 +70,41 @@
 						<c:when test = "${list.size() == 0}">
 							<div class="review_card_no">
 								<img id="review_img"
-									src="http://localhost:9000/petcarepedia/images/review.png">
+									src="http://localhost:9000/images/review.png">
 								<span>작성된 리뷰가 존재하지 않습니다.</span>
 							</div>
 						</c:when>
 						<c:otherwise>
-							<c:forEach var = "reviewVo" items = "${list}">
+							<c:forEach var = "review" items = "${list}">
 								<div id = "aside1">
-									<a href = "http://localhost:9000/petcarepedia/search_result.do?hid=${reviewVo.hid}">
-										<span>${reviewVo.hname}</span>
+									<a href = "http://localhost:9000/search_result/${review.hid}">
+										<span>${review.hname}</span>
 									</a>
-									<span>${reviewVo.tel}</span>
+									<span>${review.tel}</span>
 									<span>
-										<span>${reviewVo.gloc}</span>
+										<span>${review.gloc}</span>
 									</span>
-									<img src = "http://localhost:9000/petcarepedia/images/cat.png">
-									<span>${reviewVo.nickname}</span>
+									<img src = "http://localhost:9000/images/cat.png">
+									<span>${review.nickname}</span>
 								</div>
 								<div id = "aside2">
 									<c:choose>
-										<c:when test="${reviewVo.rsfile1 != null || reviewVo.rsfile2 != null }">
-											<a href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" alt=""></a>
-											<a style="display:none;" href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" alt=""></a>
+										<c:when test="${review.rsfile1 != null || review.rsfile2 != null }">
+											<a href="http://localhost:9000/upload/${review.rsfile1}" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/upload/${review.rsfile1 }" alt=""></a>
+											<a style="display:none;" href="http://localhost:9000/upload/${review.rsfile2}" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/upload/${review.rsfile2 }" alt=""></a>
 										</c:when>
 										<c:otherwise>
-											<img src = "http://localhost:9000/petcarepedia/images/${reviewVo.hsfile}">
+											<img src = "http://localhost:9000/images/${review.hsfile}">
 										</c:otherwise>
 									</c:choose>
 								</div>
 								<div id = "aside3">
 									<span>리뷰 내용</span>
-									<span> ${reviewVo.rcontent}</span>
+									<span> ${review.rcontent}</span>
 									<span><!-- 진료 일자 : 2023-04-26 --></span>
 								</div>
 								<div id = "aside4">
-									<a href = "mypage_review_content.do?rid=${reviewVo.rid}">
+									<a href = "mypage_review_content/${review.rid}">
 										<button type = "button" id = "btnReview_content">상세보기</button>
 									</a>
 								</div>

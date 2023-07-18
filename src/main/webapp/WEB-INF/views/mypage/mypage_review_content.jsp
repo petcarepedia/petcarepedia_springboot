@@ -28,20 +28,20 @@
 					<tr>
 						<th>병원이름</th>
 						<td>
-							${reviewVo.hname}
+							${review.hname}
 						</td>
 					</tr>
 					<tr>
 						<th>작성자</th>
 						<td>
 							<img src="http://localhost:9000/petcarepedia/images/cat.png">
-							<span>${reviewVo.nickname}</span>
+							<span>${review.nickname}</span>
 						</td>
 					</tr>
 					<tr>
 						<th>상세내용</th>
 						<td colspan='3'>
-							${reviewVo.rcontent }
+							${review.rcontent }
 						</td>
 					</tr>
 				</table>
@@ -53,31 +53,31 @@
 						평점
 					</div>
 					<div id="avg" class="score">
-						⭐ ${reviewVo.rstar} / 5.0
+						⭐ ${review.rstar} / 5.0
 					</div>
 				</div>
 				<div id="imgArea">
-						<c:if test="${reviewVo.rsfile1 != null && reviewVo.rsfile1 != ''}">
-							<a href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" alt=""></a>
+						<c:if test="${review.rsfile1 != null && review.rsfile1 != ''}">
+							<a href="http://localhost:9000/petcarepedia/upload/${review.rsfile1 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${review.rsfile1 }" alt=""></a>
 						</c:if>
-						<c:if test="${reviewVo.rsfile2 != null && reviewVo.rsfile2 != ''}">
-							<a href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" alt=""></a>
+						<c:if test="${review.rsfile2 != null && review.rsfile2 != ''}">
+							<a href="http://localhost:9000/petcarepedia/upload/${review.rsfile2 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${review.rsfile2 }" alt=""></a>
 						</c:if>
 					</div>
 				<table class = "rdate" id = "rdate">
 					<tr>
 						<td>작성일자</td>
-						<td>${reviewVo.rdate }</td>
+						<td>${review.rdate }</td>
 					</tr>
 				</table>
 				<div class="rc_button_r" id = "rc_button_r">
-					<a href = "mypage_review_revise.do?rid=${reviewVo.rid}">
+					<a href = "mypage_review_revise/${review.rid}">
 						<button type = "button" id = "btnReview_revise">수정하기</button>
 					</a>
-					<a href = "mypage_review_delete.do?rid=${reviewVo.rid}">
+					<a href = "mypage_review_delete/${review.rid}">
 						<button type = "button" id = "btnReview_delete">삭제하기</button>
 					</a>
-					<a href = "mypage_my_review.do">
+					<a href = "/mypage_my_review">
 						<button type = "button" id = "cancle">리뷰목록</button>
 					</a>
 				</div>

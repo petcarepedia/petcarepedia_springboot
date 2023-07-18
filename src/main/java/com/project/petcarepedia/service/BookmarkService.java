@@ -5,6 +5,8 @@ import com.project.petcarepedia.repository.BookmarkMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class BookmarkService {
     @Autowired
@@ -18,7 +20,7 @@ public class BookmarkService {
         return bookmarkMapper.delete(bmid);
     }
 
-    public BookmarkDto select(String mid) {
+    public ArrayList<BookmarkDto> select(String mid) {
         return bookmarkMapper.select(mid);
     }
 
