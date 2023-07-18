@@ -1,5 +1,6 @@
 package com.project.petcarepedia.service;
 
+import com.project.petcarepedia.dto.HospitalDto;
 import com.project.petcarepedia.dto.MemberDto;
 import com.project.petcarepedia.dto.ReviewDto;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class FileUploadService {
      */
     public void multiFileDelete(String[] oldFileName) throws Exception{
         //占쎈솁占쎌뵬占쎌벥 占쎄텣占쎌젫占쎌맄燁삼옙
-        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
         int count = 0;
         for(String list : oldFileName) {
@@ -38,7 +39,7 @@ public class FileUploadService {
      */
     public void multiFileDelete(ReviewDto reviewDto, String[] oldFileName) throws Exception{
         //占쎈솁占쎌뵬占쎌벥 占쎄텣占쎌젫占쎌맄燁삼옙
-        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
         int count = 0;
         for(CommonsMultipartFile file : reviewDto.getFiles()) {
@@ -59,7 +60,7 @@ public class FileUploadService {
     public void multiFileSave(ReviewDto reviewDto) throws Exception {
 
         //占쎈솁占쎌뵬占쎌벥 占쏙옙占쎌삢占쎌맄燁삼옙
-        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
         int count = 0;
         for(CommonsMultipartFile file : reviewDto.getFiles()) {
             //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙 占쎄퐣甕곌쑴肉� 占쏙옙占쎌삢
@@ -107,17 +108,16 @@ public class FileUploadService {
 ///////////////////////////////////Hospital/////////////////////////////////////////////////////
 
     /**
-     * fileDelete- 占쎈솁占쎌뵬 占쎄텣占쎌젫 疫꿸퀡�뮟
+     * fileDelete- 파일 삭제
      */
-    public void fileDelete(HttpServletRequest request, String oldFileName)
+    public void fileDelete(String oldFileName)
             throws Exception{
 
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
         //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙 占쎄퐣甕곌쑴肉� 占쏙옙占쎌삢
         if(oldFileName != null && !oldFileName.equals("")) {
-            File deleteFile = new File(root_path + attach_path+ oldFileName);
+            File deleteFile = new File(root_path + oldFileName);
 
             if(deleteFile.exists()) {
                 deleteFile.delete();
@@ -126,19 +126,18 @@ public class FileUploadService {
     }
 
     /**
-     * fileDelete-  占쎈땾占쎌젟占쎈막 占쎈르 疫꿸퀣�� 占쎈솁占쎌뵬 占쎄텣占쎌젫 疫꿸퀡�뮟
+     * fileDelete - 파일 수정 시 삭제
      */
-    public void fileDelete2(HospitalVo hospitalVo, HttpServletRequest request, String oldFileName)
+    public void fileDelete2(HospitalDto hospitalDto, String oldFileName)
             throws Exception{
 
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
         //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙 占쎄퐣甕곌쑴肉� 占쏙옙占쎌삢
-        if(!hospitalVo.getFile1().getOriginalFilename().equals("")) {
-            File deleteFile = new File(root_path + attach_path+ oldFileName);
-            //boardVo.getFile1().transferTo(deleteFile); //upload 占쎈쨨占쎈쐭    ->  JVM�⑨옙 占쎈솁占쎌뵬占쎌뵠 占쎈염野껉퀡由븝옙�뮉 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈염野껉퀬鍮먧빳占쏙옙�뼄. 占쎈염野껉퀬鍮먧틠�눖�뮉 揶쏆빘猿� deleteFile
-            System.out.println(root_path + attach_path+ oldFileName);
+        if(!hospitalDto.getFile1().getOriginalFilename().equals("")) {
+            File deleteFile = new File(root_path + oldFileName);
+            //boardVo.getFile1().transferTo(deleteFile);
+            //System.out.println(root_path +oldFileName);
             if(deleteFile.exists()) {
                 deleteFile.delete();
             }
@@ -146,42 +145,41 @@ public class FileUploadService {
     }
 
     /**
-     * fileSave 疫꿸퀡�뮟
+     * fileSave - 파일 저장
      */
-    public void fileSave(HospitalVo hospitalVo, HttpServletRequest request) throws Exception{
+    public void fileSave(HospitalDto hospitalDto) throws Exception{
 
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
         //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙 占쎄퐣甕곌쑴肉� 占쏙옙占쎌삢
-        if(hospitalVo.getHfile() != null && !hospitalVo.getHfile().equals("")) {
+        if(hospitalDto.getHfile() != null && !hospitalDto.getHfile().equals("")) {
             //System.out.println("save file--->" + hospitalVo.getHfile());
-            File saveFile = new File(root_path + attach_path+ hospitalVo.getHsfile());
+            File saveFile = new File(root_path+ hospitalDto.getHsfile());
 
-            hospitalVo.getFile1().transferTo(saveFile);
+            hospitalDto.getFile1().transferTo(saveFile);
         }
     }
 
     /**
-     * fileCheck 疫꿸퀡�뮟
+     * fileCheck - 파일 확인
      */
-    public HospitalVo fileCheck(HospitalVo hospitalVo) {
-        if(hospitalVo.getFile1().getOriginalFilename() != null
-                && !hospitalVo.getFile1().getOriginalFilename().contentEquals("")) {  //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙
+    public HospitalDto fileCheck(HospitalDto hospitalDto) {
+        if(hospitalDto.getFile1().getOriginalFilename() != null
+                && !hospitalDto.getFile1().getOriginalFilename().contentEquals("")) {  //占쎈솁占쎌뵬占쎌뵠 鈺곕똻�삺占쎈릭筌롳옙
 
             //BSFILE 占쎈솁占쎌뵬 餓λ쵎�궗 筌ｌ꼶�봺
             UUID uuid = UUID.randomUUID();
-            String hfile = hospitalVo.getFile1().getOriginalFilename();
+            String hfile = hospitalDto.getFile1().getOriginalFilename();
             String hsfile = uuid + "_" + hfile;
-            hospitalVo.setHfile(hfile);
-            hospitalVo.setHsfile(hsfile);
+            hospitalDto.setHfile(hfile);
+            hospitalDto.setHsfile(hsfile);
         }else {
-            System.out.println("占쎈솁占쎌뵬 占쎈씨占쎌벉");
+            System.out.println("파일 없음");
 //			hospitalVo.setHfile("");
 //			hospitalVo.setHsfile("");
         }
 
-        return hospitalVo;
+        return hospitalDto;
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -193,7 +191,7 @@ public class FileUploadService {
      */
 
     public void mfileDelete(String oldFileName) throws Exception{
-        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
 
             File deleteFile = new File(root_path + oldFileName);
             if(deleteFile.exists()) {
@@ -208,7 +206,7 @@ public class FileUploadService {
 
     public void mfileSave(MemberDto memberDto) throws Exception{
 
-        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\statice\\upload\\";
+        String root_path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\upload\\";
         if(memberDto.getMfile() != null && !memberDto.getMfile().equals("")) {
             //System.out.println("save file--->" + hospitalVo.getHfile());
             File saveFile = new File(root_path + memberDto.getMsfile());
@@ -233,7 +231,7 @@ public class FileUploadService {
             memberDto.setMfile(mfile);
             memberDto.setMsfile(msfile);
         }else {
-            System.out.println("�뙆�씪 �뾾�쓬");
+            System.out.println("파일 없음");
         }
 
         return memberDto;
