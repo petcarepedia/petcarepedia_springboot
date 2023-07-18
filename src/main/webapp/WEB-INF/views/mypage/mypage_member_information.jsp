@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>펫캐어피디아 | 나의 회원정보</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/mypage.css">
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_yeol.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/mypage.css">
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_yeol.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 const autoHyphen = (target) => {
@@ -61,34 +61,34 @@ const autoHyphen = (target) => {
 					<nav>
 						<ul>
 							<li>마이페이지</li>
-							<li><a href = "mypage_member_information.do">회원 정보</a></li>
-							<li><a href = "mypage_reservation.do">예약 내역</a></li>
-							<li><a href = "mypage_my_review.do">내가 쓴 리뷰</a></li>
-							<li><a href = "mypage_bookmark.do">즐겨찾기</a></li>
-							<li><a href = "mypage_signout.do">회원 탈퇴</a></li>
+							<li><a href = "/mypage_member_information">회원 정보</a></li>
+							<li><a href = "/mypage_reservation">예약 내역</a></li>
+							<li><a href = "/mypage_my_review">내가 쓴 리뷰</a></li>
+							<li><a href = "/mypage_bookmark">즐겨찾기</a></li>
+							<li><a href = "/mypage_signout">회원 탈퇴</a></li>
 						</ul>
 					</nav>
 				</div>
 			</section>
 			<div id = "aside">
-				<form name="updateForm" id = "updateForm" action="member_update_proc.do" method="post" enctype = "multipart/form-data">
+				<form name="updateForm" id = "updateForm" action="member_update" method="post" enctype = "multipart/form-data">
 					<section id = "section2">
 						<div id = "update_info">
 							<label>프로필</label>
 						</div>
 						<div id = "profileBoxOut">
-					 	<input type = "hidden" name = "mfile" value = "${memberVo.mfile}">
-						<input type = "hidden" id = "msfile" name = "msfile" value = "${memberVo.msfile}">
-						<input type = "hidden" name = "grade" value = "${memberVo.grade}">
+					 	<input type = "hidden" name = "mfile" value = "${member.mfile}">
+						<input type = "hidden" id = "msfile" name = "msfile" value = "${member.msfile}">
+						<input type = "hidden" name = "grade" value = "${member.grade}">
 						<input type="file" name="file1" id = "file1" onchange = "readURL(this)" accept="image/*">
 							<div id = profileBox>
-								<img src = "http://localhost:9000/petcarepedia/upload/${memberVo.msfile}" id = "profile">
-								<button type = "button"><img src = "http://localhost:9000/petcarepedia/images/수정.png" id = "update_profile"></button>
+								<img src = "http://localhost:9000/upload/${member.msfile}" id = "profile">
+								<button type = "button"><img src = "http://localhost:9000/images/수정.png" id = "update_profile"></button>
 							</div>
 							<br>
 							<label id = "lb_id">${sessionScope.svo.mid}</label>
 							<br>
-							<label id = "lb_name">${memberVo.name}</label>
+							<label id = "lb_name">${member.name}</label>
 						</div>
 						<div id = "update_info">
 							<label>선택정보</label>
@@ -97,17 +97,17 @@ const autoHyphen = (target) => {
 								 <%-- <li>
 									<label>아이디</label>
 									<input type = "hidden" value = "${sessionScope.svo.mid}" name = "mid" disabled>
-									<button><img src = "http://localhost:9000/petcarepedia/images/수정.png"></button>
+									<button><img src = "http://localhost:9000/images/수정.png"></button>
 								</li>
 								<li>
 									<label>성명</label>
 									<input type = "text" value = "${memberVo.name}" name = "name" disabled>
-									<button><img src = "http://localhost:9000/petcarepedia/images/수정.png"></button>
+									<button><img src = "http://localhost:9000/images/수정.png"></button>
 								</li>  --%>
 								<li>
 									<label>별명</label>
-									<input type = "text" value = "${memberVo.nickname}" name = "nickname"  id = "nickname" disabled>
-									<button type = "button" id = "update_nickname"><img id = "img1" src = "http://localhost:9000/petcarepedia/images/편집2.png"></button>
+									<input type = "text" value = "${member.nickname}" name = "nickname"  id = "nickname" disabled>
+									<button type = "button" id = "update_nickname"><img id = "img1" src = "http://localhost:9000/images/편집2.png"></button>
 									<span id="nickcheck_msg"></span>
 								</li>
 								<li>
@@ -116,13 +116,13 @@ const autoHyphen = (target) => {
 								         id="birth"
 								         max="2023-06-20"
 								         min="1950-06-05"
-								         value="${memberVo.birth}" disabled> 
-									 <button type = "button" id = "update_birth"><img id = "img2" src = "http://localhost:9000/petcarepedia/images/편집2.png"></button> 
+								         value="${member.birth}" disabled>
+									 <button type = "button" id = "update_birth"><img id = "img2" src = "http://localhost:9000/images/편집2.png"></button> 
 								</li>
 								<li>
 									<label>이메일</label>
-									<input type = "text" value = "${memberVo.email}" name = "email" id = "email" disabled>
-									<button type = "button" id = "update_email"><img id = "img3" src = "http://localhost:9000/petcarepedia/images/편집2.png"></button>
+									<input type = "text" value = "${member.email}" name = "email" id = "email" disabled>
+									<button type = "button" id = "update_email"><img id = "img3" src = "http://localhost:9000/images/편집2.png"></button>
 									<!-- <span id="emailcheck_msg"></span>
 									
 									<button type="button" class="btn-short" id="btnAuthEmail" style = "display:none" disabled>인증번호 전송</button>
@@ -136,13 +136,13 @@ const autoHyphen = (target) => {
 								</li>
 								<li>
 									<label>휴대폰</label>
-									<input type="text" value = "${memberVo.phone}" name = "phone" id = "phone" oninput="autoHyphen(this)" maxlength="13" placeholder="전화번호를 입력해보세요!" disabled>
-									<button type = "button" id = "update_phone"><img id = "img4" src = "http://localhost:9000/petcarepedia/images/편집2.png"></button>
+									<input type="text" value = "${member.phone}" name = "phone" id = "phone" oninput="autoHyphen(this)" maxlength="13" placeholder="전화번호를 입력해보세요!" disabled>
+									<button type = "button" id = "update_phone"><img id = "img4" src = "http://localhost:9000/images/편집2.png"></button>
 								</li>
 								<li>
 									<label>주소</label>
-									<input type = "text" value = "${memberVo.addr}" name = "addr" id = "address" disabled>
-									<button type = "button" id = "update_addr"><img id = "img5" src = "http://localhost:9000/petcarepedia/images/편집2.png"></button>
+									<input type = "text" value = "${member.addr}" name = "addr" id = "address" disabled>
+									<button type = "button" id = "update_addr"><img id = "img5" src = "http://localhost:9000/images/편집2.png"></button>
 								</li>
 							</ul>
 					</section>
@@ -152,7 +152,7 @@ const autoHyphen = (target) => {
 						<!-- </a> -->
 					</section>
 					<input type = "hidden" name = "mid" value = "${sessionScope.svo.mid}">
-					<input type = "hidden" name = "name" value = "${memberVo.name}">
+					<input type = "hidden" name = "name" value = "${member.name}">
 				</form>
 			</div>
 		</section>
