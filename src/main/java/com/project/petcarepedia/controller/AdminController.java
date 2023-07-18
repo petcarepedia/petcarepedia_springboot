@@ -101,7 +101,7 @@ public class AdminController {
 
     /* 병원 삭제 처리 */
     @PostMapping("hospital_delete")
-    public String hospital_delete_proc(HospitalDto hospitalDto){
+    public String hospital_delete_proc(HospitalDto hospitalDto) throws Exception{
         String oldFileName = hospitalDto.getHsfile();
         hospitalDto = (HospitalDto)fileUploadService.fileCheck(hospitalDto);
         int result = hospitalService.delete(hospitalDto.getHid());
@@ -125,7 +125,7 @@ public class AdminController {
         hospitalDto = (HospitalDto)fileUploadService.fileCheck(hospitalDto);
         int result = hospitalService.update(hospitalDto);
         if(result == 1){
-            fileUploadService.fileDelete(oldFileName);
+            fileUploadService.fileDelete2(hospitalDto, oldFileName);
             fileUploadService.fileSave(hospitalDto);
         }
 
