@@ -84,7 +84,7 @@ public class BookingService {
     }
 
     public List<BookingDto> Blist(PageDto pageDto, String mid) {
-        return bookingMapper.Blist(pageDto, mid);
+        return bookingMapper.Blist(pageDto);
     }
 
 }

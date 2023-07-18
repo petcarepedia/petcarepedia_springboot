@@ -18,7 +18,7 @@
 	$(document).ready(function(){
 		let shname = "${shname}";
 		let output = "<p style='margin-top:15px; font-size:14px; display:inline-block'><strong>'${shname}'</strong> 검색 결과 <strong>${size}</strong>건</p>";
-		output += "<a href='http://localhost:9000/petcarepedia/search_main.do' style='margin-left:10px; ";
+		output += "<a href='http://localhost:9000/search_main' style='margin-left:10px; ";
 		output += "font-size:12px; color:lightgray;'>병원목록 새로고침</a>";
 		if(shname!=""){
 			$("h1.title").after(output);
@@ -131,7 +131,7 @@
 								
 									<span id="harea" value="${list.gloc}">${list.gloc}</span>
 									<span id="htime">진료 중</span>
-									<a href="http://localhost:9000/petcarepedia/search_result.do?hid=${list.hid}">
+									<a href="http://localhost:9000/search_result/${list.hid}/${filter}">
 										<button type="button" class="hservation" id="${list.hid}">
 											병원 상세보기&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp>

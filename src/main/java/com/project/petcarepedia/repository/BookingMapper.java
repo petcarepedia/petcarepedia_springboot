@@ -28,6 +28,6 @@ public interface BookingMapper {
 
     /*page_mapper*/
     List<BookingDto> Bslist(PageDto pageDto, String mid);
-    List<BookingDto> Blist(PageDto pageDto, String mid);
+    List<BookingDto> Blist(PageDto pageDto);
 
 }

@@ -113,7 +113,7 @@
 		WHERE RNO BETWEEN #{start} AND #{end}
 	</select>
 
-	<select id = "Blist" parameterType="map" resultType="com.project.petcarepedia.dto.BookingDto">
+	<select id = "Blist" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.BookingDto">
 		SELECT RNO, HNAME, MID, VDATE,  BSTATE, VTIME, BID, BDATE
 		FROM (SELECT ROWNUM RNO, HNAME,  MID,   to_char(BDATE, 'yyyy-mm-dd') VDATE ,BSTATE, VTIME,  BID, BDATE
 			  FROM (SELECT H.HNAME, M.MID ,  VDATE ,B.BSTATE,VTIME , BID, BDATE
