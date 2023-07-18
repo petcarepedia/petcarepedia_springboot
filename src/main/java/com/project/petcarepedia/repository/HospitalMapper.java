@@ -1,6 +1,7 @@
 package com.project.petcarepedia.repository;
 
 import com.project.petcarepedia.dto.HospitalDto;
+import com.project.petcarepedia.dto.PageDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface HospitalMapper {
+
     /* 지역구 검색 페이징 처리 */
     List<HospitalDto> Hslist2(PageDto pageDto);
 
