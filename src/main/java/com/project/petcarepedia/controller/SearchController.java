@@ -1,6 +1,7 @@
 package com.project.petcarepedia.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.project.petcarepedia.dto.*;
 import com.project.petcarepedia.service.*;
@@ -208,18 +209,7 @@ public class SearchController {
     }
 
 
-   /*
-    @GetMapping("board_list/{page}")
-    public String board_list(@PathVariable String page, Model model) {
-        PageDto pageDto = pageService.getPageResult(new PageDto(page, "board"));
-
-        model.addAttribute("list", boardService.list(pageDto));
-        model.addAttribute("page", pageDto);
-
-        return "/board/board_list";
-    }
-    ---------------------------------------------------------------------------------------
-
+    /*
     *//** map_data.do **//*
     @RequestMapping(value="/map_data.do",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
     @ResponseBody
@@ -250,8 +240,6 @@ public class SearchController {
 
         return new Gson().toJson(jlist);
     }
-    */
-
-
+*/
 
 }
