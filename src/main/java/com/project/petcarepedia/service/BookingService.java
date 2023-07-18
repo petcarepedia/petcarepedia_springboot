@@ -1,6 +1,7 @@
 package com.project.petcarepedia.service;
 
 import com.project.petcarepedia.dto.BookingDto;
+import com.project.petcarepedia.dto.BookingReviewDto;
 import com.project.petcarepedia.dto.PageDto;
 import com.project.petcarepedia.repository.BookingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +84,7 @@ public class BookingService {
         return bookingMapper.Bslist(pageDto, mid);
     }
 
-    public List<BookingDto> Blist(PageDto pageDto, String mid) {
+    public List<BookingDto> Blist(PageDto pageDto) {
         return bookingMapper.Blist(pageDto);
     }
 
