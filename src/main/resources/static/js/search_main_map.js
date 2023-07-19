@@ -38,7 +38,7 @@ $(document).ready(function(){
 	/** 지역구 선택시 이동 **/
 	function initGlocMap(gloc) {
 		$.ajax({
-			url : "main_map_data.do?gloc="+gloc,
+			url : "main_map_data/"+gloc,
 			success : function(result){
 					let jdata = JSON.parse(result);
 					

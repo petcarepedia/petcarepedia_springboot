@@ -394,8 +394,8 @@ $(document).ready(function() {
 		var vtime = $("input[name='vtime']").val();
 		
 		$.ajax({
-			url: "reservationProc.do",
-			type: "POST",
+			url: "reservationProc",
+			type: "GET",
 			data: {
 				hid: hid,
 				mid: mid,
@@ -420,7 +420,7 @@ $(document).ready(function() {
 						confirmButtonColor:'#98dfff',
 						confirmButtonText:'확인'
 					}).then(function() {
-						window.location.href = "http://localhost:9000/petcarepedia/mypage_reservation.do";
+						window.location.href = "http://localhost:9000/mypage_reservation";
 					});
 				}
 			}

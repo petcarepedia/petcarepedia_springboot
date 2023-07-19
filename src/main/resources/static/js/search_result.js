@@ -19,8 +19,8 @@ $(document).ready(function(){
 			 });
 		 } else { // 로그인시
 			$.ajax({
-				url: "bookmarkProc.do",
-				type: "POST",
+				url: "bookmarkProc",
+				type: "GET",
 				data: {
 					hid: hid,
 					mid: mid
@@ -135,8 +135,8 @@ $(document).ready(function(){
 			});
 		} else { // 로그인시
 			$.ajax({
-				url: 'likeProc.do',
-				method: 'POST',
+				url: 'likeProc',
+				method: 'GET',
 				data: {
 					hid: $('input[name="hid"]').val(),
 					rid: rid,
@@ -207,8 +207,8 @@ $(document).ready(function(){
 	          });
 	        } else {
 	          $.ajax({
-	            url: "rstateProc.do",
-	            type: "POST",
+	            url: "rstateProc",
+	            type: "GET",
 	            data: {
 	              mid: mid,
 	              rid: rid,
@@ -315,14 +315,14 @@ $(document).ready(function(){
 	      		imageUrl: 
 	      			'https://cdn-icons-png.flaticon.com/512/2358/2358595.png',
 	     		link: {
-	       			webUrl: 'http://localhost:9000/petcarepedia/index.do',
+	       			webUrl: 'http://localhost:9000/',
 	      		},
     		},
 			buttons: [
 	      		{
 		        title: '사이트 이동',
 		        link: {
-		          webUrl: 'http://localhost:9000/petcarepedia/search_result.do?hid=' + $("input[name='hid']").val(),
+		          webUrl: 'http://localhost:9000/search_result/' + $("input[name='hid']").val(),
 		        },
 	      },
 	    ],
@@ -345,14 +345,5 @@ $(document).ready(function(){
 			});
 		});
 	});
-
-			 	 	
-	 
-	
-	
-	
-
-
-
 
 });
