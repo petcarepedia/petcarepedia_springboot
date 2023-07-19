@@ -32,7 +32,7 @@ public class ProjectRestController {
 
 
     /** search_result_map - 병원 상세 지도 정보 **/
-    @GetMapping("search_reseult_map")
+    @GetMapping("search_reseult_map/{hid}")
     public String search_result_map(@PathVariable String hid) {
         HospitalDto list = hospitalService.select(hid);
 /*
@@ -43,12 +43,12 @@ public class ProjectRestController {
         jobj.addProperty("y", list.getY());
 
         return new Gson().toJson(jobj);*/
-        return "";
+        return "search_reseult_map";
     }
 
 
     /** reservationProc - 예약 처리 **/
-    @PostMapping("reservation/{hid}")
+    @GetMapping("reservation/{hid}")
     public String reservationProc(BookingDto bookingDto) {
         int check_result = bookingService.checkBooking(bookingDto);
 
@@ -64,7 +64,7 @@ public class ProjectRestController {
 
 
     /** bookmark - 북마크 처리 **/
-    @PostMapping("bookmark")
+    @GetMapping("bookmark")
     public String bookmarkProc(BookmarkDto bookmarkDto, @RequestParam("hid") String hid) {
         int result = bookmarkService.checkBookmark(bookmarkDto);
 
@@ -81,7 +81,7 @@ public class ProjectRestController {
 
 
     /** like - 좋아요 처리 **/
-    @PostMapping("like")
+    @GetMapping("like")
     public String likeProc(ReviewLikeDto reviewLikeDto, @RequestParam("hid") String hid) {
         int like_result = reviewLikeService.idCheck(reviewLikeDto);
 
@@ -102,7 +102,7 @@ public class ProjectRestController {
 
 
     /** rstate - 신고하기 처리 -> 신고테이블 처리 **/
-    @PostMapping("rstate")
+    @GetMapping("rstate")
     public String rstateProc(ReviewReportDto reviewReportDto) {
         //중복신고 체크
         int result = reviewReportService.reviewReportCheck(reviewReportDto);
