@@ -21,6 +21,8 @@ public interface HospitalMapper {
 
     /* 병원 페이징 카운트 */
     int totalRowCount();
+
+    List<HospitalDto> list(PageDto pageDto);
     
     /* 병원 별점 */
     HospitalDto selectStar(String hid);
@@ -38,10 +40,10 @@ public interface HospitalMapper {
     int update(HospitalDto hospitalDto);
     
     /* 병원 상세 조회 */
-    HospitalDto select(String hid);
+    HospitalDto content(String hid);
     
     /* 병원 조회 */
-    ArrayList<HospitalDto> select();
+    ArrayList<HospitalDto> list2();
 
     /* 병원 예약 시간 */
     HospitalDto selectTime(String hid);
