@@ -1,7 +1,5 @@
 package com.project.petcarepedia.restcontroller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.project.petcarepedia.dto.*;
 import com.project.petcarepedia.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
