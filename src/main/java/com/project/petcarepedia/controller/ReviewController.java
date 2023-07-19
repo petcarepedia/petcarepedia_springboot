@@ -56,7 +56,7 @@ public class ReviewController {
     }
 
     //review_content.do 리뷰 상세 페이지 - gloc 있을 때
-    @GetMapping("review_content/{rid}/{page]/{gloc}")
+    @GetMapping("review_content/{rid}/{page}/{gloc}")
     public String review_content(@PathVariable String rid, @PathVariable String page, @PathVariable String gloc, Model model, HttpSession session) {
         ReviewDto reviewDto = reviewService.enter_content(rid);
         ReviewLikeDto reviewLikeDto = new ReviewLikeDto();
