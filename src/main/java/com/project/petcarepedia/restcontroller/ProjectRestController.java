@@ -32,7 +32,7 @@ public class ProjectRestController {
     /** search_result_map - 병원 상세 지도 정보 **/
     @GetMapping("search_reseult_map/{hid}")
     public String search_result_map(@PathVariable String hid) {
-        HospitalDto list = hospitalService.select(hid);
+        HospitalDto list = hospitalService.content(hid);
 /*
         JsonObject jobj = new JsonObject();
         jobj.addProperty("hid", list.getHid());
