@@ -16,13 +16,13 @@
 <script src="http://localhost:9000/petcarepedia/js/am-pagination.js"></script>
 <script>
 	$(document).ready(function(){
-		var filter_location = '${filter_location}';
+		var gloc = '${page.gloc}';
 		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+
+			maxSize: '${page.pageCount}',	    		// max page size
+			totals: '${page.dbCount}',	// total pages
+			page: '${page.reqPage}',		// initial page
+			pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -32,10 +32,10 @@
 				     
 		    btnSize:'sm'	// 'sm'  or 'lg'		
 		});
-		$('input:checkbox[name=filter_location][value= "${filter_location}"]').attr("checked", true).parent().addClass('on');
+		$('input:checkbox[name=filter_location][value= "${page.gloc}"]').attr("checked", true).parent().addClass('on');
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/petcarepedia/review_main_search.do?page="+e.page+"&&filter_location="+filter_location);  
+           $(location).attr('href', "http://localhost:9000/petcarepedia/review_main_search/"+e.page+"/"+filter_location+"/");
    		 });
  	});
 </script> 
@@ -49,7 +49,7 @@
 		<section id="filter">	
 		<div id="filter_page" class="review">
 			<p>상세검색</p>
-			<form name="ReviewSearchForm" action="review_main_search.do" method="get">
+			<form name="ReviewSearchForm" action="review_main_search" method="get">
 				<table id="filter_lo" class="filter">
 					<tr>
 						<th rowspan='3'>지역구분</th>
@@ -98,10 +98,10 @@
 				<span>리뷰</span>
 				<c:choose>
 					<c:when test="${sessionScope.svo.mid == null }">
-						<span><a href="login.do">리뷰쓰기 ></a></span>
+						<span><a href="/login">리뷰쓰기 ></a></span>
 					</c:when>
 					<c:otherwise>
-						<span><a href="mypage_reservation2.do">리뷰쓰기 ></a></span>
+						<span><a href="/mypage_reservation2">리뷰쓰기 ></a></span>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -118,7 +118,7 @@
 								</div>
 							</li>
 								<li id="list_middle" class="list">
-									<a href="review_content.do?rid=${list.rid }&&page=${page}&&filter_location=${filter_location}">
+									<a href="/review_content/${list.rid }/${page.reqPage}/${page.gloc}/">
 										<div id="review_hname">${list.hname }</div>
 										<div class="rvc">
 											${list.rcontent }

@@ -114,82 +114,30 @@ public class ReviewController {
 
     //리뷰 좋아요
     @PostMapping("review_like")
-    public String review_like_proc(ReviewLikeDto reviewLikeDto, PageDto pageDto, HttpSession session) {
+    public String review_like_proc(ReviewLikeDto reviewLikeDto, PageDto pageDto, HttpSession session, Model model) {
+        SessionDto sessionDto = (SessionDto) session.getAttribute("svo");
+        reviewLikeDto.setMid(sessionDto.getMid());
 
-    }
-    @RequestMapping(value="/review_like_Proc.do", method=RequestMethod.POST)
-    public ModelAndView review_like_Proc(ReviewLikeVo reviewLikeVo, String page, String filter_location, HttpSession session) {
-        ModelAndView model = new ModelAndView();
-
-        SessionVo sessionVo = (SessionVo) session.getAttribute("svo");
-        reviewLikeVo.setMid(sessionVo.getMid());
-
-        if(reviewLikeService.getIdCheck(reviewLikeVo) == 1) {
-            reviewLikeService.getLikesDownID(reviewLikeVo);
-            reviewLikeService.getLikesDown(reviewLikeVo);
+        if(reviewLikeService.idCheck(reviewLikeDto) == 1) {
+            reviewLikeService.likesDownID(reviewLikeDto);
+            reviewLikeService.likesDown(reviewLikeDto);
         }
         else {
-            reviewLikeService.getLikesUpID(reviewLikeVo);
-            reviewLikeService.getLikesUp(reviewLikeVo);
+            reviewLikeService.likesUpID(reviewLikeDto);
+            reviewLikeService.likesUp(reviewLikeDto);
         }
-        if(filter_location != "") {
-            model.addObject("filter_location", filter_location);
-        }
-        if(page != "") {
-            model.addObject("page", page);
-        }
-        model.setViewName("redirect:/review_content.do?rid="+reviewLikeVo.getRid());
-
-        return model;
+        model.addAttribute("page", pageDto);
+        return ("/review/review_content");
     }
-
 
 
     //리뷰 검색 페이징
-    @RequestMapping(value="/review_main_search.do", method=RequestMethod.GET)
-    public ModelAndView review_search_Proc(String page, String filter_location, HttpSession session) {
-        ModelAndView model = new ModelAndView();
-        Map<String, Integer> param = pageService.getPageResultRS(page, "reviewSearch", filter_location);
-		/*
-		//페이징 처리 - startCount, endCount 구하기
-		int startCount = 0;
-		int endCount = 0;
-		int pageSize = 7;	//한페이지당 게시물 수
-		int reqPage = 1;	//요청페이지
-		int pageCount = 7;	//전체 페이지 수
-		int dbCount = reviewService.getSearchRowCount(filter_location);	//DB에서 가져온 전체 행수
-		*/
-        //총 페이지 수 계산
-		/*
-		if(dbCount % pageSize == 0){
-			pageCount = dbCount/pageSize;
-		}else{
-			pageCount = dbCount/pageSize;
-		}
-		*/
-		/*
-		//요청 페이지 계산
-		if(page != null){
-			reqPage = Integer.parseInt(page);
-			startCount = (reqPage-1) * pageSize+1;
-			endCount = reqPage *pageSize;
-		}else{
-			startCount = 1;
-			endCount = 7;
-		}
-		*/
-
-        ArrayList<ReviewVo> list = reviewService.getSelectSearchList(param.get("startCount"), param.get("endCount"), filter_location);
-
-        model.addObject("filter_location", filter_location);
-        model.addObject("list", list);
-        model.addObject("totals", param.get("dbCount"));
-        model.addObject("pageSize", param.get("pageSize"));
-        model.addObject("maxSize", param.get("maxSize"));
-        model.addObject("page", param.get("page"));
-
-        model.setViewName("/review/review_main_search");
-
-
-        return model;
+    @GetMapping("review_main_search")
+    public String review_main_search(String page, String gloc, HttpSession session, Model model) {
+        PageDto pageDto = pageService.getPageResult(new PageDto(page,"reviewSearch"));
+        pageDto.setGloc(gloc);
+        model.addAttribute("list", reviewService.listPage(pageDto));
+        model.addAttribute("page", pageDto);
+        return ("/review/review_main_search");
+    }
 }

@@ -28,43 +28,43 @@
 					<tr>
 						<th>병원이름</th>
 						<td>
-							<a href="search_result.do?hid=${reviewVo.hid }">
-								${reviewVo.hname }
+							<a href="search_result.do?hid=${rvo.hid }">
+								${rvo.hname }
 							</a>
 						</td>
 						
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td><img src="http://localhost:9000/petcarepedia/images/cat.png"><p>${reviewVo.nickname }</p></td>
+						<td><img src="http://localhost:9000/petcarepedia/images/cat.png"><p>${rvo.nickname }</p></td>
 					</tr>
 					<tr>
 						<th>상세내용</th>
 						<td colspan='3'>
-							${reviewVo.rcontent }
+							${rvo.rcontent }
 						</td>
 					</tr>
 				</table>
 				<div class="table_right">
 					<div id="right_top">
 						<c:choose>
-							<c:when test="${reviewVo.mid eq sessionScope.svo.mid || sessionScope.svo.mid eq '' || sessionScope.svo.mid eq null}">
+							<c:when test="${rvo.mid eq sessionScope.svo.mid || sessionScope.svo.mid eq '' || sessionScope.svo.mid eq null}">
 								<button type="button" id="btnLike" disabled>
 									<span class="review_like">
 										<!-- ♥️ -->
 										<img src="https://cdn-icons-png.flaticon.com/512/803/803087.png" alt="찜하기" style="height:14px; display: inline-block; vertical-align: -2px;">
 									</span>
-									${reviewVo.rlike }
+									${rvo.rlike }
 								</button>
 							</c:when>
 							<c:otherwise>
 								<form name="reviewLikeForm" action="review_like_Proc.do" method="post">
-									<input type="hidden" id="rid" name="rid" value="${reviewVo.rid }">
+									<input type="hidden"  name="rid" value="${rvo.rid }">
 									<input type="hidden" id="page" name="page" value="${page }">
 									<input type="hidden" id="gloc" name="gloc" value="${page.gloc }">
 									<button type="submit" id="btnLikeProc">
 										<c:choose>
-											<c:when test="${likeCheck eq 1 }">
+											<c:when test="${likeResult eq 1 }">
 												<span class="review_like">
 													<!-- ♥️ -->
 													<img src="https://cdn-icons-png.flaticon.com/512/803/803087.png" alt="찜하기" style="height:14px; display: inline-block; vertical-align: -2px;">
@@ -77,7 +77,7 @@
 												</span>
 											</c:otherwise>
 										</c:choose>
-										${reviewVo.rlike }
+										${rvo.rlike }
 									</button>
 								</form>							
 							</c:otherwise>
@@ -88,51 +88,51 @@
 							평점
 						</div>
 						<div id="avg" class="score">
-							⭐ ${reviewVo.rstar } / 5.0
+							⭐ ${rvo.rstar } / 5.0
 						</div>
 					</div>
 					<div id="imgArea">
-						<c:if test="${reviewVo.rsfile1 != null && reviewVo.rsfile1 != ''}">
-							<a href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" alt=""></a>
+						<c:if test="${rvo.rsfile1 != null && rvo.rsfile1 != ''}">
+							<a href="http://localhost:9000/petcarepedia/upload/${rvo.rsfile1 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile1 }" alt=""></a>
 						</c:if>
-						<c:if test="${reviewVo.rsfile2 != null && reviewVo.rsfile2 != ''}">
-							<a href="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" alt=""></a>
+						<c:if test="${rvo.rsfile2 != null && rvo.rsfile2 != ''}">
+							<a href="http://localhost:9000/petcarepedia/upload/${rvo.rsfile2 }" data-title="사진" data-lightbox="example-set"><img src="http://localhost:9000/petcarepedia/upload/${reviewVo.rsfile2 }" alt=""></a>
 						</c:if>
 					</div>
 					<table>
 						<tr>
 							<td>작성일자</td>
-							<td>${reviewVo.rdate }</td>
+							<td>${rvo.rdate }</td>
 						</tr>
 					</table>
 				</div>
-				<form name="reportForm" action="review_report_proc.do" method="post">
+				<form name="reportForm" action="review_report" method="post">
 					<c:choose>
-						<c:when test="${reviewVo.mid eq sessionScope.svo.mid || sessionScope.svo.mid eq '' || sessionScope.svo.mid eq null}">
+						<c:when test="${rvo.mid eq sessionScope.svo.mid || sessionScope.svo.mid eq '' || sessionScope.svo.mid eq null}">
 						</c:when>
 						<c:otherwise>
 							<button type="button" class="report" id="btnReviewReport">신고하기</button>
-							<input type="hidden" name="rid" id="rid" value="${reviewVo.rid }">
+							<input type="hidden" name="rid" id="rid" value="${rvo.rid }">
 						</c:otherwise>
 					</c:choose>
 				</form>	
 			</div>
-			<form name="deleteForm" action="review_delete_proc.do" method="post">
+			<form name="deleteForm" action="review_delete" method="post">
 				<c:choose>
-					<c:when test="${reviewVo.mid eq sessionScope.svo.mid }">
+					<c:when test="${rvo.mid eq sessionScope.svo.mid }">
 						<div class="rc_button_r">
-							<a href="mypage_review_revise.do?rid=${reviewVo.rid }"><button type="button" class="button">수정</button></a>
+							<a href="/mypage_review_revise./${rvo.rid }/"><button type="button" class="button">수정</button></a>
 							<button type="button" class="button" id="reviewDelBtn">삭제</button>
-							<input type="hidden" name="rid" value="${reviewVo.rid }">
+							<input type="hidden" name="rid" value="${rvo.rid }">
 							<c:choose>
-								<c:when test="${page eq null || page eq '' }">
-									<a href="review_main.do"><button type="button" class="button">목록</button></a>
+								<c:when test="${page.reqPage eq null || page eq '' }">
+									<a href="/review_main"><button type="button" class="button">목록</button></a>
 								</c:when>
-								<c:when test="${filter_location eq null || filter_location eq '' }">
-									<a href="review_main.do?page=${page }"><button type="button" class="button">목록</button></a>
+								<c:when test="${page.gloc eq null || page.gloc eq '' }">
+									<a href="/review_main./${page }/"><button type="button" class="button">목록</button></a>
 								</c:when>
 								<c:otherwise>
-									<a href="review_main_search.do?page=${page }&&filter_location=${filter_location}"><button type="button" class="button">목록</button></a>
+									<a href="/review_main_search.${page.reqPage }/${page.gloc}/"><button type="button" class="button">목록</button></a>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -140,14 +140,14 @@
 					<c:otherwise>
 						<div class="rc_button_r">
 							<c:choose>
-								<c:when test="${page eq null }">
-									<a href="review_main.do"><button type="button" class="button">목록</button></a>
+								<c:when test="${page.reqPage eq null }">
+									<a href="/review_main"><button type="button" class="button">목록</button></a>
 								</c:when>
-								<c:when test="${filter_location eq null }">
-									<a href="review_main.do?page=${page }"><button type="button" class="button">목록</button></a>
+								<c:when test="${page.gloc eq null }">
+									<a href="/review_main.do/${page.reqPage }/"><button type="button" class="button">목록</button></a>
 								</c:when>
 								<c:otherwise>
-									<a href="review_main_search.do?page=${page }&&filter_location=${filter_location}"><button type="button" class="button">목록</button></a>
+									<a href="/review_main_search/${page.reqPage }/${page.gloc}/"><button type="button" class="button">목록</button></a>
 								</c:otherwise>
 							</c:choose>
 						</div>
