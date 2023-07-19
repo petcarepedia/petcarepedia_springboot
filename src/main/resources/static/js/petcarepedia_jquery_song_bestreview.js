@@ -10,7 +10,7 @@ $(document).ready(function(){
 		if(rpage>1){
 			rpage -= 1;
 			$.ajax({
-				url : "best_review_list.do?rpage="+rpage,
+				url : "/best_review_list/"+rpage,
 				success : function(list){
 						$("#brbox").html(list);
 					}
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		if(rpage<maxSize){
 			rpage += 1;
 			$.ajax({
-				url : "best_review_list.do?rpage="+rpage,
+				url : "/best_review_list/"+rpage,
 				success : function(list){
 						$("#brbox").html(list);
 					}

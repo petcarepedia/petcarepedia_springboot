@@ -64,7 +64,7 @@
 				<img src="http://localhost:9000/images/contentlogo.png" width="300px">
 			</div>
 			
-			<form name="loginForm" action="login_proc" method="post">
+			<form name="loginForm" action="/login" method="post">
 				<input type="hidden" name="rememberMid" id="rememberMid">
 				<ul>
 					<li><input type="text" name="mid" id="id" placeholder="아이디" value="${cookie.user_check.value}"></li>
