@@ -20,11 +20,11 @@
 		var hname = "${hname}";
 		var gloc = "${gloc}";
 		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: '${maxSize}',	    		// max page size
-		    totals: '${totals}',	// total pages	
-		    page: '${page}',		// initial page		
-		    pageSize: '${pageSize}',			// max number items per page
+
+			maxSize: '${page.pageCount}',	    		// max page size
+			totals: '${page.dbCount}',	// total pages
+			page: '${page.reqPage}',		// initial page
+			pageSize: '${page.pageSize}',			// max number items per page
 		
 		    // custom labels		
 		    lastText: '&raquo;&raquo;', 		
@@ -38,11 +38,11 @@
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 			   if(hname!=null && hname!="" ){
-				   $(location).attr('href', "http://localhost:9000/petcarepedia/admin_hospital_list.do?page="+e.page+"&hname="+hname);
+				   $(location).attr('href', "http://localhost:9000/admin_hospital_list/"+e.page+"/"+hname+"/");
 			   }else if(gloc!=null && gloc!=""){
-				   $(location).attr('href', "http://localhost:9000/petcarepedia/admin_hospital_list.do?page="+e.page+"&gloc="+gloc);
+				   $(location).attr('href', "http://localhost:9000/admin_hospital_list/"+e.page+"/"+gloc+"/");
 			   }else {
-				   $(location).attr('href', "http://localhost:9000/petcarepedia/admin_hospital_list.do?page="+e.page);
+				   $(location).attr('href', "http://localhost:9000/admin_hospital_list/"+e.page+"/");
 			   }
 	                    
 	    });
@@ -63,11 +63,11 @@
 					<nav>
 						<ul>
 							<li>병원관리</li>
-							<li><a href = "http://localhost:9000/petcarepedia/admin_hospital_list.do">병원 관리</a></li>
-							<li><a href = "http://localhost:9000/petcarepedia/admin_member_list.do">회원 관리</a></li>
-							<li><a href = "http://localhost:9000/petcarepedia/admin_reserve_list.do">예약 관리</a></li>
-							<li><a href = "http://localhost:9000/petcarepedia/admin_review_list.do">신고 리뷰 관리</a></li>
-							<li><a href = "http://localhost:9000/petcarepedia/admin_notice.do">공지 사항 관리</a></li>
+							<li><a href = "http://localhost:9000/admin_hospital_list/1/">병원 관리</a></li>
+							<li><a href = "http://localhost:9000/admin_member_list/1/">회원 관리</a></li>
+							<li><a href = "http://localhost:9000/admin_reserve_list/1/">예약 관리</a></li>
+							<li><a href = "http://localhost:9000/admin_review_list/1/">신고 리뷰 관리</a></li>
+							<li><a href = "http://localhost:9000/admin_notice/1/">공지 사항 관리</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -95,7 +95,7 @@
 				<table class="table">
 					<tr>
 						<td colspan="5" >
-							<a href="http://localhost:9000/petcarepedia/admin_hospital_detail.do">
+							<a href="http://localhost:9000/admin_hospital_write">
 								<button type="button" class="button4">등록하기</button>
 							</a>
 						</td>
@@ -115,13 +115,13 @@
 						<th>야간 진료 여부</th>
 						<th>공휴일 진료 여부</th>
 					</tr>
-					<c:forEach var="hospitalVo" items="${list}">
+					<c:forEach var="hospital" items="${list}">
 					<tr>
-						<td>${hospitalVo.rno}</td>
-						<td><a href="admin_hospital_content.do?hid=${hospitalVo.hid}">${hospitalVo.hname}</a></td>
-						<td>${hospitalVo.animal}</td>
-						<td>${hospitalVo.ntime}</td>
-						<td>${hospitalVo.holiday}</td>
+						<td>${hospital.rno}</td>
+						<td><a href="admin_hospital_content/${hospital.hid}/${page.reqPage}/">${hospital.hname}</a></td>
+						<td>${hospital.animal}</td>
+						<td>${hospital.ntime}</td>
+						<td>${hospital.holiday}</td>
 						
 					</tr>
 					</c:forEach>

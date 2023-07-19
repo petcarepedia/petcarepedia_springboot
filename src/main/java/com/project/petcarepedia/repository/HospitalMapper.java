@@ -10,13 +10,13 @@ import java.util.List;
 @Mapper
 public interface HospitalMapper {
 
-    /* 지역구 검색 페이징 처리 */
+    /* 지역구 검색 결과 조회 및 페이징 처리 */
     List<HospitalDto> Hslist2(PageDto pageDto);
 
-    /* 병원명 검색 페이징 처리 */
+    /* 병원명 검색 결과 조회 및 페이징 처리 */
     List<HospitalDto> Hslist(PageDto pageDto);
 
-    /* 병원 메인 페이징 처리 */
+    /* 병원 메인 조회 및 페이징 처리 */
     List<HospitalDto> Hlist(PageDto pageDto);
 
     /* 병원 페이징 카운트 */

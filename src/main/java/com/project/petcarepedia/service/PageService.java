@@ -1,6 +1,7 @@
 package com.project.petcarepedia.service;
 
 import com.project.petcarepedia.dto.PageDto;
+import com.project.petcarepedia.repository.PageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,10 @@ import org.springframework.stereotype.Service;
 public class PageService {
     @Autowired
     private PageMapper pageMapper;
-
+    @Autowired
+    private ReviewService reviewService;
+    @Autowired
+    private NoticeService noticeService;
     public PageDto getPageResult(PageDto pageDto) {
 
         //페이징 처리 - startCount, endCount 구하기
@@ -18,7 +22,21 @@ public class PageService {
         int reqPage = 1;	//요청페이지
         int pageCount = 1;	//전체 페이지 수
         int dbCount = 0;	//DB에서 가져온 전체 행수
-        dbCount = pageMapper.totalRowCount(pageDto);
+        if(pageDto.getServiceName().equals("My_review")) {
+            dbCount = pageMapper.Myscount(pageDto);
+            pageSize = 5;
+        } else if(pageDto.getServiceName().equals("review")) {
+            pageCount = 7;
+            dbCount = reviewService.count();
+        }
+        else if(pageDto.getServiceName().equals("reviewSearch")) {
+            pageCount = 7;
+            dbCount = reviewService.searchCount(pageDto.getGloc());
+        }
+        else if(pageDto.getServiceName().equals("notice")) {
+            pageCount = 10;
+            dbCount = noticeService.count();
+        }
 
         if(pageDto.getServiceName().equals("notice")) {
             pageSize = 5;

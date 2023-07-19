@@ -28,7 +28,7 @@ public interface BookingMapper {
     int Bselect(String bid);
 
     /*page_mapper*/
-    List<BookingDto> Bslist(PageDto pageDto, String mid);
+    List<BookingDto> Bslist(PageDto pageDto);
     List<BookingDto> Blist(PageDto pageDto);
 
 }

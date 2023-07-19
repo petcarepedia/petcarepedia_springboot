@@ -80,8 +80,8 @@ public class BookingService {
     }
 
     /*page_mapper*/
-    public List<BookingDto> Bslist(PageDto pageDto, String mid) {
-        return bookingMapper.Bslist(pageDto, mid);
+    public List<BookingDto> Bslist(PageDto pageDto) {
+        return bookingMapper.Bslist(pageDto);
     }
 
     public List<BookingDto> Blist(PageDto pageDto) {

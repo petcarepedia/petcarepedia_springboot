@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>펫캐어피디아 | 내가 쓴 리뷰</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/mypage.css">
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_song.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_yeol.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/mypage.css">
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_song.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_yeol.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -25,28 +25,28 @@
 		<section id = "reservation">
 			<h1 id = "title">내가 쓴 리뷰</h1>
 			<hr>
-			<form name="deleteForm" action="my_review_delete_proc.do" method="post">
-			<input type = "hidden" name = "rid" value = "${rid}">
-			<input type = "hidden" name = "rsfile1" value = "${reviewVo.rsfile1}">
-			<input type = "hidden" name = "rsfile2" value = "${reviewVo.rsfile2}">
+			<form name="deleteForm" action="my_review_delete" method="post">
+			<input type = "hidden" name = "rid" value = "${review.rid}">
+			<input type = "hidden" name = "rsfile1" value = "${review.rsfile1}">
+			<input type = "hidden" name = "rsfile2" value = "${review.rsfile2}">
 				<table id = "table">
 					<tr>
 						<th>병원명</th>
-						<td>${reviewVo.hname}</td>
+						<td>${review.hname}</td>
 					</tr>
 					<tr>
 						<th>리뷰내용</th>
-						<td>${reviewVo.rcontent}</td>
+						<td>${review.rcontent}</td>
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td>${reviewVo.nickname}</td>
+						<td>${review.nickname}</td>
 					</tr>
 				</table>
 				<div class = "box">
 					<p>정말로 삭제하시겠습니까?</p>
 					<button type="button" class="btn_style" id = "btnReviewDelete">삭제완료</button>
-					<a href="mypage_review_content.do?rid=${reviewVo.rid}">
+					<a href="mypage_review_content/${review.rid}">
 						<button type="button" class="btn_style">취소</button>
 					</a>
 				</div>
