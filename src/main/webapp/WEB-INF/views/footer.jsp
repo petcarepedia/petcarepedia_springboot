@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_song.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/petcarepedia_jquery_song.js"></script>
 <script src="https://kit.fontawesome.com/4ed285928f.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"
@@ -23,7 +23,7 @@
 			});
 		  function initSplist() {
 			  $.ajax({
-					url : "splist_data.do",
+					url : "splist_data/",
 					success : function(result){
 							let jdata = JSON.parse(result);
 							
@@ -31,13 +31,13 @@
 							
 							if(jdata.jlist != null) {
 								for(obj of jdata.jlist){
-									contentString += `<li class="spword-li" onclick="location.href='http://localhost:9000/petcarepedia/main_search_proc.do?hname=`+obj.word+`'">`;
+									contentString += `<li class="spword-li" onclick="location.href='http://localhost:9000/main_search_proc/?hname=`+obj.word+`'">`;
 									contentString += '<label class="spword-li-label">'+obj.rno+'</label>';
 									contentString += '<a class="spword-li-a">'+obj.word+'</a></li></a>';
 								}
 							} else {
 								contentString += '<div style="width:100%;height:150px;text-align:center;vertical-align:middle;display: table-cell;">'
-								contentString += '<img src="http://localhost:9000/petcarepedia/images/info.png" width="30px">';
+								contentString += '<img src="http://localhost:9000/images/info.png" width="30px">';
 								contentString += '<a class="spword-li-a" style="display:inline-block;width:100%;">검색어가 아직<br>존재하지 않습니다.</a></div>';
 							}
 							
@@ -58,17 +58,17 @@
 							<a href="https://forest-share-eb9.notion.site/PetCarePedia-1-0-b2139ee71cd042acbfe9b19e878a22fa" target="_blank">펫캐어피디아 소개</a>
 						</li>
 						<li>
-							<a href="http://localhost:9000/petcarepedia/notice.do">이용약관</a>
+							<a href="http://localhost:9000/notice/">이용약관</a>
 						</li>
 						<li>
-							<a href="http://localhost:9000/petcarepedia/notice.do">개인정보취급방침</a>
+							<a href="http://localhost:9000/notice/">개인정보취급방침</a>
 						</li>
 						<li>
-							<a href="http://localhost:9000/petcarepedia/notice.do">위치기반서비스 이용약관</a>
+							<a href="http://localhost:9000/notice/">위치기반서비스 이용약관</a>
 						</li>
 						<c:if test="${sessionScope.svo.grade == 'admin'}">
 							<li>
-								<a href="http://localhost:9000/petcarepedia/admin_hospital_list.do"
+								<a href="http://localhost:9000/admin_hospital_list/"
 								style="color:#7AB2CC; font-weight:bold">관리자</a>
 							</li>
 						</c:if>
@@ -79,17 +79,17 @@
 					<ul>
 						<li>
 							<a href="mailto:petcarepediaofficial@gmail.com">
-								<img src="http://localhost:9000/petcarepedia/images/footer_mail.png" width="25px" height="25px">
+								<img src="http://localhost:9000/images/footer_mail.png" width="25px" height="25px">
 							</a>
 						</li>
 						<li>
 							<a href="javascript:chatChannel()">
-								<img src="http://localhost:9000/petcarepedia/images/footer_chat.png" width="24px" height="24px">
+								<img src="http://localhost:9000/images/footer_chat.png" width="24px" height="24px">
 							</a>
 						</li>
 						<li>
-							<a href="https://github.com/petcarepedia/petcarepedia_v2.git" target="_blank">
-								<img src="http://localhost:9000/petcarepedia/images/footer_github.png" width="27px" height="25px">
+							<a href="https://github.com/petcarepedia_v2.git" target="_blank">
+								<img src="http://localhost:9000/images/footer_github.png" width="27px" height="25px">
 							</a>
 						</li>
 					</ul>
@@ -126,7 +126,7 @@
 	</div>
 	
 	<a id="chat-channel-button" href="javascript:chatChannel()" class="cchat-btn">
-	  <img src="http://localhost:9000/petcarepedia/images/kakaologo.png"
+	  <img src="http://localhost:9000/images/kakaologo.png"
 	    alt="카카오톡 채널 채팅하기 버튼" 
 	    width="54px"/>
 	</a>
