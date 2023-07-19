@@ -9,11 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>우리 동네 동물병원 리뷰 사전, 펫캐어피디아</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_song.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_song.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=krftgsruiz"></script>
 <script>
 $(document).ready(function(){
@@ -55,7 +55,7 @@ $(document).ready(function(){
 	
 	function initGlocMap(gloc) {
 		$.ajax({
-			url : "main_map_data.do?gloc="+gloc,
+			url : "main_map_data/?gloc="+gloc,
 			success : function(result){
 					let jdata = JSON.parse(result);
 					
@@ -84,8 +84,8 @@ $(document).ready(function(){
 						var contentString = [
 					        '<div class="iw_inner" style="padding:10px;">',
 					        '   <div style="clear:both;margin-bottom:5px;">',
-					        '	<img src="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" width="20px" height="20px">',
-					        '	<a href="http://localhost:9000/petcarepedia/search_result.do?hid='+obj.hid+'&mid='+mid,
+					        '	<img src="http://localhost:9000/images/foot_98DFFF.png" width="20px" height="20px">',
+					        '	<a href="http://localhost:9000/search_result/?hid='+obj.hid+'&mid='+mid,
 					        '" style="font-size:18px;text-decoration:none;color:#3d3d3d;font-weight:bold;">'+obj.hname+'</a></div>',
 					        '   <p style="font-size:12px;color:darkgray;margin-bottom:5px">Time | '+obj.htime+'<br>Tel | '+obj.tel+'</h3>',
 					        '   <p style="font-size:13px;color:#636363">'+obj.loc+'</p>',
@@ -138,12 +138,12 @@ $(document).ready(function(){
 	<div class="main-map">
 		<div class="sub">
 			<p>가까운 병원 빠르게 찾고 싶다면? <span>지역구별 병원 검색</span></p>
-			<a href="http://localhost:9000/petcarepedia/search_main.do">검색페이지 전체보기 ></a>
+			<a href="http://localhost:9000/search_main">검색페이지 전체보기 ></a>
 		</div>
 		
 		<div class="map-content">
 			<div class="locsub">
-				<img src="http://localhost:9000/petcarepedia/images/map.png" width="30px">
+				<img src="http://localhost:9000/images/map.png" width="30px">
 				<span>서울특별시</span>
 			</div>
 			<div class="locbox">

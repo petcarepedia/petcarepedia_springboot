@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>펫캐어피디아 | 회원가입</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_song.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_song.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://kit.fontawesome.com/4ed285928f.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
@@ -37,7 +37,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<img src="http://localhost:9000/petcarepedia/images/loading.gif" id="loading">
+	<img src="http://localhost:9000/images/loading.gif" id="loading">
 	
 	<!-- header -->
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -46,10 +46,10 @@ $(document).ready(function(){
 	<div class="content">
 		<div class="join-content">
 			<div class="content-logo">
-				<img src="http://localhost:9000/petcarepedia/images/contentlogo.png" width="300px">
+				<img src="http://localhost:9000/images/contentlogo.png" width="300px">
 			</div>
 			
-			<form name="joinForm" action="join_proc.do" method="post">
+			<form name="joinForm" action="join_proc/" method="post">
 				<ul>
 					<li class="id">
 						<label>아이디 <span class="ess">*</span></label>

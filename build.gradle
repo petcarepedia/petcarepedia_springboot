@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
     // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 --> oracle driver
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.3.0.0'
 

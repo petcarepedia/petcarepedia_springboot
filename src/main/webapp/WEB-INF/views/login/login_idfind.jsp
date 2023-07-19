@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://localhost:9000/petcarepedia/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
+<link href="http://localhost:9000/images/foot_98DFFF.png" rel="shortcut icon" type="image/x-icon">
 <title>펫캐어피디아 | 아이디,비밀번호 찾기</title>
-<link rel="stylesheet" href="http://localhost:9000/petcarepedia/css/petcarepedia_song.css">
-<script src="http://localhost:9000/petcarepedia/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/petcarepedia/js/petcarepedia_jquery_song.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/css/petcarepedia_song.css">
+<script src="http://localhost:9000/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/js/petcarepedia_jquery_song.js"></script>
 <script>
 $(document).ready(function(){
 	$('#loading').hide(); //첫 시작시 로딩바를 숨겨준다.
@@ -20,7 +20,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<img src="http://localhost:9000/petcarepedia/images/loading.gif" id="loading">
+	<img src="http://localhost:9000/images/loading.gif" id="loading">
 	<!-- header -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	
@@ -28,10 +28,10 @@ $(document).ready(function(){
 	<div class="content">
 		<div class="find-content">
 			<div class="content-logo">
-				<img src="http://localhost:9000/petcarepedia/images/contentlogo.png" width="300px">
+				<img src="http://localhost:9000/images/contentlogo.png" width="300px">
 			</div>
 			
-			<form name="idFindForm" action="login_idfind_proc.do" method="post">
+			<form name="idFindForm" action="login_idfind_proc" method="post">
 				<div class="find-box">
 					<div>
 						<div id="btnMenuIdFind">아이디 찾기</div>
