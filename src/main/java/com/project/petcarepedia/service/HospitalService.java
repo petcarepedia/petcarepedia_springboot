@@ -20,14 +20,16 @@ public class HospitalService {
 
     public List<HospitalDto> Hlist(PageDto pageDto){return hospitalMapper.Hlist(pageDto);}
 
+    public List<HospitalDto> list(PageDto pageDto){return  hospitalMapper.list(pageDto);}
+
     public int totalRowCount(){return hospitalMapper.totalRowCount();}
     public HospitalDto selectStar(String hid){return hospitalMapper.selectStar(hid);}
     public ArrayList<HospitalDto> searchGloc(String gloc){return hospitalMapper.searchGloc(gloc);}
     public List<Object> search(String hname) {return hospitalMapper.search(hname);}
     public int delete(String hid){return hospitalMapper.delete(hid);}
     public int update(HospitalDto hospitalDto){return hospitalMapper.update(hospitalDto);}
-    public HospitalDto select(String hid){return hospitalMapper.select(hid);}
-    public ArrayList<HospitalDto> select(){return hospitalMapper.select();}
+    public HospitalDto content(String hid){return hospitalMapper.content(hid);}
+    public ArrayList<HospitalDto> select(){return hospitalMapper.list2();}
     public HospitalDto selectTime(String hid){return hospitalMapper.selectTime(hid);}
     public int insert(HospitalDto hospitalDto){return hospitalMapper.insert(hospitalDto);}
 
