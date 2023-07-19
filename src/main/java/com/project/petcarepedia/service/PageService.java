@@ -37,13 +37,10 @@ public class PageService {
             pageCount = 10;
             dbCount = noticeService.count();
         }
-
-        if(pageDto.getServiceName().equals("notice")) {
-            pageSize = 5;
-        } else if(pageDto.getServiceName().equals("board")) {
-            pageSize = 5;
-        } else if(pageDto.getServiceName().equals("member")) {
-            pageSize = 10;
+        else if(pageDto.getServiceName().equals("best_review")) {
+            pageSize = 3;
+            dbCount = pageMapper.Rcount();
+            if(dbCount>9) dbCount=9;
         }
 
         //총 페이지 수 계산

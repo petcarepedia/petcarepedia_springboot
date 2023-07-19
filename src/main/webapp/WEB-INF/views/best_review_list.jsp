@@ -19,7 +19,7 @@
 		</div>
 		<div class="slide">
 			<c:choose>
-				<c:when test="${totals==0}">
+				<c:when test="${page.dbCount==0}">
 					<div class="review_card_no">
 						<img id="review_img" src="http://localhost:9000/images/review.png">
 						<p>등록된 리뷰가 아직 없습니다.</p>
@@ -30,10 +30,10 @@
 						<button type="button" id="btnPrev"><img src="http://localhost:9000/images/prev.png" width="30" height="30"></button>
 					</div>
 					<div class="review-list">
-						<input type="hidden" value="${rpage}" id="rpage">
-						<input type="hidden" value="${maxSize}" id="maxSize">
+						<input type="hidden" value="${page.reqPage}" id="rpage">
+						<input type="hidden" value="${page.pageCount}" id="maxSize">
 						<c:forEach var="reviewVo" items="${list}">
-							<div id="brcontent" onclick="location.href='http://localhost:9000/review_content?rid=${reviewVo.rid}'" class="review-card">
+							<div id="brcontent" onclick="location.href='http://localhost:9000/review_content/${reviewVo.rid}'" class="review-card">
 									<div>
 										<a>${reviewVo.hname}</a>
 										<p>⭐ ${reviewVo.rstar}</p>

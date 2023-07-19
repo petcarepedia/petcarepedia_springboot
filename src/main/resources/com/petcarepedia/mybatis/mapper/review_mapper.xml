@@ -58,7 +58,7 @@
 		from (select rownum rno, rid, rcontent, to_char(rdate,'yyyy-mm-dd') rdate, rlike, rstar, rstate, mid, hid, hname, animal, gloc, nickname 
 		from (select r.rid, r.rcontent, r.rdate, r.rlike, r.rstar, r.rstate, r.mid, r.hid, h.hname, h.animal, h.gloc, m.nickname from pcp_review r, pcp_hospital h, pcp_member m 
 		where r.hid=h.hid and r.mid = m.mid order by r.rdate desc))
-		where rno between #{start} and #{end} 
+		where rno between #{startCount} and #{endCount}
 	</select>
 	
 	<select id="searchListPage" parameterType="com.project.petcarepedia.dto.PageDto" resultType="com.project.petcarepedia.dto.ReviewDto">

@@ -15,7 +15,7 @@
     <header>
         <div class="header-menu">
             <div class="header-content">
-                <a href="http://localhost:9000/index/">
+                <a href="/">
                     <div class="header-logo">
                         <img src="http://localhost:9000/images/logo_white.png" width="60px" height="60px">
                         <span>PetCare Pedia</span>
@@ -39,16 +39,16 @@
 		                            <a href="http://localhost:9000/search_main/">병원검색</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/review_main/">리뷰사전</a>
+		                            <a href="http://localhost:9000/review_main/1/">리뷰사전</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/login/">로그인</a>
+		                            <a href="http://localhost:9000/login">로그인</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/join/">회원가입</a>
+		                            <a href="http://localhost:9000/join_step1/">회원가입</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/notice/">공지사항</a>
+		                            <a href="http://localhost:9000/notice/1/">공지사항</a>
 		                        </li>
 		                    </ul>
 		                </c:when>
@@ -58,7 +58,7 @@
 		                            <a href="http://localhost:9000/search_main/">병원검색</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/review_main/">리뷰사전</a>
+		                            <a href="http://localhost:9000/review_main/1/">리뷰사전</a>
 		                        </li>
 		                        <li>
 		                            <a href="http://localhost:9000/mypage_member_information/">마이페이지</a>
@@ -67,7 +67,7 @@
 		                            <a id="logout">로그아웃</a>
 		                        </li>
 		                        <li>
-		                            <a href="http://localhost:9000/notice/">공지사항</a>
+		                            <a href="http://localhost:9000/notice/1">공지사항</a>
 		                        </li>
 		                    </ul>
 						</c:otherwise>

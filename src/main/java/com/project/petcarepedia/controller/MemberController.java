@@ -3,7 +3,6 @@ package com.project.petcarepedia.controller;
 import com.project.petcarepedia.dto.MemberDto;
 import com.project.petcarepedia.dto.SessionDto;
 import com.project.petcarepedia.service.MemberService;
-import com.project.petcarepedia.service.SPWordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,14 +23,15 @@ public class MemberController {
      * 로그인
      */
     @GetMapping("login")
-    public String login(){ return "login/login"; }
+    public String login(){ return "/login/login"; }
 
     @PostMapping("login")
     public String login_proc(MemberDto memberDto, String rememberId, Model model, HttpSession session, HttpServletResponse response){
-        String viewName = "";
+        String viewName = "index";
 
         SessionDto sessionDto = memberService.login(memberDto);
         if(sessionDto != null) {
+
             if(sessionDto.getLoginResult() == 1){
                 session.setAttribute("svo", sessionDto);
 
@@ -44,11 +44,11 @@ public class MemberController {
                 }
 
                 model.addAttribute("login_result", "success");
-                viewName = "redirect:/";
+                viewName = "/login/login";
             }
         } else {
             model.addAttribute("login_result", "fail");
-            viewName = "login/login";
+            viewName = "/login/login";
         }
 
         return viewName;

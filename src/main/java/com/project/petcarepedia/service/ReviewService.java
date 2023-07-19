@@ -61,7 +61,7 @@ public class ReviewService {
     public int delete(String rid) {
         return reviewMapper.delete(rid);
     }
-    List<ReviewDto> bestList(PageDto pageDto) {
+    public List<ReviewDto> bestList(PageDto pageDto) {
         return reviewMapper.bestList(pageDto);
     }
     public int count() {
