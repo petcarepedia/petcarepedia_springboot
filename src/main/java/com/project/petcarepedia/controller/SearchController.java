@@ -1,18 +1,13 @@
 package com.project.petcarepedia.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.project.petcarepedia.dto.*;
 import com.project.petcarepedia.service.*;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.awt.print.Book;
 import java.util.ArrayList;
 
 @Controller
@@ -100,7 +95,25 @@ public class SearchController {
     }
 
 
+    /** search_reservation **/
+    @GetMapping("search_reservation/{hid}")
+    public String search_reservation(@PathVariable String hid, Model model) {
+        model.addAttribute("hospital", hospitalService.select(hid));
+        model.addAttribute("time", bookingService.selectTime2(hid));
+
+        return "/search/search_reservation";
+    }
+
+
+    /** search_main_map **/
+    @GetMapping("search_main_map")
+    public String search_main_map() {
+        return  "/search/search_main_map";
+    }
+
+
     /** search_result_map - 병원 상세 지도 정보 **/
+    /*
     @GetMapping("search_reseult_map")
     @ResponseBody
     public String search_result_map(@PathVariable String hid) {
@@ -114,19 +127,11 @@ public class SearchController {
 
         return new Gson().toJson(jobj);
     }
-
-
-    /** search_reservation **/
-    @GetMapping("search_reservation/{hid}")
-    public String search_reservation(@PathVariable String hid, Model model) {
-        model.addAttribute("hospital", hospitalService.select(hid));
-        model.addAttribute("time", bookingService.selectTime2(hid));
-
-        return "/search/search_reservation";
-    }
+*/
 
 
     /** reservationProc - 예약 처리 **/
+    /*
     @PostMapping("reservation")
     @ResponseBody
     public String reservationProc(BookingDto bookingDto) {
@@ -141,14 +146,15 @@ public class SearchController {
 
         return "error"; //오류
     }
-
+*/
 
     /** bookmark - 북마크 처리 **/
+    /*
     @PostMapping("bookmark")
     @ResponseBody
     public String bookmarkProc(BookmarkDto bookmarkDto, @RequestParam("hid") String hid) {
         int result = bookmarkService.checkBookmark(bookmarkDto);
-        
+
         if (result == 0) { //북마크 없을 때
             bookmarkService.insert(bookmarkDto);
             return "success";
@@ -156,34 +162,36 @@ public class SearchController {
             bookmarkService.deleteBookmark(bookmarkDto);
             return "fail";
         }
-        
+
         return "error"; //오류
     }
-
+*/
 
     /** like - 좋아요 처리 **/
+    /*
     @PostMapping("like")
     @ResponseBody
     public String likeProc(ReviewLikeDto reviewLikeDto, @RequestParam("hid") String hid) {
         int like_result = reviewLikeService.idCheck(reviewLikeDto);
-        
+
         if(like_result == 0) { //기록 없음
             reviewLikeService.likesUpID(reviewLikeDto);
             reviewLikeService.likesUp(reviewLikeDto);
-            
+
             return "success";
         } else if(like_result == 1) { //기록 있음
             reviewLikeService.likesDownID(reviewLikeDto);
             reviewLikeService.likesDown(reviewLikeDto);
-            
+
             return "fail";
         }
-        
+
         return "error"; //오류
     }
-
+*/
 
     /** rstate - 신고하기 처리 -> 신고테이블 처리 **/
+    /*
     @PostMapping("rstate")
     @ResponseBody
     public String rstateProc(ReviewReportDto reviewReportDto) {
@@ -199,46 +207,6 @@ public class SearchController {
         }
 
         return "error";
-    }
-
-
-    /** search_main_map **/
-    @GetMapping("search_main_map")
-    public String search_main_map() {
-        return  "/search/search_main_map";
-    }
-
-
-    /*
-    *//** map_data.do **//*
-    @RequestMapping(value="/map_data.do",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-    @ResponseBody
-    public String map_data(String gloc) {
-        ArrayList<HospitalVo> list = hospitalService.searchGloc(gloc);
-
-        JsonObject jlist = new JsonObject();
-        JsonArray jarray = new JsonArray();
-
-        for(HospitalVo hospitalVo : list) {
-            JsonObject jobj = new JsonObject(); //{}
-            jobj.addProperty("hid", hospitalVo.getHid());
-            jobj.addProperty("hname", hospitalVo.getHname());
-            jobj.addProperty("gloc", hospitalVo.getGloc());
-            jobj.addProperty("loc", hospitalVo.getLoc());
-            jobj.addProperty("tel", hospitalVo.getTel());
-            jobj.addProperty("htime", hospitalVo.getHtime());
-            jobj.addProperty("ntime", hospitalVo.getNtime());
-            jobj.addProperty("holiday", hospitalVo.getHoliday());
-            jobj.addProperty("animal", hospitalVo.getAnimal());
-            jobj.addProperty("x", hospitalVo.getX());
-            jobj.addProperty("y", hospitalVo.getY());
-
-            jarray.add(jobj);
-        }
-
-        jlist.add("jlist", jarray);
-
-        return new Gson().toJson(jlist);
     }
 */
 
