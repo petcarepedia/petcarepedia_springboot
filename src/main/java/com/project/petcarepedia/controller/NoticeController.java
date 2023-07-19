@@ -101,6 +101,10 @@ public class NoticeController {
     public String notice_content(@PathVariable String nid, @PathVariable String page, Model model) {
         NoticeDto noticeDto = noticeService.enter_content(nid);
         noticeDto.setNcontent(noticeDto.getNcontent().replace("\n", "<br>"));
+        if(noticeDto != null) {
+            // 조회수 업데이트 DB
+            noticeService.updateHits(nid);
+        }
         model.addAttribute("nvo",noticeDto);
         model.addAttribute("page",page);
         return ("notice/notice_content");
