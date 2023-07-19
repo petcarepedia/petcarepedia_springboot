@@ -61,7 +61,7 @@
 								<form name="reviewLikeForm" action="review_like_Proc.do" method="post">
 									<input type="hidden" id="rid" name="rid" value="${reviewVo.rid }">
 									<input type="hidden" id="page" name="page" value="${page }">
-									<input type="hidden" id="filter_location" name="filter_location" value="${filter_location }">
+									<input type="hidden" id="gloc" name="gloc" value="${page.gloc }">
 									<button type="submit" id="btnLikeProc">
 										<c:choose>
 											<c:when test="${likeCheck eq 1 }">

@@ -32,7 +32,9 @@ public class NoticeController {
     // admin_notice_content.do 관리자 공지사항 상세보기 페이지
     @GetMapping("admin_notice_content/{nid}/{page}")
     public String admin_notice_content(@PathVariable String nid, @PathVariable String page, Model model) {
-        model.addAttribute("nvo",noticeService.enter_content(nid));
+        NoticeDto noticeDto = noticeService.enter_content(nid);
+        noticeDto.setNcontent(noticeDto.getNcontent().replace("\n", "<br>"));
+        model.addAttribute("nvo",noticeDto);
         model.addAttribute("page",page);
         return ("/admin/notice/admin_notice_content");
     }
@@ -97,7 +99,9 @@ public class NoticeController {
     // notice_content.do 사용자 공지사항 상세보기
     @GetMapping("notice_content/{nid}/{page}")
     public String notice_content(@PathVariable String nid, @PathVariable String page, Model model) {
-        model.addAttribute("nvo",noticeService.content(nid));
+        NoticeDto noticeDto = noticeService.enter_content(nid);
+        noticeDto.setNcontent(noticeDto.getNcontent().replace("\n", "<br>"));
+        model.addAttribute("nvo",noticeDto);
         model.addAttribute("page",page);
         return ("notice/notice_content");
     }

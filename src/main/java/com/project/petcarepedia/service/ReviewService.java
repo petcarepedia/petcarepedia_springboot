@@ -76,4 +76,12 @@ public class ReviewService {
     public int report2(String rid) {
         return reviewMapper.report2(rid);
     }
+
+    public List<ReviewDto> Mylist(PageDto pageDto) {
+        return reviewMapper.Mylist(pageDto);
+    }
+
+    public List<ReviewDto> Rlist(PageDto pageDto) {
+        return reviewMapper.Rlist(pageDto);
+    }
 }

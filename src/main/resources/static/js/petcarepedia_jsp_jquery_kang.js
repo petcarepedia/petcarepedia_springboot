@@ -150,49 +150,63 @@ $(document).ready(function(){
 			}  
 		}
 	});
-	
-	
+
+
 	/*******************************************
-		공지사항 - 삭제
-	 ********************************************/	
+	 공지사항 - 삭제
+	 ********************************************/
 	$("#noticeDelBtn").click(function() {
 		Swal.fire({
-			  title: '정말로 삭제하시겠습니까?',
-			  text: '',
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#FFB3BD',
-			  cancelButtonColor: '#98DFFF',
-			  confirmButtonText:'확인',
-			  cancelButtonText: '취소',
-        }).then((result) => {
-        	if(result.value) {
-        		deleteForm.submit();
-        	}
-        });
+			title: '정말로 삭제하시겠습니까?',
+			text: '',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#FFB3BD',
+			cancelButtonColor: '#98DFFF',
+			confirmButtonText:'확인',
+			cancelButtonText: '취소',
+		}).then((result) => {
+			if(result.isConfirmed) {
+				Swal.fire({
+					icon: 'success',
+					text:'삭제가 완료되었습니다.',
+					confirmButtonColor: '#98DFFF',
+					confirmButtonText:'확인',
+				}).then(() => {
+					deleteForm.submit();
+				});
+			}
+		});
 	});
-	
-	
+
+
 	/*******************************************
-		리뷰 - 삭제
-	 ********************************************/	
+	 리뷰 - 삭제
+	 ********************************************/
 	$("#reviewDelBtn").click(function() {
 		Swal.fire({
-			  title: '정말로 삭제하시겠습니까?',
-			  text: '',
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#FFB3BD',
-			  cancelButtonColor: '#98DFFF',
-			  confirmButtonText:'확인',
-			  cancelButtonText: '취소',
-        }).then((result) => {
-        	if(result.value) {
-        		deleteForm.submit();
-        	}
-        });
-	});	
-	
+			title: '정말로 삭제하시겠습니까?',
+			text: '',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#FFB3BD',
+			cancelButtonColor: '#98DFFF',
+			confirmButtonText:'확인',
+			cancelButtonText: '취소',
+		}).then((result) => {
+			if(result.isConfirmed) {
+				Swal.fire({
+					icon: 'success',
+					text:'삭제가 완료되었습니다.',
+					confirmButtonColor: '#98DFFF',
+					confirmButtonText:'확인',
+				}).then(() => {
+					deleteForm.submit();
+				});
+			}
+		});
+	});
+
 }); //ready
 
 
