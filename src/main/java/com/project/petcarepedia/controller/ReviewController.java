@@ -33,7 +33,7 @@ public class ReviewController {
     }
 
     //review_content.do 리뷰 상세 페이지
-    @GetMapping("review_content/{rid}/{page]")
+    @GetMapping("review_content/{rid}/{page}")
     public String review_content(@PathVariable String rid, @PathVariable String page, Model model, HttpSession session) {
         ReviewDto reviewDto = reviewService.enter_content(rid);
         ReviewLikeDto reviewLikeDto = new ReviewLikeDto();
